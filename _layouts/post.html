@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<article class="section">
+  <div class="container max-w-4xl">
+    <header class="mb-8">
+      <div class="mb-4">
+        <a href="{{ '/news/' | relative_url }}" class="text-[var(--color-text-muted)] hover:text-primary">
+          &larr; Back to News
+        </a>
+      </div>
+
+      <h1 class="mb-4">{{ page.title }}</h1>
+
+      <div class="flex flex-wrap items-center gap-4 text-[var(--color-text-muted)]">
+        <time datetime="{{ page.date | date_to_xmlschema }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+
+        {% if page.author %}
+        <span>by {{ page.author }}</span>
+        {% endif %}
+
+        {% if page.categories %}
+        <div class="flex gap-2">
+          {% for category in page.categories %}
+          <span class="badge badge-primary">{{ category }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </header>
+
+    {% if page.image %}
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" class="w-full rounded-xl mb-8">
+    {% endif %}
+
+    <div class="prose">
+      {{ content }}
+    </div>
+
+    {% if page.tags %}
+    <footer class="mt-8 pt-8 border-t border-[var(--color-border)]">
+      <div class="flex flex-wrap gap-2">
+        {% for tag in page.tags %}
+        <span class="badge bg-[var(--color-surface)]">#{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </footer>
+    {% endif %}
+  </div>
+</article>

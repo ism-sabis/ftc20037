@@ -1,0 +1,70 @@
+{% comment %}
+Usage: {% include components/circuit-viewer.html schematic_src="/assets/images/circuit.svg" title="Main Board Schematic" description="Description here" %}
+Requires site.features.circuit_viewer to be true
+{% endcomment %}
+
+{% if site.features.circuit_viewer %}
+<div class="circuit-viewer-container">
+  <div class="card">
+    <div class="card-body">
+      {% if include.title %}
+      <h4 class="card-title mb-4">{{ include.title }}</h4>
+      {% endif %}
+
+      <!-- Schematic Container with Pan/Zoom -->
+      <div class="relative bg-white rounded-lg overflow-hidden" style="aspect-ratio: 4/3;">
+        <div id="circuit-{{ include.schematic_src | slugify }}" class="circuit-pan-zoom w-full h-full cursor-move">
+          <img
+            src="{{ include.schematic_src | relative_url }}"
+            alt="{{ include.title | default: 'Circuit schematic' }}"
+            class="w-full h-full object-contain"
+            loading="lazy"
+          >
+        </div>
+
+        <!-- Zoom Controls -->
+        <div class="absolute bottom-4 right-4 flex gap-2">
+          <button class="circuit-zoom-in btn-secondary p-2" aria-label="Zoom in">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
+            </svg>
+          </button>
+          <button class="circuit-zoom-out btn-secondary p-2" aria-label="Zoom out">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"/>
+            </svg>
+          </button>
+          <button class="circuit-reset btn-secondary p-2" aria-label="Reset view">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+          </button>
+          <button class="circuit-fullscreen btn-secondary p-2" aria-label="View fullscreen">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {% if include.description %}
+      <p class="text-[var(--color-text-muted)] mt-4">{{ include.description }}</p>
+      {% endif %}
+
+      <!-- Download Link -->
+      <div class="mt-4 flex gap-4">
+        <a href="{{ include.schematic_src | relative_url }}" download class="btn-secondary text-sm inline-flex items-center gap-2">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Download Schematic
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="bg-[var(--color-surface)] rounded-xl p-8 text-center">
+  <p class="text-[var(--color-text-muted)]">Circuit viewer is disabled. Enable it in _config.yml</p>
+</div>
+{% endif %}

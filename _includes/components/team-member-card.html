@@ -1,0 +1,35 @@
+{% comment %}
+Usage: {% include components/team-member-card.html member=member %}
+Expected member object: { name, role, grade, graduation_year, bio, image, skills }
+{% endcomment %}
+
+<div class="card group">
+  <div class="aspect-square overflow-hidden">
+    <img
+      src="{{ include.member.image | default: '/assets/images/placeholder.svg' | relative_url }}"
+      alt="{{ include.member.name }}"
+      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+    >
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{{ include.member.name }}</h3>
+    <p class="text-primary font-medium">{{ include.member.role }}</p>
+
+    {% if include.member.grade %}
+    <p class="text-sm text-[var(--color-text-muted)]">Grade {{ include.member.grade }}</p>
+    {% endif %}
+
+    {% if include.member.bio %}
+    <p class="text-[var(--color-text-muted)] mt-2 text-sm line-clamp-3">{{ include.member.bio }}</p>
+    {% endif %}
+
+    {% if include.member.skills %}
+    <div class="flex flex-wrap gap-1 mt-3">
+      {% for skill in include.member.skills limit:3 %}
+      <span class="badge bg-[var(--color-surface)] text-xs">{{ skill }}</span>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>

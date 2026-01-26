@@ -1,0 +1,135 @@
+---
+layout: default
+---
+
+{% include components/hero-section.html %}
+
+<!-- Current Season Section -->
+<section class="section bg-[var(--color-surface)]">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-4">Current Season</h2>
+      <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
+        Follow our journey through the {{ site.site.current_season }} season
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <a href="{{ '/season/' | relative_url }}" class="card group">
+        <div class="card-body text-center">
+          <div class="text-4xl mb-4">🤖</div>
+          <h3 class="card-title">Our Robot</h3>
+          <p class="text-[var(--color-text-muted)]">See our robot design and capabilities</p>
+        </div>
+      </a>
+
+      <a href="{{ '/season/' | relative_url }}#team" class="card group">
+        <div class="card-body text-center">
+          <div class="text-4xl mb-4">👥</div>
+          <h3 class="card-title">The Team</h3>
+          <p class="text-[var(--color-text-muted)]">Meet our talented team members</p>
+        </div>
+      </a>
+
+      <a href="{{ '/season/' | relative_url }}#outreach" class="card group">
+        <div class="card-body text-center">
+          <div class="text-4xl mb-4">🌍</div>
+          <h3 class="card-title">Outreach</h3>
+          <p class="text-[var(--color-text-muted)]">Our community impact initiatives</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Awards Section -->
+{% if site.data.awards %}
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-4">Awards & Recognition</h2>
+      <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
+        Celebrating our team's achievements
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {% for award in site.data.awards limit:4 %}
+      <div class="card">
+        <div class="card-body text-center">
+          <div class="text-3xl mb-2">🏆</div>
+          <h4 class="font-bold">{{ award.name }}</h4>
+          <p class="text-sm text-[var(--color-text-muted)]">{{ award.event }}</p>
+          <span class="badge badge-primary mt-2">{{ award.season }}</span>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{{ '/awards/' | relative_url }}" class="btn-secondary">View All Awards</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Events Section -->
+{% if site.data.events %}
+<section class="section bg-[var(--color-surface)]">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-4">Upcoming Events</h2>
+      <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
+        Join us at these upcoming competitions and events
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% for event in site.data.events limit:3 %}
+      {% include components/event-card.html event=event %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Sponsors Section -->
+{% if site.data.sponsors %}
+<section class="section">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="mb-4">Our Sponsors</h2>
+      <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
+        Thank you to our generous sponsors who make our work possible
+      </p>
+    </div>
+
+    {% include components/sponsor-grid.html %}
+
+    <div class="text-center mt-8">
+      <a href="{{ '/sponsors/' | relative_url }}" class="btn-primary">Become a Sponsor</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Join Section -->
+<section class="section bg-gradient-to-r from-[#007bff] to-[#0056b3] text-white">
+  <div class="container text-center">
+    <h2 class="mb-4 text-white">Join Our Team</h2>
+    <p class="max-w-2xl mx-auto mb-8 text-white/90">
+      Interested in robotics, engineering, programming, or business?
+      We're always looking for passionate students to join our team.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="{{ '/about/' | relative_url }}#join" class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
+        Learn More
+      </a>
+      <a href="{{ '/contact/' | relative_url }}" class="btn border-2 border-white text-white hover:bg-white/10 px-6 py-3">
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+{{ content }}

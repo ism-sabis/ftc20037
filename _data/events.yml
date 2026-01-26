@@ -1,0 +1,42 @@
+- name: Season Kickoff Watch Party
+  date: 2026-01-04
+  location: School Cafeteria
+  type: event
+  description: Join us to watch the official game reveal and start planning our strategy for the season!
+  url:
+
+- name: League Meet 1 - Northern Qualifier
+  date: 2026-01-18
+  location: Lincoln High School
+  type: competition
+  description: Our first league meet of the season. Time to test our robot against other teams!
+
+- name: STEM Night at Maple Elementary
+  date: 2026-01-25
+  location: Maple Elementary School
+  type: outreach
+  description: Robot demonstration and hands-on activities for elementary students.
+
+- name: League Meet 2 - Central Qualifier
+  date: 2026-02-01
+  location: Jefferson Community Center
+  type: competition
+  description: Second league qualifying meet. Aiming for top 10 to secure championship spot.
+
+- name: Sponsor Appreciation Night
+  date: 2026-02-08
+  location: School Robotics Lab
+  type: event
+  description: Special event to thank our sponsors and showcase our progress this season.
+
+- name: League Championship
+  date: 2026-02-22
+  location: City Convention Center
+  type: competition
+  description: Top teams from our league compete for advancement to state championship.
+
+- name: State Championship
+  date: 2026-03-15
+  location: State Fairgrounds
+  type: competition
+  description: The biggest competition of the season! Competing for a spot at Worlds.

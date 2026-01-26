@@ -1,0 +1,125 @@
+# Site settings
+title: "Team Name Robotics"
+description: "FTC/FRC Robotics Team Portfolio"
+url: ""
+baseurl: ""
+
+# Team configuration
+site:
+  team_name: "Team Name"
+  team_number: "00000"
+  program: "FTC"  # FTC or FRC
+  current_season: "2025-2026"
+  logo: "/assets/images/placeholder.svg"
+
+# Theme configuration - Official FTC Colors
+theme:
+  colors:
+    primary: "#007bff"    # FTC Blue
+    secondary: "#F57E25"  # FIRST Orange (brand color)
+    success: "#28a745"    # Success green
+    info: "#17a2b8"       # Info teal
+    warning: "#f0b37e"    # Warning orange
+    danger: "#dc3545"     # Danger red
+  dark_mode: true
+
+# Features toggle
+features:
+  blog: true
+  docs: true
+  cad_viewer: true
+  circuit_viewer: true
+  code_links: true
+  data_visualizations: true
+  alumni_auto_archive: true
+  accessibility_toggle: true
+  search: true
+
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: Season
+    url: /season/
+  - title: Awards
+    url: /awards/
+  - title: Sponsors
+    url: /sponsors/
+  - title: Docs
+    url: /docs/
+  - title: News
+    url: /news/
+
+# Social links
+socials:
+  instagram: "https://instagram.com/teamrobotics"
+  github: "https://github.com/teamrobotics"
+  youtube: "https://youtube.com/@teamrobotics"
+  twitter: "https://twitter.com/teamrobotics"
+  email: "team@example.com"
+
+# Fundraising/Donations
+fundraising:
+  enabled: false
+  url: ""
+  text: "Support Our Team"
+
+# Collections
+collections:
+  posts:
+    output: true
+    permalink: /news/:year/:month/:day/:title/
+  seasons:
+    output: true
+    permalink: /season/:path/
+  docs:
+    output: true
+    permalink: /docs/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+  - scope:
+      path: "seasons"
+    values:
+      layout: "season"
+  - scope:
+      path: "docs"
+    values:
+      layout: "docs"
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - README.md
+  - scripts
+  - "*.py"
+  - requirements.txt

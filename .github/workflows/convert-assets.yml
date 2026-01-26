@@ -1,0 +1,50 @@
+name: Convert CAD and Circuit Assets
+
+on:
+  push:
+    paths:
+      - 'assets/models/source/**'
+      - 'assets/circuits/source/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r scripts/requirements.txt || true
+          # Install additional tools if needed
+          sudo apt-get update
+          sudo apt-get install -y blender || true
+
+      - name: Convert CAD files to GLTF
+        run: |
+          if [ -d "assets/models/source" ]; then
+            python scripts/cad_to_gltf.py || echo "CAD conversion skipped"
+          fi
+
+      - name: Convert circuit schematics to SVG
+        run: |
+          if [ -d "assets/circuits/source" ]; then
+            python scripts/spice_to_svg.py || echo "Circuit conversion skipped"
+          fi
+
+      - name: Commit converted assets
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add assets/models/ assets/circuits/ assets/images/
+          git diff --staged --quiet || git commit -m "Convert CAD and circuit assets"
+          git push

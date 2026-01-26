@@ -1,0 +1,37 @@
+# Documentation sidebar navigation
+
+- title: Getting Started
+  items:
+    - title: Introduction
+      url: /docs/
+    - title: Quick Start Guide
+      url: /docs/getting-started/
+    - title: Team Handbook
+      url: /docs/handbook/
+
+- title: Technical Docs
+  items:
+    - title: Robot Overview
+      url: /docs/robot/
+    - title: Programming Guide
+      url: /docs/programming/
+    - title: Electrical Systems
+      url: /docs/electrical/
+    - title: CAD Resources
+      url: /docs/cad/
+
+- title: Operations
+  items:
+    - title: Safety Guidelines
+      url: /docs/safety/
+    - title: Competition Checklist
+      url: /docs/competition-checklist/
+    - title: Outreach Guide
+      url: /docs/outreach/
+
+- title: Resources
+  items:
+    - title: Useful Links
+      url: /docs/links/
+    - title: Glossary
+      url: /docs/glossary/

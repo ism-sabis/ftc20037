@@ -1,0 +1,58 @@
+{% comment %}
+Usage: {% include components/robot-viewer.html model_src="/assets/models/robot.glb" alt_text="Robot 3D Model" poster_image="/assets/images/robot-poster.jpg" %}
+Requires site.features.cad_viewer to be true
+{% endcomment %}
+
+{% if site.features.cad_viewer %}
+<div class="robot-viewer-container">
+  <div class="relative bg-[var(--color-surface)] rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
+    <model-viewer
+      src="{{ include.model_src | relative_url }}"
+      alt="{{ include.alt_text | default: '3D Model of the robot' }}"
+      {% if include.poster_image %}poster="{{ include.poster_image | relative_url }}"{% endif %}
+      camera-controls
+      auto-rotate
+      shadow-intensity="1"
+      exposure="0.5"
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      class="w-full h-full"
+      loading="lazy"
+    >
+      <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+        <button slot="ar-button" class="btn-primary text-sm" hidden>
+          View in AR
+        </button>
+      </div>
+
+      <!-- Loading State -->
+      <div slot="poster" class="absolute inset-0 flex items-center justify-center bg-[var(--color-surface)]">
+        <div class="text-center">
+          <div class="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mx-auto mb-4"></div>
+          <p class="text-[var(--color-text-muted)]">Loading 3D model...</p>
+        </div>
+      </div>
+
+      <!-- Progress Bar -->
+      <div slot="progress-bar" class="absolute bottom-0 left-0 right-0 h-1 bg-[var(--color-border)]">
+        <div class="h-full bg-primary transition-all" style="width: 0%"></div>
+      </div>
+    </model-viewer>
+
+    <!-- Controls Hint -->
+    <div class="absolute top-4 right-4 text-xs text-[var(--color-text-muted)] bg-[var(--color-background)]/80 px-2 py-1 rounded">
+      Drag to rotate | Scroll to zoom
+    </div>
+  </div>
+
+  {% if include.description %}
+  <p class="text-center text-[var(--color-text-muted)] mt-4">{{ include.description }}</p>
+  {% endif %}
+</div>
+
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+{% else %}
+<div class="bg-[var(--color-surface)] rounded-xl p-8 text-center">
+  <p class="text-[var(--color-text-muted)]">3D CAD viewer is disabled. Enable it in _config.yml</p>
+</div>
+{% endif %}

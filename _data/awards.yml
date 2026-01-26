@@ -1,0 +1,39 @@
+- name: Inspire Award
+  event: State Championship
+  season: 2024-2025
+  description: Highest honor recognizing the team that best embodies the FIRST mission and core values.
+
+- name: Think Award
+  event: League Championship
+  season: 2024-2025
+  description: Excellence in engineering documentation and evidence of using the engineering design process.
+
+- name: Connect Award
+  event: League Meet 3
+  season: 2024-2025
+  description: Outstanding community outreach and engagement with sponsors and mentors.
+
+- name: Innovate Award
+  event: State Championship
+  season: 2023-2024
+  description: Recognition of creative robot design that solves game challenges in unique ways.
+
+- name: Design Award
+  event: Regional Championship
+  season: 2023-2024
+  description: Excellence in robot aesthetics and industrial design principles.
+
+- name: Control Award
+  event: League Championship
+  season: 2023-2024
+  description: Outstanding programming and autonomous performance on the field.
+
+- name: Motivate Award
+  event: League Meet 2
+  season: 2022-2023
+  description: Best team spirit, enthusiasm, and positive energy in the pit and stands.
+
+- name: Judges Award
+  event: State Championship
+  season: 2022-2023
+  description: Special recognition for unique qualities that impressed the judging panel.

@@ -1,0 +1,57 @@
+# Team alumni - Members who have graduated
+# Automatically populated by the alumni archival workflow
+
+- name: David Lee
+  role: Former Strategy Lead
+  graduation_year: 2025
+  seasons:
+    - 2024-2025
+    - 2023-2024
+    - 2022-2023
+  now: Studying Computer Science at MIT
+  bio: Led match strategy for three seasons and developed our scouting database system.
+  image: /assets/images/placeholder.svg
+
+- name: Hannah Brown
+  role: Former Documentation Lead
+  graduation_year: 2025
+  seasons:
+    - 2024-2025
+    - 2023-2024
+  now: Studying Mechanical Engineering at Georgia Tech
+  bio: Created our award-winning engineering notebook template and documentation process.
+  image: /assets/images/placeholder.svg
+
+- name: Kevin Zhang
+  role: Former Programming Lead
+  graduation_year: 2024
+  seasons:
+    - 2023-2024
+    - 2022-2023
+    - 2021-2022
+  now: Software Engineering Intern at Google, Stanford University
+  bio: Pioneered our computer vision system and autonomous frameworks.
+  image: /assets/images/placeholder.svg
+
+- name: Michelle Torres
+  role: Former Team Captain
+  graduation_year: 2024
+  seasons:
+    - 2023-2024
+    - 2022-2023
+    - 2021-2022
+    - 2020-2021
+  now: Studying Biomedical Engineering at Johns Hopkins University
+  bio: Four-year team member who led the team to its first state championship appearance.
+  image: /assets/images/placeholder.svg
+
+- name: Jason Miller
+  role: Former Build Lead
+  graduation_year: 2023
+  seasons:
+    - 2022-2023
+    - 2021-2022
+    - 2020-2021
+  now: Manufacturing Engineer at Tesla
+  bio: Master fabricator who taught countless students machining skills.
+  image: /assets/images/placeholder.svg

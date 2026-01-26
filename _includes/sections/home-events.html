@@ -1,0 +1,39 @@
+<section class="section bg-[var(--color-surface)]">
+  <div class="container">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Upcoming Events</h2>
+      <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
+        Join us at competitions, outreach events, and community activities.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {% assign upcoming_events = site.data.events | where_exp: "event", "event.date >= site.time" | sort: "date" | limit: 6 %}
+      {% for event in upcoming_events %}
+      <div class="card">
+        <div class="card-body">
+          <div class="flex items-center gap-3 mb-3">
+            {% if event.type == "competition" %}
+            <span class="badge badge-secondary">Competition</span>
+            {% elsif event.type == "outreach" %}
+            <span class="badge badge-success">Outreach</span>
+            {% else %}
+            <span class="badge badge-primary">Event</span>
+            {% endif %}
+          </div>
+          <h3 class="card-title">{{ event.name }}</h3>
+          <p class="text-[var(--color-text-muted)] text-sm mb-3">
+            <time datetime="{{ event.date }}">{{ event.date | date: "%B %d, %Y" }}</time>
+            {% if event.location %} &bull; {{ event.location }}{% endif %}
+          </p>
+          <p class="text-[var(--color-text-muted)]">{{ event.description }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-8">
+      <a href="{{ '/season/' | relative_url }}#events" class="btn btn-primary">View All Events</a>
+    </div>
+  </div>
+</section>

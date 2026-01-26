@@ -1,0 +1,46 @@
+{% comment %}
+Standalone accessibility toggle component
+Usually already included in navigation, but can be used elsewhere
+{% endcomment %}
+
+{% if site.features.accessibility_toggle %}
+<div class="accessibility-controls flex items-center gap-4 p-4 bg-[var(--color-surface)] rounded-lg">
+  <span class="font-medium">Accessibility Options</span>
+
+  <label class="flex items-center gap-2 cursor-pointer">
+    <input
+      type="checkbox"
+      id="high-contrast-toggle"
+      class="sr-only peer"
+    >
+    <div class="relative w-11 h-6 bg-[var(--color-border)] rounded-full peer peer-checked:bg-primary transition-colors">
+      <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+    </div>
+    <span class="text-sm">High Contrast</span>
+  </label>
+
+  <label class="flex items-center gap-2 cursor-pointer">
+    <input
+      type="checkbox"
+      id="reduced-motion-toggle"
+      class="sr-only peer"
+    >
+    <div class="relative w-11 h-6 bg-[var(--color-border)] rounded-full peer peer-checked:bg-primary transition-colors">
+      <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+    </div>
+    <span class="text-sm">Reduce Motion</span>
+  </label>
+
+  <label class="flex items-center gap-2 cursor-pointer">
+    <input
+      type="checkbox"
+      id="large-text-toggle"
+      class="sr-only peer"
+    >
+    <div class="relative w-11 h-6 bg-[var(--color-border)] rounded-full peer peer-checked:bg-primary transition-colors">
+      <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+    </div>
+    <span class="text-sm">Large Text</span>
+  </label>
+</div>
+{% endif %}

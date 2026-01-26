@@ -1,0 +1,39 @@
+{% comment %}
+Usage: {% include components/timeline.html events=site.data.team_history %}
+Expected events array: [{ year, title, description, image }]
+{% endcomment %}
+
+<div class="timeline relative">
+  <!-- Vertical Line -->
+  <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-[var(--color-border)] -translate-x-1/2"></div>
+
+  <div class="space-y-12">
+    {% for event in include.events %}
+    <div class="timeline-item relative {% cycle 'md:pr-1/2', 'md:pl-1/2 md:ml-auto' %}">
+      <!-- Dot -->
+      <div class="absolute left-4 md:left-1/2 w-4 h-4 bg-primary rounded-full -translate-x-1/2 ring-4 ring-[var(--color-background)]"></div>
+
+      <!-- Content -->
+      <div class="ml-12 md:ml-0 {% cycle '', 'md:ml-12' %}">
+        <div class="card">
+          <div class="card-body">
+            <span class="badge badge-primary mb-2">{{ event.year }}</span>
+            <h3 class="card-title">{{ event.title }}</h3>
+            {% if event.description %}
+            <p class="text-[var(--color-text-muted)]">{{ event.description }}</p>
+            {% endif %}
+            {% if event.image %}
+            <img
+              src="{{ event.image | relative_url }}"
+              alt="{{ event.title }}"
+              class="mt-4 rounded-lg"
+              loading="lazy"
+            >
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,131 @@
+---
+layout: season
+title: "2024-2025 Season"
+season: "2024-2025"
+game_name: "CENTERSTAGE"
+robot_name: "Thunderbolt"
+permalink: /seasons/2024-2025/
+---
+
+## Season Summary
+
+The 2024-2025 CENTERSTAGE season was a breakthrough year for our team. We achieved our highest competition placement ever and earned multiple awards recognizing our engineering and outreach efforts.
+
+### Highlights
+- **State Championship Inspire Award Winner**
+- Ranked #4 at State Championship
+- Season record: 28-7-1
+- Advanced to World Championship in Houston
+
+---
+
+## Robot: Thunderbolt {#robot}
+
+Thunderbolt was designed around the CENTERSTAGE game's emphasis on pixel placement and drone launching.
+
+### Key Specifications
+- **Drivetrain:** 4-wheel tank drive with high-traction wheels
+- **Lift:** Continuous belt lift with 28" reach
+- **Intake:** Dual-roller system with color sorting
+- **Special Feature:** Pneumatic drone launcher with 15ft range
+- **Weight:** 18.2 lbs (competition ready)
+
+### Design Philosophy
+We focused on reliability over complexity. Every mechanism was tested for 1000+ cycles before competition, and we built spare assemblies for quick field repairs.
+
+---
+
+## Competition Results {#results}
+
+| Event | Date | Rank | Record | Awards |
+|-------|------|------|--------|--------|
+| League Meet 1 | Nov 4, 2024 | 2nd | 5-0-0 | Connect Award |
+| League Meet 2 | Nov 18, 2024 | 1st | 5-0-0 | - |
+| League Meet 3 | Dec 9, 2024 | 1st | 4-0-1 | Connect Award |
+| League Championship | Jan 20, 2025 | 2nd | 6-1-0 | Think Award |
+| Regional Championship | Feb 10, 2025 | 3rd | 5-2-0 | Design Award |
+| State Championship | Mar 8, 2025 | 4th | 8-4-0 | **Inspire Award** |
+
+### Season Statistics
+- **Total Matches:** 36
+- **Win Rate:** 78%
+- **Average Score:** 167 points
+- **Highest Score:** 234 points (State Semifinal 2)
+- **Autonomous Success Rate:** 89%
+
+---
+
+## Awards {#awards}
+
+### Inspire Award - State Championship
+The Inspire Award is the highest honor at FTC events, recognizing the team that best embodies the FIRST mission. Our comprehensive engineering portfolio, strong outreach program, and gracious professionalism earned us this recognition.
+
+### Think Award - League Championship
+Recognized for our outstanding engineering notebook documentation and clear evidence of the engineering design process throughout the season.
+
+### Connect Award - League Meets 1 & 3
+Awarded for our exceptional community engagement, sponsor relationships, and partnerships with local businesses and organizations.
+
+### Design Award - Regional Championship
+Honored for Thunderbolt's elegant mechanical design, industrial aesthetics, and thoughtful component accessibility.
+
+---
+
+## Outreach Impact {#outreach}
+
+### By the Numbers
+- **12** STEM workshops conducted
+- **600+** students reached
+- **5** rookie teams mentored
+- **$2,500** raised for FIRST scholarships
+
+### Notable Events
+- **City STEM Festival** - Featured demonstrators with 500+ visitors
+- **Hospital Holiday Visit** - Robot demonstrations for young patients
+- **Elementary School Tour** - 4-school circuit reaching 400 students
+- **Local News Feature** - Evening news segment on youth robotics
+
+---
+
+## Gallery {#gallery}
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">State Championship</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Inspire Award</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Thunderbolt Action</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Team Photo</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Pit Setup</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Outreach Event</span>
+  </div>
+</div>
+
+---
+
+## Lessons Learned
+
+### What Worked Well
+1. Early prototyping saved weeks of build time
+2. Dedicated driver practice schedule improved match consistency
+3. Weekly engineering reviews caught issues early
+4. Strong mentor involvement in technical decisions
+
+### Areas for Improvement
+1. Better version control for CAD files
+2. Start outreach planning earlier in season
+3. More redundancy in wiring harness
+4. Documentation could be more real-time
+
+---
+
+*This is an archived season. View our [current season](/seasons/2025-2026/) for the latest updates.*

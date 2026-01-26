@@ -1,0 +1,53 @@
+---
+layout: default
+---
+
+<article>
+  <!-- Season Hero -->
+  <section class="section bg-[var(--color-surface)]">
+    <div class="container">
+      <div class="text-center mb-8">
+        <span class="badge badge-primary mb-4">{{ page.season }}</span>
+        <h1 class="mb-4">{{ page.title }}</h1>
+        {% if page.game_name %}
+        <p class="text-xl text-[var(--color-text-muted)]">
+          {{ site.site.program }} Game: {{ page.game_name }}
+        </p>
+        {% endif %}
+      </div>
+
+      {% if page.robot_name %}
+      <div class="text-center">
+        <p class="text-lg">Robot: <strong>{{ page.robot_name }}</strong></p>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Season Navigation -->
+  <nav class="sticky top-16 z-40 bg-[var(--color-background)] border-b border-[var(--color-border)]">
+    <div class="container">
+      <div class="flex overflow-x-auto gap-4 py-4">
+        <a href="#robot" class="nav-link whitespace-nowrap">Robot</a>
+        <a href="#team" class="nav-link whitespace-nowrap">Team</a>
+        <a href="#outreach" class="nav-link whitespace-nowrap">Outreach</a>
+        <a href="#gallery" class="nav-link whitespace-nowrap">Gallery</a>
+        {% if site.features.code_links %}
+        <a href="#code" class="nav-link whitespace-nowrap">Code</a>
+        {% endif %}
+        {% if site.features.cad_viewer %}
+        <a href="#cad" class="nav-link whitespace-nowrap">CAD</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="section">
+    <div class="container">
+      <div class="prose max-w-none">
+        {{ content }}
+      </div>
+    </div>
+  </div>
+</article>

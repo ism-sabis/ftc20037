@@ -1,0 +1,36 @@
+<section class="relative overflow-hidden bg-gradient-to-br from-[#007bff] via-[#0069d9] to-[#004494] text-white">
+  <div class="absolute inset-0 bg-black/5"></div>
+  <!-- Orange accent stripe -->
+  <div class="absolute bottom-0 left-0 right-0 h-2 bg-[#F57E25]"></div>
+
+  <div class="relative container py-20 md:py-32">
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-2 mb-4">
+        <span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium">{{ site.site.program }} Team #{{ site.site.team_number }}</span>
+        <span class="px-3 py-1 rounded-full bg-[#F57E25] text-white text-sm font-semibold">{{ site.site.current_season }}</span>
+      </div>
+
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
+        {{ site.site.team_name }}
+      </h1>
+
+      <p class="text-xl md:text-2xl mb-8 text-white/90">
+        {{ site.description | default: "Building robots. Building futures. Building community." }}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="{{ '/season/' | relative_url }}" class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
+          Current Season
+        </a>
+        <a href="{{ '/about/' | relative_url }}" class="btn border-2 border-white text-white hover:bg-white/10 px-6 py-3">
+          Meet the Team
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative Elements -->
+  <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-[#F57E25]/20 rounded-full blur-3xl"></div>
+  <div class="absolute -top-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-2 left-0 right-0 h-24 bg-gradient-to-t from-[var(--color-background)] to-transparent"></div>
+</section>

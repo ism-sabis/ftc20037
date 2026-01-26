@@ -1,0 +1,230 @@
+---
+layout: season
+title: "2025-2026 Season"
+season: "2025-2026"
+game_name: "INTO THE DEEP"
+robot_name: "Phoenix"
+permalink: /seasons/2025-2026/
+---
+
+## Robot Overview {#robot}
+
+**Phoenix** is our competition robot for the INTO THE DEEP season. Designed for speed, precision, and reliability, Phoenix combines innovative mechanisms with battle-tested engineering.
+
+### Drivetrain
+- **Type:** Mecanum drive for omnidirectional movement
+- **Motors:** 4x REV HD Hex Motors (20:1 gearboxes)
+- **Wheels:** 100mm REV Mecanum wheels
+- **Speed:** 2.1 m/s top speed, optimized for quick cycles
+- **Features:** Encoder-based odometry, IMU for heading correction
+
+### Scoring Mechanism
+- **Lift:** Dual-stage linear slide system reaching 36" extension
+- **Actuator:** Lead screw with position feedback
+- **Precision:** ±0.5" repeatability for consistent scoring
+- **Speed:** Full extension in 1.8 seconds
+
+### Intake System
+- **Design:** Compliant wheel intake with adjustable geometry
+- **Collection:** Active roller system with optical sensors
+- **Capacity:** Single game element secure hold
+- **Cycle Time:** 2.5 seconds from floor to scoring position
+
+### Control System
+- **Controller:** REV Control Hub
+- **Sensors:** 2x distance sensors, 4x limit switches, IMU, color sensor
+- **Vision:** Logitech C920 webcam with OpenCV pipeline
+- **Communication:** Dual driver stations with redundant connection
+
+{% if site.features.cad_viewer %}
+### 3D Model
+{% include components/robot-viewer.html
+   model_src="/assets/models/robot.glb"
+   alt_text="3D model of Phoenix robot"
+   description="Interactive 3D model - drag to rotate, scroll to zoom"
+%}
+{% endif %}
+
+---
+
+## Autonomous Capabilities {#auto}
+
+Sofia and the programming team have developed three autonomous routines optimized for different alliance strategies:
+
+### Route A: High Score
+- Scores 2 preloaded elements in high goal
+- Collects 1 additional element
+- Parks in observation zone
+- **Expected Points:** 35-40
+
+### Route B: Defensive Position
+- Scores 1 preloaded element
+- Navigates to strategic blocking position
+- Parks in alliance zone
+- **Expected Points:** 20-25 (plus denial value)
+
+### Route C: Cooperative
+- Coordinates with alliance partner
+- Focuses on elements partner can't reach
+- Maximizes combined scoring
+- **Expected Points:** 30-35
+
+**Autonomous success rate in testing:** 94% across 50+ runs
+
+---
+
+## The Team {#team}
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+{% for member in site.data.team %}
+{% include components/team-member-card.html member=member %}
+{% endfor %}
+</div>
+
+---
+
+## Outreach {#outreach}
+
+This season, we've expanded our community impact with a focus on accessibility and reaching underserved communities.
+
+### By the Numbers
+- **8** STEM workshops conducted
+- **450+** students reached
+- **3** rookie teams mentored
+- **12** community events attended
+
+### STEM Workshops
+We've hosted hands-on workshops at:
+- Maple Elementary School (3 sessions)
+- Jefferson Middle School robotics club
+- Riverside Community Center after-school program
+- City Library maker space
+
+### Team Mentorship
+We're currently mentoring three rookie FTC teams:
+- **Team 23456** - Lincoln Middle School
+- **Team 23457** - Westside Academy
+- **Team 23458** - Community Homeschool Co-op
+
+### Featured Events
+- City STEM Festival (500+ attendees)
+- Hospital children's ward visit
+- Senior center technology day
+- Local news feature on youth in STEM
+
+---
+
+## Gallery {#gallery}
+
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4 my-8">
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Competition Photo 1</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Robot Action Shot</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Team Build Session</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Outreach Event</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Award Ceremony</span>
+  </div>
+  <div class="aspect-video bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center">
+    <span class="text-gray-400">Team Photo</span>
+  </div>
+</div>
+
+*More photos coming as the season progresses!*
+
+---
+
+## Code Repository {#code}
+
+{% if site.features.code_links %}
+Our robot code is open source! We believe in sharing knowledge with the FTC community.
+
+### Repositories
+- **[Robot Code](https://github.com)** - Main robot control code
+- **[Autonomous Paths](https://github.com)** - Path planning and autonomous routines
+- **[Vision Pipeline](https://github.com)** - OpenCV-based object detection
+
+### Tech Stack
+- **Language:** Java with FTC SDK
+- **Vision:** OpenCV with EasyOpenCV wrapper
+- **Motion:** Custom PID controllers with feedforward
+- **Path Planning:** Roadrunner library for trajectory following
+
+### Code Highlights
+```java
+// Sample autonomous scoring sequence
+public void scoreHighGoal() {
+    lift.setPosition(LIFT_HIGH);
+    waitForLift();
+    intake.release();
+    sleep(200);
+    lift.setPosition(LIFT_HOME);
+}
+```
+{% endif %}
+
+---
+
+## CAD Files {#cad}
+
+{% if site.features.cad_viewer %}
+Phoenix was designed in Onshape with full parametric modeling for easy iteration.
+
+### Design Philosophy
+- **Modularity:** Each mechanism can be removed independently
+- **Serviceability:** All fasteners accessible without disassembly
+- **Weight Distribution:** Low center of gravity for stability
+
+### Key Assemblies
+| Assembly | Parts | Weight |
+|----------|-------|--------|
+| Drivetrain | 47 | 8.2 lbs |
+| Lift System | 32 | 3.1 lbs |
+| Intake | 18 | 1.4 lbs |
+| Electronics | 24 | 2.8 lbs |
+| **Total Robot** | **121** | **15.5 lbs** |
+
+*CAD files available to other teams upon request for educational purposes. Contact us!*
+{% endif %}
+
+---
+
+## Competition Results {#results}
+
+| Event | Date | Rank | Record | Awards |
+|-------|------|------|--------|--------|
+| League Meet 1 | Jan 18 | 3rd | 4-1-0 | Think Award |
+| League Meet 2 | Feb 1 | - | - | - |
+| League Championship | Feb 22 | - | - | - |
+| State Championship | Mar 15 | - | - | - |
+
+### Match Scores
+**League Meet 1 Matches:**
+- Qual 1: **142** - 98 (W)
+- Qual 2: **156** - 134 (W)
+- Qual 3: 128 - **145** (L)
+- Qual 4: **167** - 112 (W)
+- Qual 5: **183** - 141 (W)
+- Semifinal: **201** - 178 (W)
+- Final: 195 - **210** (L)
+
+**Season High Score:** 201 points (Semifinal, League Meet 1)
+
+---
+
+## Season Documentation
+
+For detailed technical documentation about Phoenix and our engineering process, visit our [documentation section](/docs/).
+
+### Quick Links
+- [Getting Started Guide](/docs/getting-started/)
+- [Electrical Wiring Diagram](/docs/)
+- [Software Architecture](/docs/)
+- [Maintenance Checklist](/docs/)

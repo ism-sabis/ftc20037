@@ -1,0 +1,59 @@
+{% comment %}
+Usage: {% include components/gallery.html images=page.gallery_images %}
+Expected images array: [{ src, alt, caption }]
+{% endcomment %}
+
+<div class="gallery">
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {% for image in include.images %}
+    <a
+      href="{{ image.src | relative_url }}"
+      class="gallery-item group relative aspect-square rounded-lg overflow-hidden cursor-pointer"
+      data-caption="{{ image.caption | default: '' }}"
+    >
+      <img
+        src="{{ image.src | relative_url }}"
+        alt="{{ image.alt | default: 'Gallery image' }}"
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        loading="lazy"
+      >
+      <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+        <svg class="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"/>
+        </svg>
+      </div>
+      {% if image.caption %}
+      <div class="absolute bottom-0 left-0 right-0 bg-black/60 text-white text-sm p-2 translate-y-full group-hover:translate-y-0 transition-transform">
+        {{ image.caption }}
+      </div>
+      {% endif %}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<!-- Lightbox Modal -->
+<div id="gallery-lightbox" class="fixed inset-0 z-50 hidden bg-black/90 items-center justify-center">
+  <button class="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-lg" id="lightbox-close">
+    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+    </svg>
+  </button>
+
+  <button class="absolute left-4 top-1/2 -translate-y-1/2 text-white p-2 hover:bg-white/10 rounded-lg" id="lightbox-prev">
+    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+    </svg>
+  </button>
+
+  <button class="absolute right-4 top-1/2 -translate-y-1/2 text-white p-2 hover:bg-white/10 rounded-lg" id="lightbox-next">
+    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+
+  <div class="max-w-5xl max-h-[80vh] mx-4">
+    <img id="lightbox-image" src="" alt="" class="max-w-full max-h-[80vh] object-contain">
+    <p id="lightbox-caption" class="text-white text-center mt-4"></p>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+- name: Dr. Michael Patel
+  role: Lead Mentor
+  bio: Mechanical engineer with 15 years of industry experience. Has mentored robotics teams for 8 years and brings real-world engineering practices to the team.
+  image: /assets/images/placeholder.svg
+  organization: TechVentures Inc
+
+- name: Sarah Chen
+  role: Programming Mentor
+  bio: Software engineer specializing in embedded systems and computer vision. Helps students develop robust control algorithms and teaches best coding practices.
+  image: /assets/images/placeholder.svg
+  organization: Digital Solutions LLC
+
+- name: Robert Williams
+  role: Build Mentor
+  bio: Retired manufacturing engineer who loves sharing his fabrication expertise with students. Expert in CNC machining, 3D printing, and hands-on construction.
+  image: /assets/images/placeholder.svg
+  organization: Precision Engineering Co
+
+- name: Jennifer Martinez
+  role: Business Mentor
+  bio: Marketing professional who guides students in sponsor relations, team branding, and community outreach strategies.
+  image: /assets/images/placeholder.svg
+  organization: Anderson Family Foundation
+
+- name: Coach David Thompson
+  role: Team Coach
+  bio: High school technology teacher and official team coach. Coordinates logistics, manages travel, and ensures student safety at all events.
+  image: /assets/images/placeholder.svg
+  organization: Lincoln High School

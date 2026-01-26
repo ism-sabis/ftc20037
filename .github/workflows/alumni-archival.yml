@@ -1,0 +1,90 @@
+name: Alumni Auto-Archival
+
+on:
+  # Run annually on July 1st (after graduation season)
+  schedule:
+    - cron: '0 0 1 7 *'
+  # Allow manual trigger
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  archive-alumni:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: Archive graduated members
+        run: |
+          python << 'EOF'
+          import yaml
+          from datetime import datetime
+
+          current_year = datetime.now().year
+
+          # Load team members
+          with open('_data/team.yml', 'r') as f:
+              team = yaml.safe_load(f) or []
+
+          # Load existing alumni
+          try:
+              with open('_data/alumni.yml', 'r') as f:
+                  alumni = yaml.safe_load(f) or []
+          except FileNotFoundError:
+              alumni = []
+
+          # Find members to archive
+          graduating = []
+          remaining = []
+
+          for member in team:
+              grad_year = member.get('graduation_year', 9999)
+              if grad_year <= current_year:
+                  graduating.append(member)
+              else:
+                  remaining.append(member)
+
+          if graduating:
+              print(f"Archiving {len(graduating)} graduated member(s)...")
+
+              # Add to alumni
+              for member in graduating:
+                  alumni_entry = {
+                      'name': member.get('name'),
+                      'role': f"Former {member.get('role', 'Team Member')}",
+                      'graduation_year': member.get('graduation_year'),
+                      'image': member.get('image', '/assets/images/placeholder.svg'),
+                      'seasons': [f"{current_year-1}-{current_year}"]
+                  }
+                  alumni.append(alumni_entry)
+
+              # Write updated files
+              with open('_data/team.yml', 'w') as f:
+                  yaml.dump(remaining, f, default_flow_style=False, allow_unicode=True)
+
+              with open('_data/alumni.yml', 'w') as f:
+                  yaml.dump(alumni, f, default_flow_style=False, allow_unicode=True)
+
+              print("Archival complete!")
+          else:
+              print("No members to archive this year.")
+          EOF
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add _data/team.yml _data/alumni.yml
+          git diff --staged --quiet || git commit -m "Archive graduated team members to alumni"
+          git push

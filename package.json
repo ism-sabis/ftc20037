@@ -1,0 +1,24 @@
+{
+  "name": "pitcrew",
+  "version": "1.0.0",
+  "description": "A free, open-source website template for robotics teams",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --minify",
+    "watch:css": "npx tailwindcss -i ./assets/css/main.css -o ./assets/css/output.css --watch"
+  },
+  "keywords": [
+    "robotics",
+    "ftc",
+    "frc",
+    "first",
+    "vex",
+    "portfolio",
+    "jekyll",
+    "template"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}

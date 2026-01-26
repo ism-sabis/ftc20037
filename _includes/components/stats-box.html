@@ -1,0 +1,22 @@
+{% comment %}
+Usage: {% include components/stats-box.html stats=page.stats %}
+Expected stats array: [{ value, label, icon }]
+{% endcomment %}
+
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+  {% for stat in include.stats %}
+  <div class="card text-center">
+    <div class="card-body">
+      {% if stat.icon %}
+      <div class="text-3xl mb-2">{{ stat.icon }}</div>
+      {% endif %}
+      <div class="text-3xl md:text-4xl font-bold text-primary mb-1">
+        {{ stat.value }}
+      </div>
+      <div class="text-sm text-[var(--color-text-muted)]">
+        {{ stat.label }}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
