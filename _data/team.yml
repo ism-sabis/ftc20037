@@ -1,14 +1,14 @@
-- name: Anya Sharma
+- name: Roshan
   role: Team Captain
-  grade: 12
-  graduation_year: 2026
-  bio: Passionate about strategic team management and ensuring the robot consistently meets competition goals. Led the team to state championship last year.
+  grade: 10
+  graduation_year: 2028
+  bio: This is his fifth year in FTC.Former Catlateral Damage Member. Roshan enjoys swimming. His favoritesubject is math. He joined because FTC
+sounded fun..
   image: /assets/images/placeholder.svg
   skills:
     - Leadership
     - Strategic Planning
-    - Public Speaking
-
+    
 - name: Marcus Chen
   role: Build Lead
   grade: 11
