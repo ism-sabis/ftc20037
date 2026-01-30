@@ -6,8 +6,8 @@ baseurl: ""
 
 # Team configuration
 site:
-  team_name: "PitCrew"
-  team_number: "271828"
+  team_name: "Standard Deviation"
+  team_number: "20037"
   program: "FTC"  # FTC or FRC
   current_season: "2025-2026"
   logo: "/assets/images/placeholder.svg"
