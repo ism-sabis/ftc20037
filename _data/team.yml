@@ -8,16 +8,16 @@
     - Leadership
     - Strategic Planning
     
-- name: Marcus Chen
+- name: Asif Haider
   role: Build Lead
-  grade: 11
-  graduation_year: 2027
-  bio: Specializes in constructing robust mechanical designs and ensuring the robot's structural integrity. Expert in 3D printing and CNC machining.
+  grade: 10
+  graduation_year: 2028
+  bio: Specializes in construc . A Sophomore at the International School of Minnesota. This is my first year in FTC. I enjoy playing badminton I joined FTC because I enjoy working with robots.            
   image: /assets/images/placeholder.svg
   skills:
-    - Fabrication
+    - Leadership
     - 3D Printing
-    - Mechanical Design
+    - Event Planning
 
 - name: Sofia Rodriguez
   role: Programming Lead
