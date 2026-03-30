@@ -1,39 +1,69 @@
-- name: Inspire Award
-  event: State Championship
+- name: Control Award
+  event: Maple Grove Saturday Qualifier
   season: 2024-2025
-  description: Highest honor recognizing the team that best embodies the FIRST mission and core values.
+  description: Outstanding programming and autonomous performance on the field.
 
-- name: Think Award
-  event: League Championship
+- name: Think Award 2nd Place
+  event: MN FTC Otsego Saturday
   season: 2024-2025
   description: Excellence in engineering documentation and evidence of using the engineering design process.
 
-- name: Connect Award
-  event: League Meet 3
-  season: 2024-2025
-  description: Outstanding community outreach and engagement with sponsors and mentors.
+- name: Design Award
+  event: MN FTC Maple Grove Sat. Dec. 4
+  season: 2021-2022
+  description: Excellence in robot aesthetics and industrial design principles.
 
-- name: Innovate Award
-  event: State Championship
+- name: Finalist Alliance - 1st Team Selected
+  event: MN FTC Maple Grove Sat. Dec. 4
+  season: 2021-2022
+  description: Selected as first pick for finalist alliance based on robot performance.
+
+- name: Design Award
+  event: MN FTC Burnsville Sat. Jan. 14
+  season: 2021-2022
+  description: Excellence in robot aesthetics and industrial design principles.
+
+- name: Finalist Alliance - 1st Team Selected
+  event: MN FTC Burnsville Sat. Jan. 14
+  season: 2021-2022
+  description: Selected as first pick for finalist alliance based on robot performance.
+
+- name: Innovate Award sponsored by RTX 3rd Place
+  event: MN FTC Burnsville Sat. Jan. 14
+  season: 2021-2022
+  description: Recognition of creative robot design that solves game challenges in unique ways.
+
+- name: Design Award 2nd Place
+  event: MN FTC Maple Grove Sat. Dec. 3
+  season: 2022-2023
+  description: Excellence in robot aesthetics and industrial design principles.
+
+- name: Finalist Alliance - 1st Team Selected
+  event: MN FTC Maple Grove Sat. Dec. 3
+  season: 2022-2023
+  description: Selected as first pick for finalist alliance based on robot performance.
+
+- name: Innovate Award sponsored by Raytheon Technologies
+  event: MN FTC Maple Grove Sat. Dec. 3
+  season: 2022-2023
+  description: Recognition of creative robot design that solves game challenges in unique ways.
+
+- name: Innovate Award sponsored by Raytheon Technologies 3rd Place
+  event: MN Pepin/Mille Lacs League Meet 0
   season: 2023-2024
   description: Recognition of creative robot design that solves game challenges in unique ways.
 
-- name: Design Award
-  event: Regional Championship
+- name: Innovate Award sponsored by Raytheon Technologies 2nd Place
+  event: MN Pepin/Mille Lacs League Meet 1
   season: 2023-2024
-  description: Excellence in robot aesthetics and industrial design principles.
+  description: Recognition of creative robot design that solves game challenges in unique ways.
 
-- name: Control Award
-  event: League Championship
+- name: Motivate Award 3rd Place
+  event: MN Pepin/Mille Lacs League Meet 2
   season: 2023-2024
-  description: Outstanding programming and autonomous performance on the field.
-
-- name: Motivate Award
-  event: League Meet 2
-  season: 2022-2023
   description: Best team spirit, enthusiasm, and positive energy in the pit and stands.
 
-- name: Judges Award
-  event: State Championship
-  season: 2022-2023
-  description: Special recognition for unique qualities that impressed the judging panel.
+- name: Think Award 3rd Place
+  event: MN Pepin/Mille Lacs League Meet 3
+  season: 2023-2024
+  description: Excellence in engineering documentation and evidence of using the engineering design process.
