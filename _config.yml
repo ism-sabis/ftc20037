@@ -10,7 +10,7 @@ site:
   team_number: "20037"
   program: "FTC"  # FTC or FRC
   current_season: "2025-2026"
-  logo: "/assets/images/teamLogoCropped"
+  logo: "/assets/images/teamLogoCropped.jpg"
 
 # Theme configuration - Official FTC Colors
 theme:
