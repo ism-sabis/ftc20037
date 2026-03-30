@@ -1,86 +1,76 @@
 - name: Roshan
-  role: Team Captain
+  role: CAD & Programming Lead
   grade: 10
   graduation_year: 2028
-  bio: This is his fifth year in FTC.Former Catlateral Damage Member. Roshan enjoys swimming. His favoritesubject is math. He joined because FTC sounded fun.
+  bio: A sophomore at the International School of Minnesota. This is his fifth year in FTC and he is a former Catlateral Damage member. Roshan enjoys swimming, and his favorite subject is math. He joined FTC because it sounded fun.
   image: /assets/images/placeholder.svg
   skills:
-    - Leadership
-    - Strategic Planning
-    
-- name: Asif Haider
-  role: Build Lead
-  grade: 10
-  graduation_year: 2028
-  bio: Specializes in construc . A Sophomore at the International School of Minnesota. This is my first year in FTC. I enjoy playing badminton I joined FTC because I enjoy working with robots.            
-  image: /assets/images/placeholder.svg
-  skills:
-    - Leadership
-    - 3D Printing
-    - Event Planning
+    - CAD (Fusion 360)
+    - Programming
+    - Mechanical Design
 
-- name: Sofia Rodriguez
-  role: Programming Lead
-  grade: 11
-  graduation_year: 2027
-  bio: Develops sophisticated control algorithms and optimizes robot performance. Created our award-winning autonomous routines.
-  image: /assets/images/placeholder.svg
-  skills:
-    - Java
-    - Python
-    - Computer Vision
-
-- name: James Wilson
-  role: Electrical Lead
-  grade: 10
-  graduation_year: 2028
-  bio: Designs and implements electrical systems with a focus on efficient power distribution and sensor integration.
-  image: /assets/images/placeholder.svg
-  skills:
-    - Wiring
-    - Circuit Design
-    - Sensors
-
-- name: Emily Foster
-  role: Outreach Lead
-  grade: 11
-  graduation_year: 2027
-  bio: Leads community engagement efforts and manages sponsorship relationships. Coordinates all STEM outreach events.
-  image: /assets/images/placeholder.svg
-  skills:
-    - Event Planning
-    - Social Media
-    - Marketing
-
-- name: Ryan Park
-  role: Driver
-  grade: 10
-  graduation_year: 2028
-  bio: Primary robot operator with exceptional hand-eye coordination. Practices daily to ensure precise control during matches.
-  image: /assets/images/placeholder.svg
-  skills:
-    - Precision Control
-    - Quick Thinking
-    - Strategy
-
-- name: Grace Kim
-  role: CAD Lead
+- name: Jason
+  role: Driver & Build
   grade: 12
   graduation_year: 2026
-  bio: Creates detailed 3D models and technical drawings. Manages version control for all design files.
+  bio: A senior at the International School of Minnesota. This is his third year in FTC. Jason enjoys anime (Bandori), and his favorite subject is physics. He joined because he likes mechanics.
   image: /assets/images/placeholder.svg
   skills:
-    - SolidWorks
-    - Onshape
-    - Technical Drawing
+    - Driving
+    - Mechanical Assembly
+    - Systems Understanding
 
-- name: Alex Thompson
-  role: Member
-  grade: 9
-  graduation_year: 2029
-  bio: Eager first-year member learning all aspects of robotics. Shows exceptional promise in programming and mechanical work.
+- name: Ryan
+  role: Programming & Driver
+  grade: 11
+  graduation_year: 2027
+  bio: A junior at the International School of Minnesota. This is his fourth year in FTC. Ryan enjoys playing instruments and music, and his favorite subject is biology.
   image: /assets/images/placeholder.svg
   skills:
+    - Programming
+    - Driving
     - Problem Solving
+
+- name: Asif Haider
+  role: Build
+  grade: 10
+  graduation_year: 2028
+  bio: A sophomore at the International School of Minnesota. This is his first year in FTC. He enjoys playing badminton, and his favorite subject is math. He joined FTC because he enjoys working with robots and building machines.
+  image: /assets/images/placeholder.svg
+  skills:
+    - Mechanical Assembly
     - Teamwork
-    - Electronics
+    - Fabrication
+
+- name: Ean Liu
+  role: Build
+  grade: 10
+  graduation_year: 2028
+  bio: A sophomore at the International School of Minnesota. He enjoys playing volleyball and tennis, and his favorite subject is math. He joined FTC because he is interested in building things and enjoys seeing them work.
+  image: /assets/images/placeholder.svg
+  skills:
+    - Mechanical Assembly
+    - Troubleshooting
+    - Teamwork
+
+- name: Alex
+  role: Build
+  grade: 10
+  graduation_year: 2028
+  bio: A sophomore at the International School of Minnesota. He enjoys playing sports, especially team sports. His favorite subjects are physics and math. He joined FTC because a friend strongly encouraged him.
+  image: /assets/images/placeholder.svg
+  skills:
+    - Mechanical Assembly
+    - Team Collaboration
+    - Problem Solving
+
+- name: Erik
+  role: Lead Mentor
+  grade: null
+  graduation_year: null
+  bio: Coach Erik is in his second year with FTC. He joined because his children enjoy building LEGO robots. Professionally, he is an engineer at Amazon and prefers coaching robotics teams.
+  image: /assets/images/placeholder.svg
+  skills:
+    - Mentorship
+    - Engineering Guidance
+    - Team Development
