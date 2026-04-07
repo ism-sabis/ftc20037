@@ -2,8 +2,8 @@
 layout: season
 title: "2025-2026 Season"
 season: "2025-2026"
-game_name: "INTO THE DEEP"
-robot_name: "Phoenix"
+game_name: "DECODE"
+robot_name: "Something II"
 permalink: /seasons/2025-2026/
 ---
 
