@@ -89,7 +89,7 @@ Our team brings a diverse set of technical skills to every challenge. Below is o
             <span class="text-[var(--color-text-muted)]">0.1%</span>
           </div>
           <div class="w-full bg-[var(--color-border)] rounded-full h-3">
-            <div class="h-3 rounded-full bg-[#701516]" style="width: 0.5%; min-width: 4px;"></div>
+            <div class="h-3 rounded-full bg-[#701516]" style="width: 0.1%; min-width: 4px;"></div>
           </div>
         </div>
       </div>
