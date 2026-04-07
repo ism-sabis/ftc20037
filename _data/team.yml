@@ -3,7 +3,7 @@
   grade: 10
   graduation_year: 2028
   bio: A sophomore at the International School of Minnesota. This is his fifth year in FTC, and he is a former Catlateral Damage member. Roshan works across CAD, building, and programming. He enjoys swimming, and his favorite subject is math.
-  image: /assets/images/placeholder.svg
+  image: /assets/images/Roshan.png
   skills:
     - CAD (Onshape)
     - Building
@@ -15,7 +15,7 @@
   grade: 12
   graduation_year: 2026
   bio: A senior at the International School of Minnesota. This is his third year in FTC. Jason focuses on building and driving, and he enjoys anime and physics.
-  image: /assets/images/placeholder.svg
+  image: /assets/images/Jason.png
   skills:
     - Driving
     - Mechanical Assembly
@@ -26,7 +26,7 @@
   grade: 11
   graduation_year: 2027
   bio: A junior at the International School of Minnesota. This is his fourth year in FTC. Ryan works across building, programming, and driving. He enjoys music, and his favorite subject is biology.
-  image: /assets/images/placeholder.svg
+  image: /assets/images/Ryan.png
   skills:
     - Building
     - Programming
@@ -38,7 +38,7 @@
   grade: 10
   graduation_year: 2028
   bio: A sophomore at the International School of Minnesota. This is his first year in FTC. Asif focuses on building, enjoys badminton, and his favorite subject is math.
-  image: /assets/images/placeholder.svg
+  image: /assets/images/Asif.png
   skills:
     - Mechanical Assembly
     - Teamwork
@@ -49,7 +49,7 @@
   grade: 10
   graduation_year: 2028
   bio: A sophomore at the International School of Minnesota. Ean focuses on building, and he enjoys volleyball and tennis.
-  image: /assets/images/placeholder.svg
+  image: /assets/images/Ean.png
   skills:
     - Mechanical Assembly
     - Troubleshooting
@@ -60,7 +60,7 @@
   grade: 10
   graduation_year: 2028
   bio: A sophomore at the International School of Minnesota. Alex focuses on building and enjoys sports, physics, and math.
-  image: /assets/images/placeholder.svg
+  image: /assets/images/Alex.png
   skills:
     - Mechanical Assembly
     - Team Collaboration
