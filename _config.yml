@@ -49,6 +49,8 @@ navigation:
     url: /sponsors/
   - title: Docs
     url: /docs/
+  - title: Portfolio
+    url: /portfolio/
   - title: News
     url: /news/
 

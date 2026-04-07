@@ -51,6 +51,24 @@ We compete at local league meets, qualifiers, and championships. These events ar
 ### Outreach
 We're committed to giving back to our community. We host STEM workshops, mentor younger teams, and demonstrate robotics at local events to inspire the next generation of engineers.
 
+## Our Portfolio
+
+Our engineering portfolio showcases the full story of Team Standard Deviation — from our design process and robot build to autonomous programming and community outreach.
+
+<div class="my-6 p-6 card">
+  <div class="flex flex-col sm:flex-row items-center gap-6">
+    <div class="text-5xl">📄</div>
+    <div class="flex-1">
+      <h3 class="font-bold text-lg mb-2">2025-2026 Robotics Portfolio</h3>
+      <p class="text-[var(--color-text-muted)] mb-4">Explore our comprehensive engineering notebook covering robot design, software architecture, and outreach efforts.</p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <a href="{{ '/portfolio/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-5 py-2">View Portfolio</a>
+        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf' | relative_url }}" download class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-5 py-2">Download PDF</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 ## Join Our Team {#join}
 
 Interested in joining our team? We welcome students of all skill levels! Whether you're interested in building, programming, design, marketing, or outreach - there's a place for you.
