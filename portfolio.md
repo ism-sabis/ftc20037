@@ -42,15 +42,6 @@ The portfolio covers every aspect of our season, including:
 - **Outreach & Community** — STEM events, workshops, and community partnerships
 - **Team Development** — Member growth, mentorship, and gracious professionalism
 
-## Coming Soon
-
-<div class="card my-8">
-  <div class="card-body text-center py-10">
-    <h3 class="card-title">Coming Soon - Check Back Later.</h3>
-    <p class="text-[var(--color-text-muted)]">Coming Soon - Check Back Later.</p>
-  </div>
-</div>
-
 ## Contact
 
 Have questions about our portfolio or want to learn more about Team Standard Deviation?
