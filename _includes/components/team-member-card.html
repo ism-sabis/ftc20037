@@ -4,11 +4,11 @@ Expected member object: { name, role, grade, graduation_year, bio, image, skills
 {% endcomment %}
 
 <div class="card group h-full overflow-hidden">
-  <div class="relative w-full aspect-square overflow-hidden bg-[var(--color-surface)]">
+  <div class="relative w-full aspect-square overflow-hidden bg-[var(--color-surface)] leading-none">
     <img
       src="{{ include.member.image | default: '/assets/images/placeholder.svg' | relative_url }}"
       alt="{{ include.member.name }}"
-      class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+      class="absolute inset-0 block w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
       loading="lazy"
     >
   </div>
