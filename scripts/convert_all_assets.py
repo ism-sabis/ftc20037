@@ -52,16 +52,32 @@ def find_source_files(assets_dir: Path) -> List[Path]:
 
 
 def get_converted_path(source_path: Path) -> Path:
-    """Get the expected path of the converted file."""
+    """Get the expected path of the converted file.
+
+    For CAD files inside a 'source/' directory, the output is placed in the
+    sibling directory at the same relative depth. For example:
+        assets/models/source/2025-2026/robot.step -> assets/models/2025-2026/robot.gltf
+
+    For all other files the converted file lands next to the source.
+    """
     ext = source_path.suffix.lower()
     new_ext, _ = CONVERSIONS[ext]
 
     # For .cir files, append .svg (file.cir -> file.cir.svg)
     if ext == '.cir':
         return source_path.with_suffix(source_path.suffix + '.svg')
-    else:
-        # For CAD files, replace extension (file.stl -> file.gltf)
-        return source_path.with_suffix(new_ext)
+
+    # For CAD files inside a 'source/' directory, output alongside 'source/'
+    parts = source_path.parts
+    if 'source' in parts:
+        source_idx = parts.index('source')
+        # Build the output path by dropping the 'source' path component
+        output_parts = parts[:source_idx] + parts[source_idx + 1:]
+        output_path = Path(*output_parts).with_suffix(new_ext)
+        return output_path
+
+    # Default: replace extension in the same directory
+    return source_path.with_suffix(new_ext)
 
 
 def needs_conversion(source_path: Path, converted_path: Path, force: bool = False) -> Tuple[bool, str]:
