@@ -1,17 +1,13 @@
 ---
 layout: page
-title: Sponsors
+title: Documentation
 description: Coming Soon - Check Back Later.
-permalink: /sponsors/
-published: true
+permalink: /docs/
 ---
 
 <div class="card my-8">
   <div class="card-body text-center py-12">
     <h2 class="text-2xl font-bold mb-3">Coming Soon - Check Back Later.</h2>
     <p class="text-[var(--color-text-muted)]">Coming Soon - Check Back Later.</p>
-    <div class="mt-4">
-      <a href="{{ '/contact/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-6 py-3 inline-block">Contact Our Team</a>
-    </div>
   </div>
 </div>

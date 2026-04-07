@@ -23,7 +23,7 @@ We'd love to hear from you. If you are interested in joining the team, collabora
       Email Us
     </a>
     {% else %}
-    <p class="text-[var(--color-text-muted)]"><em>Email coming soon</em></p>
+    <p class="text-[var(--color-text-muted)]"><em>Coming Soon - Check Back Later.</em></p>
     {% endif %}
   </div>
 </div>

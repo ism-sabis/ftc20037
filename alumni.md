@@ -46,7 +46,7 @@ Our alumni are a testament to the impact of FIRST robotics. These former team me
 {% if site.data.alumni.size == 0 %}
 <div class="card">
   <div class="card-body text-center py-12">
-    <p class="text-[var(--color-text-muted)]">Alumni listing coming soon!</p>
+    <p class="text-[var(--color-text-muted)]">Coming Soon - Check Back Later.</p>
   </div>
 </div>
 {% endif %}

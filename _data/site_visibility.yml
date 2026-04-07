@@ -1,6 +1,6 @@
 # Backend visibility switches for top navigation and related links.
 # Set each value to true to show the item, or false to hide it.
 navigation:
-  show_sponsors: false
-  show_docs: false
-  show_news: false
+  show_sponsors: true
+  show_docs: true
+  show_news: true
