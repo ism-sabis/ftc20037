@@ -36,12 +36,13 @@ permalink: /judge/
 
 ## Robot Overview
 
-Our robot for the {{ site.site.current_season }} season features:
+Our 2025-2026 robot uses a custom mecanum drivetrain and highly iterative subsystem design.
 
-- **Drivetrain:** [Describe drivetrain type]
-- **Intake System:** [Describe intake mechanism]
-- **Scoring Mechanism:** [Describe scoring system]
-- **Autonomous Capability:** [Describe auto features]
+- **Drivetrain:** Mecanum with custom chassis, pocketed 5052 aluminum plates, drag-chain turret wiring protection
+- **Intake/Deposit:** Six major iterations, currently converging on adjustable-hood flywheel architecture
+- **Lift:** Scissor-lift-based architecture with custom coupler fix for torque transfer
+- **Indexer/Kicker:** Iterative servo-based carousel and strengthened kicker with metal gears
+- **Autonomous:** LEAVE plus artifact scoring from all start positions with path adaptation for alliance partners
 
 [View detailed robot documentation →](/season/)
 
@@ -50,11 +51,15 @@ Our robot for the {{ site.site.current_season }} season features:
 ## Engineering Process
 
 ### Design Philosophy
-Our team follows an iterative design process, using CAD modeling, prototyping, and testing to refine our robot design throughout the season.
+Our design method is iterative and evidence-based:
+
+Identify -> Ideate -> Design -> Create -> Test
+
+This process is inherited from former team Catlateral Damage and applied to both hardware and software.
 
 ### Documentation
 - Engineering notebook maintained throughout the season
-- CAD models created in [Software Name]
+- CAD models created in Onshape
 - Code version controlled on GitHub
 - Regular design reviews with mentors
 
@@ -74,12 +79,12 @@ Our team follows an iterative design process, using CAD modeling, prototyping, a
 
 ## Outreach Impact
 
-Our team is committed to giving back to our community through STEM outreach:
+Our outreach strategy has two themes: Motivate and Connect.
 
-- **STEM Workshops:** Regular workshops at local schools
-- **Team Mentorship:** Supporting newer FTC/FRC teams
-- **Community Events:** Demonstrations at local events
-- **Social Media:** Sharing our journey online
+- **Valentine's Bot Event:** Campus robot gift-delivery activity that engaged hundreds of students
+- **International Day Exhibition:** Robotics room with demos, notebook walkthroughs, and STEM activities
+- **City Park Demo:** Public drive experience and FTC systems education
+- **Industry Collaboration:** Esmeril Industries tour and custom coupler support for lift torque issue
 
 ---
 
@@ -91,9 +96,15 @@ Our team is committed to giving back to our community through STEM outreach:
 - **Continuous Learning:** We embrace challenges as opportunities to grow
 
 ### Sustainability
-- Mentor training program ensures knowledge transfer
-- Comprehensive documentation for future seasons
-- Alumni involvement and support
+- 3D printing and laser cutting reduce fabrication costs
+- Annual recruitment ensures continuity and role handoff
+- Budget control improved remaining budget from 2983 (2024) to 3367 (2025)
+
+### Team and Mentor Snapshot
+
+- Team members: Jason, Ryan, Roshan, Ean, Asif, Alex
+- Composition: 1 senior, 1 junior, 1 fifth-year sophomore, 3 first-year sophomores
+- Mentor: Erik (Lead Mentor, engineer at Amazon)
 
 ---
 

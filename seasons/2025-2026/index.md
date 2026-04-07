@@ -9,32 +9,59 @@ permalink: /seasons/2025-2026/
 
 ## Robot Overview {#robot}
 
-**Phoenix** is our competition robot for the INTO THE DEEP season. Designed for speed, precision, and reliability, Phoenix combines innovative mechanisms with battle-tested engineering.
+Phoenix is our INTO THE DEEP robot, built around a custom mecanum drivetrain and iterative subsystem development to maximize scoring consistency.
 
-### Drivetrain
-- **Type:** Mecanum drive for omnidirectional movement
-- **Motors:** 4x REV HD Hex Motors (20:1 gearboxes)
-- **Wheels:** 100mm REV Mecanum wheels
-- **Speed:** 2.1 m/s top speed, optimized for quick cycles
-- **Features:** Encoder-based odometry, IMU for heading correction
+### General Design Direction
 
-### Scoring Mechanism
-- **Lift:** Dual-stage linear slide system reaching 36" extension
-- **Actuator:** Lead screw with position feedback
-- **Precision:** ±0.5" repeatability for consistent scoring
-- **Speed:** Full extension in 1.8 seconds
+- Mecanum drive selected for high maneuverability and cycle efficiency
+- Custom drivetrain architecture optimized for scoring potential
 
-### Intake System
-- **Design:** Compliant wheel intake with adjustable geometry
-- **Collection:** Active roller system with optical sensors
-- **Capacity:** Single game element secure hold
-- **Cycle Time:** 2.5 seconds from floor to scoring position
+### Chassis Design
 
-### Control System
-- **Controller:** REV Control Hub
-- **Sensors:** 2x distance sensors, 4x limit switches, IMU, color sensor
-- **Vision:** Logitech C920 webcam with OpenCV pipeline
-- **Communication:** Dual driver stations with redundant connection
+- Custom 1/8 inch 5052 aluminum plates from SendCutSend
+- Seven motors mounted between inner and outer panels
+- Pocketed plates for weight reduction and wire management
+- Drag chain to protect turret wiring
+- Integrated battery door for quick swaps
+
+### Intake and Deposit Iterations
+
+1. Dual flywheel with fins and 2-axis wrist
+2. Internalized wrist plus polycarbonate backplate
+3. Flat flywheel with adjustable hood
+4. Rear flywheel removed
+5. Fixed hood (strong long-range consistency, weaker close-range adaptability)
+6. Planned return to adjustable hood
+
+### Lift System Iterations
+
+- Initial flat-beam scissor lift was too weak
+- Reinforced beams increased strength but reduced extension height
+- Additional beams restored height but introduced separation risk
+- Bottom plate prevented beam separation
+- Custom coupler solved torque slippage
+- Worm-gear flipper redesign showed insufficient tooth engagement and axial support
+
+### Indexer Iterations
+
+1. Dual-path servo feed (unreliable)
+2. Mini mecanum carousel (too large and motor-heavy)
+3. Carousel plus funnel plus Geneva mechanism (functional but lacked independent control)
+4. Axon-servo carousel (best performer)
+5. Planned servo-kicker tray (jam risk under evaluation)
+
+### Kicker Iterations
+
+- Shortened kicker to reduce torque demand
+- Added anti-empty-fire logic
+- Added rigid servo mount
+- Switched to metal gears to eliminate stripping
+
+### CAD and 3D Printing
+
+- Onshape for CAD and modular design
+- PETG-CF for rapid iteration
+- Printers: Bambu P1S, Bambu X1C, Prusa MK3S+, Anycubic Vyper
 
 {% if site.features.cad_viewer %}
 ### 3D Model
@@ -49,27 +76,34 @@ permalink: /seasons/2025-2026/
 
 ## Autonomous Capabilities {#auto}
 
-Sofia and the programming team have developed three autonomous routines optimized for different alliance strategies:
+Our autonomous can score LEAVE points and some artifacts from any start position, and can adjust around alliance partner paths.
 
-### Route A: High Score
-- Scores 2 preloaded elements in high goal
-- Collects 1 additional element
-- Parks in observation zone
-- **Expected Points:** 35-40
+### Minimum Goal
 
-### Route B: Defensive Position
-- Scores 1 preloaded element
-- Navigates to strategic blocking position
-- Parks in alliance zone
-- **Expected Points:** 20-25 (plus denial value)
+- Score LEAVE points in auto
+- Score some artifacts
+- Achieve a partial park
 
-### Route C: Cooperative
-- Coordinates with alliance partner
-- Focuses on elements partner can't reach
-- Maximizes combined scoring
-- **Expected Points:** 30-35
+### Maximum Goal
 
-**Autonomous success rate in testing:** 94% across 50+ runs
+- Score 3 artifacts in auto
+- Score consistently in teleop
+- Complete full plus partial return-to-base in endgame
+
+### Design Process
+
+Identify -> Ideate -> Design -> Create -> Test
+
+Adapted from former team Catlateral Damage.
+
+### Driver Controlled Programming
+
+- Three trigger-based controller layers
+- Precision speed toggle
+- Macros for flywheel, intake, and turret
+- Manual override always available
+- Color-sensor-aware macro behaviors
+- Automatic aiming and dynamic shot-power math
 
 ---
 
@@ -85,32 +119,31 @@ Sofia and the programming team have developed three autonomous routines optimize
 
 ## Outreach {#outreach}
 
-This season, we've expanded our community impact with a focus on accessibility and reaching underserved communities.
+This season's outreach work focused on motivating future students and connecting with industry support.
 
-### By the Numbers
-- **8** STEM workshops conducted
-- **450+** students reached
-- **3** rookie teams mentored
-- **12** community events attended
+### Motivate
 
-### STEM Workshops
-We've hosted hands-on workshops at:
-- Maple Elementary School (3 sessions)
-- Jefferson Middle School robotics club
-- Riverside Community Center after-school program
-- City Library maker space
+#### Valentine's Bot Event
 
-### Team Mentorship
-We're currently mentoring three rookie FTC teams:
-- **Team 23456** - Lincoln Middle School
-- **Team 23457** - Westside Academy
-- **Team 23458** - Community Homeschool Co-op
+We built a gifting robot that delivered chocolates and 3D-printed gifts around campus, engaging hundreds of students.
 
-### Featured Events
-- City STEM Festival (500+ attendees)
-- Hospital children's ward visit
-- Senior center technology day
-- Local news feature on youth in STEM
+#### International Day Robotics Exhibition
+
+We hosted a robotics room with robot demos, notebook displays, and STEM activities to recruit and inspire new students.
+
+#### City Park Demonstration
+
+We demonstrated our robot in a public park and let visitors drive it while learning FTC systems.
+
+### Connect
+
+#### Problem/Solution: Lift Mechanism Failure
+
+Our original endgame lift used a three-gear train and coupler driving a lead screw. The coupler repeatedly failed to transfer torque reliably.
+
+#### Esmeril Industries Trip
+
+Through a parent-connected industrial manufacturing visit, we received analysis help and designed a custom coupler that resolved the torque issue.
 
 ---
 
@@ -199,24 +232,7 @@ Phoenix was designed in Onshape with full parametric modeling for easy iteration
 
 ## Competition Results {#results}
 
-| Event | Date | Rank | Record | Awards |
-|-------|------|------|--------|--------|
-| League Meet 1 | Jan 18 | 3rd | 4-1-0 | Think Award |
-| League Meet 2 | Feb 1 | - | - | - |
-| League Championship | Feb 22 | - | - | - |
-| State Championship | Mar 15 | - | - | - |
-
-### Match Scores
-**League Meet 1 Matches:**
-- Qual 1: **142** - 98 (W)
-- Qual 2: **156** - 134 (W)
-- Qual 3: 128 - **145** (L)
-- Qual 4: **167** - 112 (W)
-- Qual 5: **183** - 141 (W)
-- Semifinal: **201** - 178 (W)
-- Final: 195 - **210** (L)
-
-**Season High Score:** 201 points (Semifinal, League Meet 1)
+Current event results are in progress and will be updated after official postings.
 
 ---
 

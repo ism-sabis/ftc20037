@@ -7,7 +7,9 @@ permalink: /about/
 
 ## Our Mission
 
-We are a FIRST {{ site.site.program }} team dedicated to inspiring students in science, technology, engineering, and math (STEM) through hands-on robotics experience. We believe in **Gracious Professionalism** and **Coopertition** - the core values that make FIRST unique.
+We are a FIRST {{ site.site.program }} team dedicated to improving ourselves and our community through outreach, STEM learning, and inspiring younger students to explore robotics and engineering.
+
+We also uphold **Gracious Professionalism** and **Coopertition** as the core values behind how we compete and collaborate.
 
 ## Team History
 
@@ -24,6 +26,14 @@ Since our founding, we've grown from a small group of students meeting after sch
 
 ## Our Team
 
+Standard Deviation is a team of six students from the International School of Minnesota in Eden Prairie, Minnesota.
+
+- 1 senior
+- 1 junior
+- 1 fifth-year sophomore
+- 3 first-year sophomores
+- 3 original members and 3 new members
+
 ### Current Members
 
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
@@ -39,6 +49,27 @@ Since our founding, we've grown from a small group of students meeting after sch
 {% include components/team-member-card.html member=mentor %}
 {% endfor %}
 </div>
+
+## Future Goals
+
+- Strengthen team skills, especially CAD and programming
+- Increase outreach hours
+- Improve event performance
+- Build stronger connections with lower school robotics
+
+## Sustainability
+
+We keep our program sustainable by using 3D printing and laser cutting to reduce costs while recruiting new students each year to maintain continuity.
+
+### Budget Summary (2024 -> 2025)
+
+| Category | 2024 | 2025 |
+|----------|------|------|
+| Admin | 1710 | 1035 |
+| Food | 350 | 149 |
+| Lab Equipment | 1031 | 285 |
+| Robot Parts | 3926 | 5164 |
+| Remaining Budget | 2983 | 3367 |
 
 ## What We Do
 

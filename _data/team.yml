@@ -1,19 +1,20 @@
 - name: Roshan
-  role: CAD & Programming Lead
+  role: CAD, Build, Programming
   grade: 10
   graduation_year: 2028
-  bio: A sophomore at the International School of Minnesota. This is his fifth year in FTC and he is a former Catlateral Damage member. Roshan enjoys swimming, and his favorite subject is math. He joined FTC because it sounded fun.
+  bio: A sophomore at the International School of Minnesota. This is his fifth year in FTC, and he is a former Catlateral Damage member. Roshan works across CAD, building, and programming. He enjoys swimming, and his favorite subject is math.
   image: /assets/images/placeholder.svg
   skills:
-    - CAD (Fusion 360)
+    - CAD (Onshape)
+    - Building
     - Programming
     - Mechanical Design
 
 - name: Jason
-  role: Driver & Build
+  role: Building & Driver
   grade: 12
   graduation_year: 2026
-  bio: A senior at the International School of Minnesota. This is his third year in FTC. Jason enjoys anime (Bandori), and his favorite subject is physics. He joined because he likes mechanics.
+  bio: A senior at the International School of Minnesota. This is his third year in FTC. Jason focuses on building and driving, and he enjoys anime and physics.
   image: /assets/images/placeholder.svg
   skills:
     - Driving
@@ -21,32 +22,33 @@
     - Systems Understanding
 
 - name: Ryan
-  role: Programming & Driver
+  role: Building, Programming, Driver
   grade: 11
   graduation_year: 2027
-  bio: A junior at the International School of Minnesota. This is his fourth year in FTC. Ryan enjoys playing instruments and music, and his favorite subject is biology.
+  bio: A junior at the International School of Minnesota. This is his fourth year in FTC. Ryan works across building, programming, and driving. He enjoys music, and his favorite subject is biology.
   image: /assets/images/placeholder.svg
   skills:
+    - Building
     - Programming
     - Driving
     - Problem Solving
 
-- name: Asif Haider
+- name: Asif
   role: Build
   grade: 10
   graduation_year: 2028
-  bio: A sophomore at the International School of Minnesota. This is his first year in FTC. He enjoys playing badminton, and his favorite subject is math. He joined FTC because he enjoys working with robots and building machines.
+  bio: A sophomore at the International School of Minnesota. This is his first year in FTC. Asif focuses on building, enjoys badminton, and his favorite subject is math.
   image: /assets/images/placeholder.svg
   skills:
     - Mechanical Assembly
     - Teamwork
     - Fabrication
 
-- name: Ean Liu
+- name: Ean
   role: Build
   grade: 10
   graduation_year: 2028
-  bio: A sophomore at the International School of Minnesota. He enjoys playing volleyball and tennis, and his favorite subject is math. He joined FTC because he is interested in building things and enjoys seeing them work.
+  bio: A sophomore at the International School of Minnesota. Ean focuses on building, and he enjoys volleyball and tennis.
   image: /assets/images/placeholder.svg
   skills:
     - Mechanical Assembly
@@ -57,7 +59,7 @@
   role: Build
   grade: 10
   graduation_year: 2028
-  bio: A sophomore at the International School of Minnesota. He enjoys playing sports, especially team sports. His favorite subjects are physics and math. He joined FTC because a friend strongly encouraged him.
+  bio: A sophomore at the International School of Minnesota. Alex focuses on building and enjoys sports, physics, and math.
   image: /assets/images/placeholder.svg
   skills:
     - Mechanical Assembly
