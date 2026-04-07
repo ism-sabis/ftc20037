@@ -39,7 +39,7 @@ permalink: /seasons/2025-2026/
 {% if site.features.cad_viewer %}
 ### 3D Model
 {% include components/robot-viewer.html
-   model_src="/assets/models/robot.glb"
+   model_src="/assets/models/2025-2026/robot.gltf"
    alt_text="3D model of Phoenix robot"
    description="Interactive 3D model - drag to rotate, scroll to zoom"
 %}
