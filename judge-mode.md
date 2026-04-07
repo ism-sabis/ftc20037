@@ -60,10 +60,7 @@ This process is inherited from former team Catlateral Damage and applied to both
 ### Documentation
 - Engineering notebook maintained throughout the season
 - CAD models created in Onshape
-- Code version controlled on GitHub
 - Regular design reviews with mentors
-
-[View our documentation →](/docs/)
 
 ---
 
@@ -111,9 +108,7 @@ Our outreach strategy has two themes: Motivate and Connect.
 ## Quick Links
 
 - [Current Season Details](/season/)
-- [Team Documentation](/docs/)
 - [About Our Team](/about/)
-- [Our Sponsors](/sponsors/)
 
 ---
 

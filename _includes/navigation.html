@@ -17,10 +17,22 @@
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-1">
         {% for item in site.navigation %}
+        {% assign show_item = true %}
+        {% if item.id == 'sponsors' and site.data.site_visibility.navigation.show_sponsors == false %}
+          {% assign show_item = false %}
+        {% endif %}
+        {% if item.id == 'docs' and site.data.site_visibility.navigation.show_docs == false %}
+          {% assign show_item = false %}
+        {% endif %}
+        {% if item.id == 'news' and site.data.site_visibility.navigation.show_news == false %}
+          {% assign show_item = false %}
+        {% endif %}
+        {% if show_item %}
         <a href="{{ item.url | relative_url }}"
            class="nav-link {% if page.url == item.url %}active{% endif %}">
           {{ item.title }}
         </a>
+        {% endif %}
         {% endfor %}
       </div>
 
@@ -94,10 +106,22 @@
 
       <nav class="p-4 space-y-2">
         {% for item in site.navigation %}
+        {% assign show_item = true %}
+        {% if item.id == 'sponsors' and site.data.site_visibility.navigation.show_sponsors == false %}
+          {% assign show_item = false %}
+        {% endif %}
+        {% if item.id == 'docs' and site.data.site_visibility.navigation.show_docs == false %}
+          {% assign show_item = false %}
+        {% endif %}
+        {% if item.id == 'news' and site.data.site_visibility.navigation.show_news == false %}
+          {% assign show_item = false %}
+        {% endif %}
+        {% if show_item %}
         <a href="{{ item.url | relative_url }}"
            class="block py-2 px-4 rounded-lg {% if page.url == item.url %}bg-primary/10 text-primary{% else %}hover:bg-[var(--color-surface)]{% endif %}">
           {{ item.title }}
         </a>
+        {% endif %}
         {% endfor %}
       </nav>
     </div>

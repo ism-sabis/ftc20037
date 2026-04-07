@@ -9,31 +9,7 @@ permalink: /seasons/2024-2025/
 
 ## Robot Overview {#robot}
 
-**Thunderbolt** was our competition robot for the CENTERSTAGE season. Designed for reliability and pixel-scoring efficiency, Thunderbolt combined a proven drivetrain with innovative mechanisms.
-
-### Drivetrain
-- **Type:** 4-wheel tank drive with high-traction wheels
-- **Features:** Encoder-based odometry, IMU for heading correction
-
-### Scoring Mechanism
-- **Lift:** Continuous belt lift with 28" reach
-- **Precision:** Consistent pixel placement across all rows
-
-### Intake System
-- **Design:** Dual-roller system with color sorting
-- **Capacity:** Multi-pixel intake for faster cycles
-
-### Special Feature
-- **Drone Launcher:** Pneumatic drone launcher with 15ft range
-
-{% if site.features.cad_viewer %}
-### 3D Model
-{% include components/robot-viewer.html
-   model_src="/assets/models/2024-2025/robot.gltf"
-   alt_text="3D model of Thunderbolt robot"
-   description="Interactive 3D model - drag to rotate, scroll to zoom"
-%}
-{% endif %}
+The 2024-2025 robot details are currently under development. Come back later for full details.
 
 ---
 
@@ -119,21 +95,6 @@ Our best outreach season yet, reaching over 600 students and mentoring five rook
 - **Average Score:** 167 points
 - **Highest Score:** 234 points (State Semifinal 2)
 - **Autonomous Success Rate:** 89%
-
----
-
-## CAD Files {#cad}
-
-{% if site.features.cad_viewer %}
-Thunderbolt was designed with full parametric modeling for easy iteration.
-
-### Design Philosophy
-- **Reliability:** Every mechanism tested for 1000+ cycles before competition
-- **Serviceability:** All fasteners accessible without disassembly
-- **Redundancy:** Spare assemblies built for quick field repairs
-
-*CAD files available to other teams upon request for educational purposes. Contact us!*
-{% endif %}
 
 ---
 

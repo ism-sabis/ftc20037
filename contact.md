@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Contact Us
-description: Get in touch with our team for sponsorship inquiries, joining, or general questions.
+description: Get in touch with Team Standard Deviation for questions, collaboration, or joining information.
 permalink: /contact/
 ---
 
-We'd love to hear from you! Whether you're interested in joining the team, becoming a sponsor, or just want to learn more about what we do, please reach out.
+We'd love to hear from you. If you are interested in joining the team, collaborating on outreach, or learning more about our season, please reach out.
 
 ## Contact Information
 
@@ -30,11 +30,10 @@ We'd love to hear from you! Whether you're interested in joining the team, becom
 
 <div class="card">
   <div class="card-body">
-    <h3 class="card-title">Sponsorship</h3>
-    <p class="text-[var(--color-text-muted)] mb-4">Interested in supporting our team? We'd love to partner with you.</p>
-    <a href="/sponsors/" class="btn-secondary inline-flex items-center gap-2">
-      Learn About Sponsorship
-    </a>
+    <h3 class="card-title">Team Details</h3>
+    <p class="text-[var(--color-text-muted)] mb-2"><strong>Team:</strong> {{ site.site.team_name }} ({{ site.site.program }} #{{ site.site.team_number }})</p>
+    <p class="text-[var(--color-text-muted)] mb-2"><strong>School:</strong> International School of Minnesota</p>
+    <p class="text-[var(--color-text-muted)]"><strong>Location:</strong> Eden Prairie, Minnesota</p>
   </div>
 </div>
 
@@ -69,10 +68,7 @@ Stay connected and follow our journey through the season!
 
 ## Visit Us
 
-We meet regularly at our school during the robotics season. If you'd like to visit and see what we do, please contact us to schedule a visit.
-
-**Meeting Location:** School Name, Room Number
-**Meeting Times:** Check with team for current schedule
+We meet at the International School of Minnesota during the robotics season. Contact us by email to schedule a visit or ask for current meeting details.
 
 ---
 

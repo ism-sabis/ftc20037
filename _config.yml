@@ -27,9 +27,9 @@ theme:
 features:
   blog: false
   docs: false
-  cad_viewer: true
+  cad_viewer: false
   circuit_viewer: true
-  code_links: true
+  code_links: false
   data_visualizations: true
   alumni_auto_archive: true
   accessibility_toggle: true
@@ -37,22 +37,33 @@ features:
 
 # Navigation
 navigation:
-  - title: Home
+  - id: home
+    title: Home
     url: /
-  - title: About
+  - id: about
+    title: About
     url: /about/
-  - title: Season
+  - id: season
+    title: Season
     url: /season/
-  - title: Awards
+  - id: awards
+    title: Awards
     url: /awards/
-  - title: Sponsors
+  - id: sponsors
+    title: Sponsors
     url: /sponsors/
-  - title: Docs
+  - id: docs
+    title: Docs
     url: /docs/
-  - title: Portfolio
+  - id: portfolio
+    title: Portfolio
     url: /portfolio/
-  - title: News
+  - id: news
+    title: News
     url: /news/
+  - id: contact
+    title: Contact
+    url: /contact/
 
 # Social links
 socials:
@@ -71,13 +82,13 @@ fundraising:
 # Collections
 collections:
   posts:
-    output: true
+    output: false
     permalink: /news/:year/:month/:day/:title/
   seasons:
     output: true
     permalink: /seasons/:path/
   docs:
-    output: true
+    output: false
     permalink: /docs/:path/
 
 # Defaults

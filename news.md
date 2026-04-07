@@ -3,6 +3,7 @@ layout: page
 title: News & Updates
 description: The latest news, updates, and stories from our team.
 permalink: /news/
+published: false
 ---
 
 Stay up to date with our team's activities, competition results, and community events.

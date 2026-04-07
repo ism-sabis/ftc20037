@@ -3,6 +3,7 @@ layout: page
 title: Sponsors
 description: Thank you to our generous sponsors who make our team possible.
 permalink: /sponsors/
+published: false
 ---
 
 Our team relies on the generosity of sponsors to fund robot parts, competition fees, travel expenses, and outreach activities. We are deeply grateful for their support.

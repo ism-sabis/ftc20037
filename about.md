@@ -74,7 +74,7 @@ We keep our program sustainable by using 3D printing and laser cutting to reduce
 ## What We Do
 
 ### Build Season
-During build season, we design, build, and program a competition robot in just a few weeks. This intense period teaches us project management, teamwork, and technical skills.
+During build season, we design, build, and program a competition robot in just a few weeks. This intense period teaches us project management, teamwork, and problem-solving.
 
 ### Competition Season
 We compete at local league meets, qualifiers, and championships. These events are not just about winning - they're about learning, collaborating with other teams, and having fun.

@@ -33,77 +33,12 @@ Our engineering portfolio documents the full journey of Team Standard Deviation 
   </div>
 </div>
 
-## Technical Expertise
-
-Our team brings a diverse set of technical skills to every challenge. Below is our repository's language composition, reflecting the breadth of our software engineering work.
-
-<div class="my-8">
-  <div class="card">
-    <div class="card-body">
-      <h3 class="card-title mb-6">Repository Language Composition</h3>
-
-      <div class="space-y-4">
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">Python</span>
-            <span class="text-[var(--color-text-muted)]">45.6%</span>
-          </div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-3">
-            <div class="h-3 rounded-full bg-[#3572A5]" style="width: 45.6%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">HTML</span>
-            <span class="text-[var(--color-text-muted)]">36.0%</span>
-          </div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-3">
-            <div class="h-3 rounded-full bg-[#e34c26]" style="width: 36%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">CSS</span>
-            <span class="text-[var(--color-text-muted)]">9.6%</span>
-          </div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-3">
-            <div class="h-3 rounded-full bg-[#563d7c]" style="width: 9.6%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">JavaScript</span>
-            <span class="text-[var(--color-text-muted)]">8.7%</span>
-          </div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-3">
-            <div class="h-3 rounded-full bg-[#f1e05a]" style="width: 8.7%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="flex justify-between mb-1">
-            <span class="font-medium">Ruby</span>
-            <span class="text-[var(--color-text-muted)]">0.1%</span>
-          </div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-3">
-            <div class="h-3 rounded-full bg-[#701516]" style="width: 0.1%; min-width: 4px;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 ## What's Inside
 
 The portfolio covers every aspect of our season, including:
 
 - **Engineering Notebook** — Design decisions, iteration logs, and lessons learned
 - **Robot Design** — Mechanical assemblies, CAD models, and subsystem breakdowns
-- **Autonomous & TeleOp Programming** — Control strategies and software architecture
 - **Outreach & Community** — STEM events, workshops, and community partnerships
 - **Team Development** — Member growth, mentorship, and gracious professionalism
 

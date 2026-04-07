@@ -48,4 +48,4 @@ We're proud of our team's accomplishments and the recognition we've received for
 
 ---
 
-Want to help us earn more awards? [Join our team](/about/#join) or [become a sponsor](/sponsors/)!
+Want to help us earn more awards? [Join our team](/about/#join)!

@@ -96,7 +96,7 @@ layout: default
 {% endif %}
 
 <!-- Sponsors Section -->
-{% if site.data.sponsors %}
+{% if site.data.sponsors and site.data.site_visibility.navigation.show_sponsors %}
 <section class="section">
   <div class="container">
     <div class="text-center mb-12">
@@ -123,7 +123,7 @@ layout: default
     <div class="text-center mb-12">
       <h2 class="mb-4">Our Portfolio</h2>
       <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
-        Explore our comprehensive 2025-2026 engineering portfolio — documenting our robot, code, and community impact.
+        Explore our comprehensive 2025-2026 engineering portfolio documenting our robot, outreach, and team growth.
       </p>
     </div>
 
@@ -131,7 +131,7 @@ layout: default
       <div class="space-y-4">
         <p class="text-[var(--color-text-muted)]">
           Team Standard Deviation's engineering portfolio covers every facet of our season: mechanical design,
-          autonomous programming, outreach initiatives, and team development.
+          outreach initiatives, and team development.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
           <a href="{{ '/portfolio/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-6 py-3">
@@ -143,23 +143,15 @@ layout: default
         </div>
       </div>
 
-      <div class="space-y-3">
-        <h4 class="font-semibold text-[var(--color-text-muted)] uppercase tracking-wide text-sm mb-4">Technical Skills</h4>
-        <div>
-          <div class="flex justify-between text-sm mb-1"><span>Python</span><span class="text-[var(--color-text-muted)]">45.6%</span></div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-2"><div class="h-2 rounded-full bg-[#3572A5]" style="width:45.6%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1"><span>HTML</span><span class="text-[var(--color-text-muted)]">36.0%</span></div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-2"><div class="h-2 rounded-full bg-[#e34c26]" style="width:36%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1"><span>CSS</span><span class="text-[var(--color-text-muted)]">9.6%</span></div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-2"><div class="h-2 rounded-full bg-[#563d7c]" style="width:9.6%"></div></div>
-        </div>
-        <div>
-          <div class="flex justify-between text-sm mb-1"><span>JavaScript</span><span class="text-[var(--color-text-muted)]">8.7%</span></div>
-          <div class="w-full bg-[var(--color-border)] rounded-full h-2"><div class="h-2 rounded-full bg-[#f1e05a]" style="width:8.7%"></div></div>
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Portfolio Focus</h4>
+          <ul class="space-y-2 text-[var(--color-text-muted)]">
+            <li>Engineering notebook and design iteration</li>
+            <li>Robot subsystem decisions and testing</li>
+            <li>Outreach impact and community engagement</li>
+            <li>Team growth, collaboration, and lessons learned</li>
+          </ul>
         </div>
       </div>
     </div>
