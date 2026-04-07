@@ -1,13 +1,12 @@
 - name: Roshan
-  role: CAD, Build, Programming
+  role: CAD, Build
   grade: 10
   graduation_year: 2028
-  bio: A sophomore at the International School of Minnesota. This is his fifth year in FTC, and he is a former Catlateral Damage member. Roshan works across CAD, building, and programming. He enjoys swimming, and his favorite subject is math.
+  bio: A sophomore at the International School of Minnesota. This is his fifth year in FTC, and he is a former Catlateral Damage member. Roshan works across CAD and building. He enjoys swimming, and his favorite subject is math.
   image: /assets/images/Roshan.png
   skills:
     - CAD (Onshape)
     - Building
-    - Programming
     - Mechanical Design
 
 - name: Jason
@@ -22,14 +21,13 @@
     - Systems Understanding
 
 - name: Ryan
-  role: Building, Programming, Driver
+  role: Building & Driver
   grade: 11
   graduation_year: 2027
-  bio: A junior at the International School of Minnesota. This is his fourth year in FTC. Ryan works across building, programming, and driving. He enjoys music, and his favorite subject is biology.
+  bio: A junior at the International School of Minnesota. This is his fourth year in FTC. Ryan works across building and driving. He enjoys music, and his favorite subject is biology.
   image: /assets/images/Ryan.png
   skills:
     - Building
-    - Programming
     - Driving
     - Problem Solving
 

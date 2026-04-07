@@ -42,7 +42,7 @@ We're proud of our team's accomplishments and the recognition we've received for
 - **Think Award** - Excellence in engineering documentation and process
 - **Connect Award** - Outstanding outreach and community engagement
 - **Innovate Award** - Creative and effective robot design solutions
-- **Control Award** - Exceptional autonomous programming
+- **Control Award** - Exceptional autonomous control
 - **Motivate Award** - Best team spirit and enthusiasm
 - **Design Award** - Outstanding robot aesthetics and industrial design
 

@@ -87,7 +87,7 @@ Identify -> Ideate -> Design -> Create -> Test
 
 Adapted from former team Catlateral Damage.
 
-### Driver Controlled Programming
+### Driver Controls
 
 - Three trigger-based controller layers
 - Precision speed toggle
@@ -150,7 +150,7 @@ Coming Soon - Check Back Later.
 
 ---
 
-## Code and Programming Details {#code}
+## Controls Details {#controls}
 
 Coming Soon - Check Back Later.
 

@@ -1,13 +1,13 @@
 ---
 layout: page
 title: Portfolio
-description: Team Standard Deviation's engineering portfolio showcasing our technical expertise and accomplishments for the 2025-2026 season.
+description: Team Standard Deviation's engineering portfolio for the 2025-2026 season.
 permalink: /portfolio/
 ---
 
 ## Team Standard Deviation — 2025-2026 Season Portfolio
 
-Our engineering portfolio documents the full journey of Team Standard Deviation (FTC 20037) through the 2025-2026 FIRST Tech Challenge season, covering robot design, programming strategies, outreach efforts, and team development.
+Our engineering portfolio documents the full journey of Team Standard Deviation (FTC 20037) through the 2025-2026 FIRST Tech Challenge season, covering robot design, outreach efforts, and team development.
 
 <div class="my-8">
   <div class="rounded-xl overflow-hidden shadow-2xl border border-[var(--color-border)]" style="height: 800px;">
@@ -42,7 +42,7 @@ The portfolio covers every aspect of our season, including:
 - **Outreach & Community** — STEM events, workshops, and community partnerships
 - **Team Development** — Member growth, mentorship, and gracious professionalism
 
-## Technical Skills
+## Coming Soon
 
 <div class="card my-8">
   <div class="card-body text-center py-10">
