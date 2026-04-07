@@ -3,16 +3,16 @@ Usage: {% include components/team-member-card.html member=member %}
 Expected member object: { name, role, grade, graduation_year, bio, image, skills }
 {% endcomment %}
 
-<div class="card group">
-  <div class="aspect-square overflow-hidden">
+<div class="card group h-full overflow-hidden">
+  <div class="relative w-full aspect-square overflow-hidden bg-[var(--color-surface)]">
     <img
       src="{{ include.member.image | default: '/assets/images/placeholder.svg' | relative_url }}"
       alt="{{ include.member.name }}"
-      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+      class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
       loading="lazy"
     >
   </div>
-  <div class="card-body">
+  <div class="card-body flex-1">
     <h3 class="card-title">{{ include.member.name }}</h3>
     <p class="text-primary font-medium">{{ include.member.role }}</p>
 
@@ -21,7 +21,7 @@ Expected member object: { name, role, grade, graduation_year, bio, image, skills
     {% endif %}
 
     {% if include.member.bio %}
-    <p class="text-[var(--color-text-muted)] mt-2 text-sm line-clamp-3">{{ include.member.bio }}</p>
+    <p class="text-[var(--color-text-muted)] mt-2 text-sm">{{ include.member.bio }}</p>
     {% endif %}
 
   </div>
