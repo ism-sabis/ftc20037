@@ -96,26 +96,16 @@ layout: default
 {% endif %}
 
 <!-- Sponsors Section -->
-{% if site.data.sponsors and site.data.site_visibility.navigation.show_sponsors %}
 <section class="section">
   <div class="container">
-    <div class="text-center mb-12">
-      <h2 class="mb-4">Our Sponsors</h2>
-      <p class="text-[var(--color-text-muted)] max-w-2xl mx-auto">
-        Thank you to our generous sponsors who make our work possible
-      </p>
-    </div>
-
-    {% include components/sponsor-grid.html %}
-
-    <div class="text-center mt-8">
-      <a href="{{ '/sponsors/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all">
-        ❤️ Become a Sponsor
-      </a>
+    <div class="card max-w-3xl mx-auto">
+      <div class="card-body text-center py-12">
+        <h2 class="mb-4">Our Sponsors</h2>
+        <p class="text-[var(--color-text-muted)]">Coming Soon - Check Back Later.</p>
+      </div>
     </div>
   </div>
 </section>
-{% endif %}
 
 <!-- Portfolio Section -->
 <section class="section bg-[var(--color-surface)]">
