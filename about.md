@@ -111,4 +111,4 @@ Interested in joining our team? We welcome students of all skill levels! Whether
 
 **No prior experience necessary!** We'll teach you everything you need to know.
 
-[Contact us](/contact/) to learn more about joining the team.
+[Contact us]({{ '/contact/' | relative_url }}) to learn more about joining the team.
