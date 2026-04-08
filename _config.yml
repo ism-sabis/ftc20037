@@ -58,6 +58,9 @@ navigation:
   - id: portfolio
     title: Portfolio
     url: /portfolio/
+  - id: gallery
+    title: Gallery
+    url: /gallery/
   - id: news
     title: News
     url: /news/

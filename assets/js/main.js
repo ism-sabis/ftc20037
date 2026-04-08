@@ -116,6 +116,48 @@ lightboxClose?.addEventListener('click', closeLightbox);
 lightboxPrev?.addEventListener('click', prevImage);
 lightboxNext?.addEventListener('click', nextImage);
 
+// Gallery filters
+const galleryFilterButtons = document.querySelectorAll('[data-gallery-filter]');
+const galleryCards = document.querySelectorAll('[data-gallery-item]');
+
+if (galleryFilterButtons.length > 0 && galleryCards.length > 0) {
+  const setActiveFilter = (activeFilter) => {
+    galleryFilterButtons.forEach((button) => {
+      const isActive = button.dataset.galleryFilter === activeFilter;
+      button.classList.toggle('btn-primary', isActive);
+      button.classList.toggle('btn-secondary', !isActive);
+    });
+  };
+
+  const applyFilter = (filterValue) => {
+    const normalizedFilter = filterValue.toLowerCase();
+
+    galleryCards.forEach((card) => {
+      const tags = (card.dataset.tags || '')
+        .toLowerCase()
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter(Boolean);
+
+      const matches =
+        normalizedFilter === 'all' ||
+        tags.includes(normalizedFilter);
+
+      card.classList.toggle('hidden', !matches);
+    });
+
+    setActiveFilter(filterValue);
+  };
+
+  galleryFilterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      applyFilter(button.dataset.galleryFilter || 'all');
+    });
+  });
+
+  applyFilter('all');
+}
+
 // Keyboard navigation for lightbox
 document.addEventListener('keydown', (e) => {
   if (!lightbox?.classList.contains('hidden')) {
