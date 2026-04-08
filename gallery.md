@@ -72,8 +72,13 @@ permalink: /gallery/
     {% endfor %}
   {% endif %}
 
+  {% assign download_src = image.path %}
+  {% if file_type == 'dng' and preview_src != '' %}
+    {% assign download_src = preview_src %}
+  {% endif %}
+
   <div class="gallery-card group relative aspect-square rounded-lg overflow-hidden bg-[var(--color-surface)] shadow-sm" data-gallery-item data-tags="{{ tags_text | downcase }}">
-    <a href="{{ image.path | relative_url }}" class="block w-full h-full" target="_blank" rel="noopener" download>
+    <a href="{{ download_src | relative_url }}" class="block w-full h-full" target="_blank" rel="noopener" download>
       {% if file_type == 'dng' and preview_src != '' %}
       <img src="{{ preview_src | relative_url }}" alt="{{ caption }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
       {% elsif file_type == 'dng' %}
@@ -117,7 +122,7 @@ permalink: /gallery/
 <div class="card">
   <div class="card-body text-center py-12">
     <h2 class="text-2xl font-bold mb-3">Coming Soon - Check Back Later.</h2>
-    <p class="text-[var(--color-text-muted)]">Upload photos into assets/images/gallery/ to populate this page.</p>
+    <p class="text-[var(--color-text-muted)]">Upload photos into assets/images/gallery/uploads/ to populate this page.</p>
   </div>
 </div>
 {% endif %}

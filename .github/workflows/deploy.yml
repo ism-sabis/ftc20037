@@ -33,11 +33,22 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
       - name: Install Node dependencies
         run: npm ci
 
       - name: Build Tailwind CSS
         run: npm run build:css
+
+      - name: Install DNG conversion dependencies
+        run: pip install rawpy imageio
+
+      - name: Convert gallery DNG files to JPG
+        run: python scripts/convert_dng_gallery.py
 
       - name: Setup Pages
         id: pages
