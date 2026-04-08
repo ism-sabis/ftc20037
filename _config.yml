@@ -12,8 +12,8 @@ site:
   current_season: "2025-2026"
   logo: "/assets/images/teamLogoCropped.jpg"
 
-# Theme configuration - Official FTC Colors
-theme:
+# Theme palette - Official FTC Colors
+palette:
   colors:
     primary: "#003974"    # Deep Blue
     secondary: "#F57E25"  # FIRST Orange (brand color)

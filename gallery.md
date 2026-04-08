@@ -16,10 +16,17 @@ permalink: /gallery/
   </div>
 </div>
 
-{% assign gallery_images = site.static_files | where_exp: "file", "file.path contains '/assets/images/gallery/uploads/' and file.name != '.gitkeep'" | sort: "name" %}
+{% assign gallery_images = site.static_files | sort: "name" %}
 {% assign gallery_meta = site.data.gallery.items | default: empty %}
 
-{% if gallery_images.size > 0 %}
+{% assign gallery_count = 0 %}
+{% for image in gallery_images %}
+  {% if image.path contains '/assets/images/gallery/uploads/' and image.name != '.gitkeep' %}
+    {% assign gallery_count = gallery_count | plus: 1 %}
+  {% endif %}
+{% endfor %}
+
+{% if gallery_count > 0 %}
 <div class="flex flex-wrap gap-2 mb-6">
   <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="all">All</button>
   <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="2025-2026-DECODE">2025-2026 (DECODE)</button>
@@ -32,6 +39,7 @@ permalink: /gallery/
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
   {% for image in gallery_images %}
+  {% if image.path contains '/assets/images/gallery/uploads/' and image.name != '.gitkeep' %}
   {% assign image_base = image.name | split: '.' | first %}
   {% assign file_type = image.extname | downcase | remove: '.' %}
   {% assign meta = gallery_meta | where: "src", image.path | first %}
@@ -102,6 +110,7 @@ permalink: /gallery/
       </div>
     </a>
   </div>
+  {% endif %}
   {% endfor %}
 </div>
 {% else %}
