@@ -9,7 +9,7 @@ permalink: /seasons/2024-2025/
 
 ## 3D Model Viewer
 
-{% include components/robot-viewer.html model_src="/assets/models/2024-2025/Assembly 1 - Into the Deep Display.glb" alt_text="INTO THE DEEP Robot 3D Model" description="Interactive 3D model of our INTO THE DEEP robot. Drag to rotate, scroll to zoom." %}
+{% include components/robot-viewer.html model_src="/assets/models/2024-2025/Assembly 1 - Into the Deep.glb" alt_text="INTO THE DEEP Robot 3D Model" description="Interactive 3D model of our INTO THE DEEP robot. Drag to rotate, scroll to zoom." %}
 
 ## 2024-2025 Season
 
