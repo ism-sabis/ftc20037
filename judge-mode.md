@@ -95,7 +95,6 @@ Our outreach strategy has two themes: Motivate and Connect.
 ### Sustainability
 - 3D printing and laser cutting reduce fabrication costs
 - Annual recruitment ensures continuity and role handoff
-- Budget control improved remaining budget from 2983 (2024) to 3367 (2025)
 
 ### Team and Mentor Snapshot
 
