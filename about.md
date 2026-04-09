@@ -61,16 +61,6 @@ Standard Deviation is a team of six students from the International School of Mi
 
 We keep our program sustainable by using 3D printing and laser cutting to reduce costs while recruiting new students each year to maintain continuity.
 
-### Budget Summary (2024 -> 2025)
-
-| Category | 2024 | 2025 |
-|----------|------|------|
-| Admin | 1710 | 1035 |
-| Food | 350 | 149 |
-| Lab Equipment | 1031 | 285 |
-| Robot Parts | 3926 | 5164 |
-| Remaining Budget | 2983 | 3367 |
-
 ## What We Do
 
 ### Build Season
