@@ -45,7 +45,7 @@ jobs:
         run: npm run build:css
 
       - name: Install DNG conversion dependencies
-        run: pip install rawpy imageio
+        run: pip install rawpy imageio pyyaml
 
       - name: Convert gallery DNG files to JPG
         run: python scripts/convert_dng_gallery.py
