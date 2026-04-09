@@ -9,7 +9,7 @@ permalink: /seasons/2025-2026/
 
 ## 3D Model Viewer
 
-{% include components/robot-viewer.html model_src="/assets/models/2025-2026/Assembly 1 - Decode Color.glb" alt_text="DECODE Robot 3D Model" description="Interactive 3D model of our DECODE robot. Drag to rotate, scroll to zoom." %}
+{% include components/robot-viewer.html model_src="/assets/models/2025-2026/Assembly 1 - Decode Import Reduced.glb" alt_text="DECODE Robot 3D Model" description="Interactive 3D model of our DECODE robot. Drag to rotate, scroll to zoom." %}
 
 ## Robot Overview {#robot}
 
