@@ -118,6 +118,7 @@ def load_step(input_path: Path) -> trimesh.Trimesh:
         from OCP.TopAbs import TopAbs_FACE
         from OCP.BRep import BRep_Tool
         from OCP.TopLoc import TopLoc_Location
+        from OCP.TopoDS import TopoDS
     else:
         from OCC.Core.STEPControl import STEPControl_Reader
         from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
@@ -125,6 +126,10 @@ def load_step(input_path: Path) -> trimesh.Trimesh:
         from OCC.Core.TopAbs import TopAbs_FACE
         from OCC.Core.BRep import BRep_Tool
         from OCC.Core.TopLoc import TopLoc_Location
+        try:
+            from OCC.Core.TopoDS import topods_Face
+        except ImportError:
+            from OCC.Core.TopoDS import topods
     
     # Read STEP
     reader = STEPControl_Reader()
@@ -135,7 +140,8 @@ def load_step(input_path: Path) -> trimesh.Trimesh:
     shape = reader.OneShape()
     
     # Tessellate
-    BRepMesh_IncrementalMesh(shape, 0.1)
+    # Coarser deflection significantly reduces exported web model size.
+    BRepMesh_IncrementalMesh(shape, 0.8)
     
     # Extract mesh
     vertices, faces = [], []
@@ -143,7 +149,14 @@ def load_step(input_path: Path) -> trimesh.Trimesh:
     
     explorer = TopExp_Explorer(shape, TopAbs_FACE)
     while explorer.More():
-        face = explorer.Current()
+        face_shape = explorer.Current()
+        if library == "cadquery-ocp":
+            face = TopoDS.Face_s(face_shape)
+        else:
+            try:
+                face = topods_Face(face_shape)
+            except NameError:
+                face = topods.Face(face_shape)
         location = TopLoc_Location()
         tri = BRep_Tool.Triangulation_s(face, location)
         
@@ -185,6 +198,16 @@ def optimize_mesh(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
             mesh.fix_normals()
     except Exception:
         pass  # Some meshes may not support this check
+
+    # Keep very large assemblies at a manageable size for web deployment.
+    max_faces = 5_000_000
+    if len(mesh.faces) > max_faces:
+        try:
+            print(f"  Decimating faces: {len(mesh.faces):,} -> {max_faces:,}")
+            mesh = mesh.simplify_quadric_decimation(face_count=max_faces)
+        except Exception as exc:
+            print(f"  Decimation skipped: {exc}")
+
     print(f"  Result: {len(mesh.vertices):,} vertices, {len(mesh.faces):,} faces")
     return mesh
 

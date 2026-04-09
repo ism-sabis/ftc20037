@@ -27,7 +27,7 @@ palette:
 features:
   blog: false
   docs: false
-  cad_viewer: false
+  cad_viewer: true
   circuit_viewer: true
   code_links: false
   data_visualizations: true
