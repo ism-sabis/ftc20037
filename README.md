@@ -6,6 +6,8 @@ A free, open-source website template for robotics teams. Get your team's profess
 ![Jekyll](https://img.shields.io/badge/jekyll-4.3+-red.svg)
 ![Tailwind](https://img.shields.io/badge/tailwind-3.4+-38bdf8.svg)
 
+_Repo note: minor non-functional update._
+
 > There is an experimental [`i18n`](https://github.com/braineatingmachines/pitcrew/tree/i18n) branch which supports `en, fr, de, es, zh, ja`. Try it if you want the labels in languages supported above.
 ---
 
