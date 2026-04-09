@@ -167,6 +167,7 @@
   img {
     max-width: 100%;
     height: auto;
+    display: block;
   }
 
   strong, b {
@@ -177,6 +178,20 @@
   em, i {
     font-style: italic;
   }
+}
+
+/* Photo-specific cleanup to remove rendering bars and baseline artifacts */
+.photo-card,
+.gallery-card {
+  transform: translateZ(0);
+}
+
+.photo-card img,
+.gallery-image {
+  display: block;
+  vertical-align: middle;
+  background: transparent;
+  backface-visibility: hidden;
 }
 
 /* Component Layer */

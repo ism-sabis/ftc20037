@@ -3,7 +3,7 @@ Usage: {% include components/team-member-card.html member=member %}
 Expected member object: { name, role, grade, graduation_year, bio, image, skills }
 {% endcomment %}
 
-<div class="card group h-full overflow-hidden">
+<div class="card photo-card group h-full overflow-hidden">
   <div class="relative w-full aspect-square overflow-hidden bg-[var(--color-surface)] leading-none">
     <img
       src="{{ include.member.image | default: '/assets/images/placeholder.svg' | relative_url }}"

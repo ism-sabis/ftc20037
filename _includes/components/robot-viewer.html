@@ -12,11 +12,14 @@ Requires site.features.cad_viewer to be true
       {% if include.poster_image %}poster="{{ include.poster_image | relative_url }}"{% endif %}
       camera-controls
       auto-rotate
+      auto-rotate-delay="0"
       shadow-intensity="1"
-      exposure="0.5"
+      exposure="1"
+      tone-mapping="aces"
+      environment-image="neutral"
       ar
       ar-modes="webxr scene-viewer quick-look"
-      class="w-full h-full"
+      class="w-full h-full robot-model-viewer"
       loading="lazy"
     >
       <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">

@@ -61,12 +61,15 @@ const lightboxCaption = document.getElementById('lightbox-caption');
 const lightboxClose = document.getElementById('lightbox-close');
 const lightboxPrev = document.getElementById('lightbox-prev');
 const lightboxNext = document.getElementById('lightbox-next');
+const lightboxDownload = document.getElementById('lightbox-download');
+const lightboxBackdrop = document.getElementById('gallery-lightbox-backdrop');
 
 let currentGalleryIndex = 0;
 let galleryImages = [];
 
 function openLightbox(index) {
   if (!lightbox || !lightboxImage) return;
+  if (!galleryImages.length) return;
 
   currentGalleryIndex = index;
   const item = galleryImages[index];
@@ -74,6 +77,10 @@ function openLightbox(index) {
   lightboxImage.alt = item.alt;
   if (lightboxCaption) {
     lightboxCaption.textContent = item.caption || '';
+  }
+  if (lightboxDownload) {
+    lightboxDownload.href = item.download || item.src;
+    lightboxDownload.setAttribute('download', item.filename || 'gallery-image');
   }
 
   lightbox.classList.remove('hidden');
@@ -89,21 +96,27 @@ function closeLightbox() {
 }
 
 function nextImage() {
+  if (!galleryImages.length) return;
   currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
   openLightbox(currentGalleryIndex);
 }
 
 function prevImage() {
+  if (!galleryImages.length) return;
   currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
   openLightbox(currentGalleryIndex);
 }
 
 // Initialize gallery
 galleryItems.forEach((item, index) => {
+  const downloadSrc = item.dataset.download || item.href;
+  const filename = downloadSrc.split('/').pop() || 'gallery-image';
   galleryImages.push({
     src: item.href,
     alt: item.querySelector('img')?.alt || '',
-    caption: item.dataset.caption || ''
+    caption: item.dataset.caption || '',
+    download: downloadSrc,
+    filename
   });
 
   item.addEventListener('click', (e) => {
@@ -115,6 +128,15 @@ galleryItems.forEach((item, index) => {
 lightboxClose?.addEventListener('click', closeLightbox);
 lightboxPrev?.addEventListener('click', prevImage);
 lightboxNext?.addEventListener('click', nextImage);
+lightboxBackdrop?.addEventListener('click', closeLightbox);
+
+if (lightbox) {
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+}
 
 // Gallery filters
 const galleryFilterButtons = document.querySelectorAll('[data-gallery-filter]');
@@ -186,6 +208,21 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowRight') nextImage();
     if (e.key === 'ArrowLeft') prevImage();
   }
+});
+
+// Make CAD materials double-sided to avoid disappearing faces on some meshes.
+const robotViewers = document.querySelectorAll('model-viewer');
+robotViewers.forEach((viewer) => {
+  viewer.addEventListener('load', () => {
+    try {
+      if (!viewer.model || !viewer.model.materials) return;
+      viewer.model.materials.forEach((material) => {
+        material.setDoubleSided(true);
+      });
+    } catch (err) {
+      console.warn('Unable to apply double-sided materials:', err);
+    }
+  });
 });
 
 // Table of Contents generation for docs

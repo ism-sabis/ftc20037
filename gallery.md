@@ -77,9 +77,9 @@ permalink: /gallery/
   {% endif %}
 
   <div class="gallery-card group relative aspect-square rounded-lg overflow-hidden bg-[var(--color-surface)] shadow-sm" data-gallery-item data-tags="{{ tags_text | downcase }}">
-    <a href="{{ download_src | relative_url }}" class="block w-full h-full" target="_blank" rel="noopener" download>
+    <a href="{{ download_src | relative_url }}" class="gallery-item block w-full h-full" data-caption="{{ caption | escape }}" data-download="{{ download_src | relative_url }}">
       {% if file_type == 'dng' and preview_src != '' %}
-      <img src="{{ preview_src | relative_url }}" alt="{{ caption }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
+      <img src="{{ preview_src | relative_url }}" alt="{{ caption }}" class="gallery-image w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
       {% elsif file_type == 'dng' %}
       <div class="w-full h-full flex items-center justify-center p-4 text-center border border-dashed border-[var(--color-border)]">
         <div class="space-y-3">
@@ -89,12 +89,12 @@ permalink: /gallery/
         </div>
       </div>
       {% else %}
-      <img src="{{ image.path | relative_url }}" alt="{{ caption }}" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
+      <img src="{{ image.path | relative_url }}" alt="{{ caption }}" class="gallery-image w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" loading="lazy" decoding="async">
       {% endif %}
 
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
 
-      <div class="absolute top-2 left-2 flex flex-wrap gap-1 max-w-[calc(100%-5rem)]">
+      <div class="absolute top-2 left-2 flex flex-wrap gap-1 max-w-[calc(100%-5rem)] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
         {% if meta and meta.tags %}
           {% for tag in meta.tags %}
           {% if tag == '2025-2026-DECODE' or tag == '2024-2025-Into-the-Deep' %}
@@ -109,7 +109,7 @@ permalink: /gallery/
       <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-sm p-2 translate-y-full group-hover:translate-y-0 transition-transform">
         <div class="flex items-center justify-between gap-2">
           <span class="truncate">{{ caption }}</span>
-          <span class="text-xs opacity-90 whitespace-nowrap">Full quality</span>
+          <span class="text-xs opacity-90 whitespace-nowrap">Tap to open</span>
         </div>
       </div>
     </a>
@@ -126,3 +126,23 @@ permalink: /gallery/
   </div>
 </div>
 {% endif %}
+
+<div id="gallery-lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4">
+  <div class="absolute inset-0" id="gallery-lightbox-backdrop" aria-hidden="true"></div>
+  <div class="relative w-full max-w-5xl max-h-[95vh] bg-[var(--color-surface)] rounded-xl overflow-hidden shadow-2xl">
+    <button id="lightbox-close" type="button" class="absolute right-3 top-3 z-10 btn btn-secondary">Close</button>
+    <div class="p-3 md:p-4">
+      <div class="w-full bg-black/40 rounded-lg overflow-hidden flex items-center justify-center" style="max-height: 72vh;">
+        <img id="lightbox-image" src="" alt="" class="max-h-[72vh] w-auto h-auto object-contain">
+      </div>
+      <div class="flex flex-wrap items-center justify-between gap-3 mt-4">
+        <p id="lightbox-caption" class="text-[var(--color-text)] text-sm md:text-base mb-0"></p>
+        <div class="flex items-center gap-2">
+          <button id="lightbox-prev" type="button" class="btn btn-outline-secondary">Previous</button>
+          <button id="lightbox-next" type="button" class="btn btn-outline-secondary">Next</button>
+          <a id="lightbox-download" href="#" class="btn btn-primary" download>Download</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

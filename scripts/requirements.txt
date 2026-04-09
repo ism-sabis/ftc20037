@@ -18,3 +18,4 @@ cadquery-ocp>=7.8.0
 
 # Optional: Additional mesh format support
 # pygltflib>=1.16.0  # For advanced GLTF manipulation
+# fast-simplification>=0.1.8  # Improves trimesh decimation quality/performance
