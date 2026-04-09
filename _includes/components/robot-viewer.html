@@ -7,16 +7,17 @@ Requires site.features.cad_viewer to be true
 <div class="robot-viewer-container">
   <div class="relative bg-[var(--color-surface)] rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
     <model-viewer
-      src="{{ include.model_src | relative_url }}"
+      src="{{ include.model_src | relative_url }}?v={{ site.time | date: '%s' }}"
       alt="{{ include.alt_text | default: '3D Model of the robot' }}"
       {% if include.poster_image %}poster="{{ include.poster_image | relative_url }}"{% endif %}
       camera-controls
       auto-rotate
       auto-rotate-delay="0"
-      shadow-intensity="1"
-      exposure="1"
+      camera-orbit="45deg 70deg auto"
+      shadow-intensity="0.35"
+      exposure="1.35"
       tone-mapping="aces"
-      environment-image="neutral"
+      environment-image="legacy"
       ar
       ar-modes="webxr scene-viewer quick-look"
       class="w-full h-full robot-model-viewer"
