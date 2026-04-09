@@ -1,0 +1,14 @@
+# Add new filter tags here. These buttons appear on the gallery page.
+filters:
+  - value: 2025-2026-DECODE
+    label: 2025-2026 (DECODE)
+  - value: 2024-2025-Into-the-Deep
+    label: 2024-2025 (Into the Deep)
+  - value: outreach
+    label: Outreach
+  - value: build
+    label: Build
+  - value: robot
+    label: Robot
+  - value: events
+    label: Events

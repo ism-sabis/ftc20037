@@ -27,6 +27,7 @@ def convert_dng_file(dng_path: Path) -> tuple[bool, str]:
             rgb = raw.postprocess(
                 use_camera_wb=True,
                 no_auto_bright=False,
+                bright=1.3,
                 output_bps=8,
                 gamma=(2.222, 4.5),
             )

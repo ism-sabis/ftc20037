@@ -5,19 +5,9 @@ description: Photos uploaded to assets/images/gallery/uploads/ appear here autom
 permalink: /gallery/
 ---
 
-<div class="card mb-8">
-  <div class="card-body">
-    <p class="text-[var(--color-text-muted)]">
-      Drop image files into <strong>assets/images/gallery/uploads/</strong> and they will show up here automatically.
-    </p>
-    <p class="text-[var(--color-text-muted)] mt-3">
-      Add captions and tags in <strong>_data/gallery.yml</strong>. Use tags like <strong>2025-2026-DECODE</strong> or <strong>2024-2025-Into-the-Deep</strong> to filter by season. For raw <strong>.dng</strong> files, add a same-named <strong>.jpg</strong>, <strong>.jpeg</strong>, <strong>.png</strong>, or <strong>.webp</strong> preview in the same folder for a thumbnail.
-    </p>
-  </div>
-</div>
-
 {% assign gallery_images = site.static_files | sort: "name" %}
 {% assign gallery_meta = site.data.gallery.items | default: empty %}
+{% assign gallery_filters = site.data.gallery_tags.filters | default: empty %}
 
 {% assign gallery_count = 0 %}
 {% for image in gallery_images %}
@@ -29,12 +19,9 @@ permalink: /gallery/
 {% if gallery_count > 0 %}
 <div class="flex flex-wrap gap-2 mb-6">
   <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="all">All</button>
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="2025-2026-DECODE">2025-2026 (DECODE)</button>
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="2024-2025-Into-the-Deep">2024-2025 (Into the Deep)</button>
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="outreach">Outreach</button>
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="build">Build</button>
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="robot">Robot</button>
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="events">Events</button>
+  {% for filter in gallery_filters %}
+  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="{{ filter.value }}">{{ filter.label }}</button>
+  {% endfor %}
 </div>
 
 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
@@ -42,6 +29,18 @@ permalink: /gallery/
   {% if image.path contains '/assets/images/gallery/uploads/' and image.name != '.gitkeep' %}
   {% assign image_base = image.name | split: '.' | first %}
   {% assign file_type = image.extname | downcase | remove: '.' %}
+  {% assign should_skip = false %}
+  {% if file_type == 'dng' %}
+    {% for candidate in gallery_images %}
+      {% assign candidate_base = candidate.name | split: '.' | first %}
+      {% assign candidate_ext = candidate.extname | downcase | remove: '.' %}
+      {% if candidate.path contains '/assets/images/gallery/uploads/' and candidate.path != image.path and candidate_base == image_base and candidate_ext != 'dng' and candidate_ext != 'gitkeep' %}
+        {% assign should_skip = true %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% unless should_skip %}
   {% assign meta = gallery_meta | where: "src", image.path | first %}
   {% if meta and meta.caption %}
     {% assign caption = meta.caption %}
@@ -115,6 +114,7 @@ permalink: /gallery/
       </div>
     </a>
   </div>
+  {% endunless %}
   {% endif %}
   {% endfor %}
 </div>

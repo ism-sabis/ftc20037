@@ -50,6 +50,9 @@ jobs:
       - name: Convert gallery DNG files to JPG
         run: python scripts/convert_dng_gallery.py
 
+      - name: Sync gallery metadata and admin doc
+        run: python scripts/sync_gallery_metadata.py
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v4

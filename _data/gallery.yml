@@ -1,16 +1,9 @@
-# Gallery metadata is optional but recommended for captions and tags.
-# Add one entry per photo using the file path in assets/images/gallery/uploads/.
-#
-# Example:
-# items:
-#   - src: /assets/images/gallery/uploads/example.jpg
-#     caption: Robot at league meet
-#     tags:
-#       - robot
-#       - events
-#       - 2025-2026-DECODE
-#     thumb: /assets/images/gallery/uploads/example-thumb.jpg
-#
-# If a DNG file has a same-named JPG/JPEG/PNG/WEBP preview in the same folder,
-# the gallery will use that preview automatically.
-items: []
+# Gallery metadata file
+# Add/adjust tags and descriptions under each item.
+# Add new available filter tags in _data/gallery_tags.yml
+
+items:
+- src: /assets/images/gallery/uploads/20251103_133804009_iOS.dng
+  caption: ''
+  description: ''
+  tags: []

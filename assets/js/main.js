@@ -121,16 +121,20 @@ const galleryFilterButtons = document.querySelectorAll('[data-gallery-filter]');
 const galleryCards = document.querySelectorAll('[data-gallery-item]');
 
 if (galleryFilterButtons.length > 0 && galleryCards.length > 0) {
-  const setActiveFilter = (activeFilter) => {
+  const activeFilters = new Set(['all']);
+
+  const setActiveFilterStyles = () => {
     galleryFilterButtons.forEach((button) => {
-      const isActive = button.dataset.galleryFilter === activeFilter;
+      const filterValue = button.dataset.galleryFilter || 'all';
+      const isActive = activeFilters.has(filterValue);
       button.classList.toggle('btn-primary', isActive);
       button.classList.toggle('btn-secondary', !isActive);
     });
   };
 
-  const applyFilter = (filterValue) => {
-    const normalizedFilter = filterValue.toLowerCase();
+  const applyFilters = () => {
+    const normalizedFilters = Array.from(activeFilters).map((value) => value.toLowerCase());
+    const showAll = normalizedFilters.includes('all');
 
     galleryCards.forEach((card) => {
       const tags = (card.dataset.tags || '')
@@ -140,22 +144,40 @@ if (galleryFilterButtons.length > 0 && galleryCards.length > 0) {
         .filter(Boolean);
 
       const matches =
-        normalizedFilter === 'all' ||
-        tags.includes(normalizedFilter);
+        showAll ||
+        normalizedFilters.some((filter) => tags.includes(filter));
 
       card.classList.toggle('hidden', !matches);
     });
 
-    setActiveFilter(filterValue);
+    setActiveFilterStyles();
   };
 
   galleryFilterButtons.forEach((button) => {
     button.addEventListener('click', () => {
-      applyFilter(button.dataset.galleryFilter || 'all');
+      const filterValue = button.dataset.galleryFilter || 'all';
+
+      if (filterValue === 'all') {
+        activeFilters.clear();
+        activeFilters.add('all');
+      } else {
+        activeFilters.delete('all');
+        if (activeFilters.has(filterValue)) {
+          activeFilters.delete(filterValue);
+        } else {
+          activeFilters.add(filterValue);
+        }
+
+        if (activeFilters.size === 0) {
+          activeFilters.add('all');
+        }
+      }
+
+      applyFilters();
     });
   });
 
-  applyFilter('all');
+  applyFilters();
 }
 
 // Keyboard navigation for lightbox
