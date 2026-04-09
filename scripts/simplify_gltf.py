@@ -34,15 +34,35 @@ def simplify_mesh(mesh: trimesh.Trimesh, ratio: float) -> trimesh.Trimesh:
 
 def simplify_scene(scene: trimesh.Scene, ratio: float) -> trimesh.Scene:
     new_scene = trimesh.Scene()
-    for node_name, geom_name in scene.graph.nodes_geometry:
-        geom = scene.geometry[geom_name]
-        transform = scene.graph.get(node_name)[0]
+    simplified_cache: dict[str, trimesh.Trimesh] = {}
+
+    for node_name in scene.graph.nodes_geometry:
+        transform, geom_name = scene.graph.get(node_name)
+        geom = scene.geometry.get(geom_name)
+        if geom is None:
+            continue
 
         if isinstance(geom, trimesh.Trimesh):
-            simplified = simplify_mesh(geom.copy(), ratio)
-            new_scene.add_geometry(simplified, node_name=node_name, transform=transform)
+            if geom_name not in simplified_cache:
+                simplified = simplify_mesh(geom.copy(), ratio)
+                try:
+                    simplified.visual = geom.visual.copy()
+                except Exception:
+                    pass
+                simplified_cache[geom_name] = simplified
+            new_scene.add_geometry(
+                simplified_cache[geom_name],
+                geom_name=geom_name,
+                node_name=node_name,
+                transform=transform,
+            )
         else:
-            new_scene.add_geometry(geom, node_name=node_name, transform=transform)
+            new_scene.add_geometry(
+                geom,
+                geom_name=geom_name,
+                node_name=node_name,
+                transform=transform,
+            )
     return new_scene
 
 
