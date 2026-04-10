@@ -142,7 +142,7 @@ Through a parent-connected industrial manufacturing visit, we received analysis 
 
 ## Competition Results {#results}
 
-Current event results are in progress and will be updated after official postings.
+Season Over - Results Coming Soon.
 
 ---
 
