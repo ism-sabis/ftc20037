@@ -127,7 +127,7 @@ layout: default
           <a href="{{ '/portfolio/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-6 py-3">
             📄 View Portfolio
           </a>
-          <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf' | relative_url }}" download class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
+          <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
             ⬇️ Download PDF
           </a>
         </div>

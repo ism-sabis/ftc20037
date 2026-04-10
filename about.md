@@ -84,7 +84,7 @@ Our engineering portfolio showcases the full story of Team Standard Deviation â€
       <p class="text-[var(--color-text-muted)] mb-4">Explore our comprehensive engineering notebook covering robot design and outreach efforts.</p>
       <div class="flex flex-col sm:flex-row gap-3">
         <a href="{{ '/portfolio/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-5 py-2">View Portfolio</a>
-        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf' | relative_url }}" download class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-5 py-2">Download PDF</a>
+        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-5 py-2">Download PDF</a>
       </div>
     </div>
   </div>
