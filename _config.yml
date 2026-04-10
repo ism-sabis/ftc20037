@@ -130,6 +130,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
 
+# Include in build
+include:
+  - assets
+
 # Exclude from build
 exclude:
   - Gemfile
