@@ -120,15 +120,17 @@ Requires site.features.cad_viewer to be true
   function getOptimalQuality() {
     const stored = localStorage.getItem(storageKey);
     if (stored) return stored;
+
+    if (defaultQuality) return defaultQuality;
     
-    // Device detection: use medium for most devices, high for high-end
+    // Device detection fallback when no explicit default quality is provided.
     const memory = navigator.deviceMemory;
     const cores = navigator.hardwareConcurrency;
     
     if (memory && memory >= 8 && cores && cores >= 4) {
       return "high";
     }
-    return defaultQuality || "medium";
+    return "medium";
   }
   
   const variants = getModelVariants(modelSrc);
