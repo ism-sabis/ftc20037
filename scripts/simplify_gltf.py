@@ -42,10 +42,34 @@ def apply_draco_compression(scene: trimesh.Scene) -> bytes:
         return scene.export(file_type="glb")
 
 
-def simplify_mesh(mesh: trimesh.Trimesh, ratio: float) -> trimesh.Trimesh:
+def simplify_mesh(mesh: trimesh.Trimesh, ratio: float, planar_bias: float = 0.12) -> trimesh.Trimesh:
     if ratio >= 0.999:
         return mesh
-    target_faces = max(5000, int(len(mesh.faces) * ratio))
+
+    # Pre-clean topology so flat/coplanar areas can collapse more effectively.
+    try:
+        mesh.merge_vertices()
+        if hasattr(mesh, "remove_degenerate_faces"):
+            mesh.remove_degenerate_faces()
+        if hasattr(mesh, "remove_duplicate_faces"):
+            mesh.remove_duplicate_faces()
+        if hasattr(mesh, "remove_unreferenced_vertices"):
+            mesh.remove_unreferenced_vertices()
+    except Exception as exc:
+        print(f"  pre-clean skipped for mesh: {exc}")
+
+    face_count = len(mesh.faces)
+    flatness_factor = 1.0
+    try:
+        if face_count > 0:
+            normals = mesh.face_normals
+            normal_variance = float(np.var(normals, axis=0).mean())
+            if normal_variance < 0.015:
+                flatness_factor = 1.0 - planar_bias
+    except Exception:
+        pass
+
+    target_faces = max(5000, int(face_count * ratio * flatness_factor))
     if len(mesh.faces) <= target_faces:
         return mesh
 
@@ -58,7 +82,7 @@ def simplify_mesh(mesh: trimesh.Trimesh, ratio: float) -> trimesh.Trimesh:
     return mesh
 
 
-def simplify_scene(scene: trimesh.Scene, ratio: float) -> trimesh.Scene:
+def simplify_scene(scene: trimesh.Scene, ratio: float, planar_bias: float = 0.12) -> trimesh.Scene:
     new_scene = trimesh.Scene()
     simplified_cache: dict[str, trimesh.Trimesh] = {}
 
@@ -70,7 +94,7 @@ def simplify_scene(scene: trimesh.Scene, ratio: float) -> trimesh.Scene:
 
         if isinstance(geom, trimesh.Trimesh):
             if geom_name not in simplified_cache:
-                simplified = simplify_mesh(geom.copy(), ratio)
+                simplified = simplify_mesh(geom.copy(), ratio, planar_bias=planar_bias)
                 try:
                     # Only copy visuals when vertex counts still align.
                     original_vertices = len(geom.vertices)
@@ -113,6 +137,12 @@ def main() -> int:
     parser.add_argument("-o", "--output", required=True, help="Output .gltf/.glb path (base name for LOD)")
     parser.add_argument("--max-mb", type=float, default=100.0, help="Maximum allowed size in MB")
     parser.add_argument(
+        "--planar-bias",
+        type=float,
+        default=0.12,
+        help="Extra reduction bias (0.0-0.4) for mostly flat/coplanar regions"
+    )
+    parser.add_argument(
         "--lod", 
         action="store_true", 
         help="Generate 3 LOD tiers: -high, -medium, -low (recommended)"
@@ -149,7 +179,7 @@ def main() -> int:
             print(f"\n→ Generating {tier_name.upper()} quality tier (ratio={ratio:.1%})...")
             
             # Simplify
-            simplified_scene = simplify_scene(scene, ratio)
+            simplified_scene = simplify_scene(scene, ratio, planar_bias=args.planar_bias)
             
             # Export with Draco
             export_data = apply_draco_compression(simplified_scene)
@@ -183,7 +213,7 @@ def main() -> int:
     best_ratio = None
 
     for ratio in ratios:
-        candidate_scene = simplify_scene(scene, ratio)
+        candidate_scene = simplify_scene(scene, ratio, planar_bias=args.planar_bias)
         export_data = apply_draco_compression(candidate_scene)
         size_mb = len(export_data) / (1024 * 1024)
         print(f"  ratio={ratio:.2f} → {size_mb:.2f} MB")
