@@ -32,6 +32,7 @@ CONVERSIONS = {
     # SPICE -> SVG
     '.cir': ('.cir.svg', 'spice_to_svg.py'),
     # CAD -> GLTF (3MF with colors is preferred!)
+    '.obj': ('.glb', 'cad_to_gltf.py'),
     '.3mf': ('.glb', 'cad_to_gltf.py'),
     '.stl': ('.glb', 'cad_to_gltf.py'),
     '.step': ('.glb', 'cad_to_gltf.py'),

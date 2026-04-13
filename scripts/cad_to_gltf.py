@@ -3,7 +3,7 @@
 CAD-to-GLTF Converter for MESGRO Project
 =========================================
 
-Converts CAD files to optimized GLTF with vertex color support
+Converts CAD files to optimized GLTF with material/color support
 for GitHub Pages 3D visualization.
 
 Supported Formats:
@@ -11,14 +11,16 @@ Supported Formats:
 - 3MF (.3mf) - 3D Manufacturing Format [RECOMMENDED for Onshape]
   - Preserves per-object colors/materials as vertex colors
   - Assembly support with accurate colors
+- OBJ (.obj + .mtl + textures) - Material/texture friendly format
+    - Best fallback when 3MF appearance data is not preserved
 - STL (.stl) - Universal mesh format (no colors)
 - STEP/STP (.step, .stp) - CAD exchange format (no colors)
 
 Color Support:
 -----------
-3MF files contain color/material data which is extracted and baked as
-vertex colors in the output GLTF. This allows per-object color visualization
-without needing separate texture files.
+3MF files contain color/material data which is extracted and preserved where
+possible. OBJ + MTL + texture images is the most reliable path when CAD colors
+appear white in viewers.
 
 Export Instructions:
 -------------------
@@ -36,7 +38,8 @@ Installation:
 
 Usage:
 ------
-    python cad_to_gltf.py -i model.3mf -o output.glb  # With colors!
+    python cad_to_gltf.py -i model.3mf -o output.glb
+    python cad_to_gltf.py -i model.obj -o output.glb  # Best texture fallback
     python cad_to_gltf.py -i model.step -o output.glb
     python cad_to_gltf.py -i model.stl -o output.glb
     python cad_to_gltf.py --check-step
@@ -85,7 +88,7 @@ except ImportError as e:
 # Supported Formats
 # =============================================================================
 
-SUPPORTED_FORMATS = {'.stl', '.step', '.stp', '.3mf'}
+SUPPORTED_FORMATS = {'.stl', '.step', '.stp', '.3mf', '.obj'}
 
 
 # =============================================================================
@@ -130,6 +133,27 @@ def load_3mf(input_path: Path) -> trimesh.Scene:
             except Exception as e:
                 print(f"    {geom_name}: {len(geom.vertices)} vertices (color extraction: {e})")
 
+    return scene
+
+
+def load_obj(input_path: Path) -> trimesh.Scene:
+    """Load an OBJ file as a scene and preserve material/texture references."""
+    print(f"  Loading OBJ: {input_path.name}")
+
+    # process=False avoids aggressive mesh edits that can break UV/material mapping.
+    scene = trimesh.load(str(input_path), file_type='obj', force='scene', process=False)
+    print(f"  Found {len(scene.geometry)} geometries in scene")
+
+    textured_geoms = 0
+    for geom_name, geom in scene.geometry.items():
+        if isinstance(geom, trimesh.Trimesh):
+            has_uv = hasattr(geom.visual, 'uv') and geom.visual.uv is not None
+            has_material = hasattr(geom.visual, 'material') and geom.visual.material is not None
+            if has_uv or has_material:
+                textured_geoms += 1
+            print(f"    {geom_name}: {len(geom.vertices)} vertices")
+
+    print(f"  Textured/material geometries: {textured_geoms}")
     return scene
 
 
@@ -222,6 +246,19 @@ def load_step(input_path: Path) -> trimesh.Trimesh:
 def optimize_mesh(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
     """Optimize a single mesh for web viewing."""
     print("  Optimizing...")
+
+    # Preserve texture UV/material mapping by avoiding topology changes.
+    has_uv = hasattr(mesh.visual, 'uv') and mesh.visual.uv is not None
+    has_material = hasattr(mesh.visual, 'material') and mesh.visual.material is not None
+    if has_uv or has_material:
+        print("  Texture/material data detected; skipping destructive mesh ops")
+        print(f"  Result: {len(mesh.vertices):,} vertices, {len(mesh.faces):,} faces")
+        return mesh
+
+    original_vertex_colors = None
+    if hasattr(mesh.visual, 'vertex_colors') and mesh.visual.vertex_colors is not None:
+        original_vertex_colors = mesh.visual.vertex_colors.copy()
+
     mesh.merge_vertices()
     # Use update_faces with a mask to remove degenerate/duplicate faces
     if hasattr(mesh, 'remove_degenerate_faces'):
@@ -244,6 +281,12 @@ def optimize_mesh(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
         except Exception as exc:
             print(f"  Decimation skipped: {exc}")
 
+    if original_vertex_colors is not None and len(original_vertex_colors) == len(mesh.vertices):
+        try:
+            mesh.visual.vertex_colors = original_vertex_colors
+        except Exception as exc:
+            print(f"  Warning: could not restore vertex colors ({exc})")
+
     print(f"  Result: {len(mesh.vertices):,} vertices, {len(mesh.faces):,} faces")
     return mesh
 
@@ -265,8 +308,17 @@ def optimize_model(model: Union[trimesh.Trimesh, trimesh.Scene]) -> Union[trimes
                     optimized = optimize_mesh(geom.copy())
                     try:
                         optimized.visual = geom.visual.copy()
-                    except Exception:
-                        pass
+                    except Exception as exc:
+                        print(f"  Warning: visual copy failed for {geom_name} ({exc})")
+
+                        # Fallback: preserve explicit color arrays when available.
+                        try:
+                            if hasattr(geom.visual, 'vertex_colors') and geom.visual.vertex_colors is not None:
+                                optimized.visual.vertex_colors = geom.visual.vertex_colors.copy()
+                            elif hasattr(geom.visual, 'face_colors') and geom.visual.face_colors is not None:
+                                optimized.visual.face_colors = geom.visual.face_colors.copy()
+                        except Exception as fallback_exc:
+                            print(f"  Warning: fallback color copy failed for {geom_name} ({fallback_exc})")
                     cache[geom_name] = optimized
                 optimized_scene.add_geometry(
                     cache[geom_name],
@@ -345,6 +397,8 @@ def convert(input_file: str, output_file: str) -> bool:
             model = load_stl(input_path)
         elif ext == '.3mf':
             model = load_3mf(input_path)
+        elif ext == '.obj':
+            model = load_obj(input_path)
         else:  # .step, .stp
             model = load_step(input_path)
 
@@ -366,11 +420,11 @@ def convert(input_file: str, output_file: str) -> bool:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Convert STL/STEP to GLTF for web 3D viewing.",
-        epilog="Supported: .stl, .step, .stp | NOT supported: .sldprt, .f3d (export first)"
+        description="Convert CAD/mesh formats to GLB for web 3D viewing.",
+        epilog="Supported: .3mf, .obj, .stl, .step, .stp | NOT supported: .sldprt, .f3d (export first)"
     )
-    parser.add_argument('-i', '--input_file', help="Input file (.stl/.step/.stp)")
-    parser.add_argument('-o', '--output_file', help="Output GLTF file")
+    parser.add_argument('-i', '--input_file', help="Input file (.3mf/.obj/.stl/.step/.stp)")
+    parser.add_argument('-o', '--output_file', help="Output GLB file")
     parser.add_argument('--check-step', action='store_true', help="Check STEP support")
     
     args = parser.parse_args()

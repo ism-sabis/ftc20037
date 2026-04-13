@@ -77,6 +77,11 @@ def simplify_scene(scene: trimesh.Scene, ratio: float) -> trimesh.Scene:
                     simplified_vertices = len(simplified.vertices)
                     if original_vertices == simplified_vertices:
                         simplified.visual = geom.visual.copy()
+                    else:
+                        # For OBJ material workflows, keep material colors even
+                        # when topology changed during decimation.
+                        if hasattr(geom.visual, "material") and geom.visual.material is not None:
+                            simplified.visual.material = geom.visual.material
                 except Exception:
                     pass
                 simplified_cache[geom_name] = simplified

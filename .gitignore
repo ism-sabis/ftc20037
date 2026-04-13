@@ -33,3 +33,11 @@ Thumbs.db
 # Temporary files
 tmp/
 temp/
+
+# Local CAD export sources (often >100MB, keep local-only)
+assets/models/**/*.obj
+assets/models/**/*.zip
+assets/models/**/*.mtl
+assets/models/**/*.png
+assets/models/**/*.jpg
+assets/models/**/*.jpeg
