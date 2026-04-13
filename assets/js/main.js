@@ -202,12 +202,29 @@ if (galleryFilterButtons.length > 0 && galleryCards.length > 0) {
   applyFilters();
 }
 
-// Keyboard navigation for lightbox
+// Keyword navigation for lightbox
 document.addEventListener('keydown', (e) => {
   if (!lightbox?.classList.contains('hidden')) {
     if (e.key === 'ArrowRight') nextImage();
     if (e.key === 'ArrowLeft') prevImage();
   }
+});
+
+// Render both sides of CAD model faces to prevent missing geometry from back-face culling.
+const robotViewers = document.querySelectorAll('model-viewer');
+robotViewers.forEach((viewer) => {
+  viewer.addEventListener('load', () => {
+    try {
+      if (!viewer.model || !viewer.model.materials) return;
+      viewer.model.materials.forEach((material) => {
+        if (material && typeof material.setDoubleSided === 'function') {
+          material.setDoubleSided(true);
+        }
+      });
+    } catch (err) {
+      // Silently continue; model may render without double-sided optimization
+    }
+  });
 });
 
 // Table of Contents generation for docs
