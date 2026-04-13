@@ -210,21 +210,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Make CAD materials double-sided to avoid disappearing faces on some meshes.
-const robotViewers = document.querySelectorAll('model-viewer');
-robotViewers.forEach((viewer) => {
-  viewer.addEventListener('load', () => {
-    try {
-      if (!viewer.model || !viewer.model.materials) return;
-      viewer.model.materials.forEach((material) => {
-        material.setDoubleSided(true);
-      });
-    } catch (err) {
-      console.warn('Unable to apply double-sided materials:', err);
-    }
-  });
-});
-
 // Table of Contents generation for docs
 const tocContainer = document.getElementById('toc');
 if (tocContainer) {

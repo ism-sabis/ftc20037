@@ -69,9 +69,21 @@ Requires site.features.cad_viewer to be true
 // LOD (Level of Detail) Model Viewer Enhancement
 // Intelligently loads model quality based on device & user preference
 (function() {
+  const containerId = "cad-viewer-{{ include.model_src | slugify }}";
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
   const modelSrc = "{{ include.model_src | relative_url }}";
+  const explicitMediumSrc = "{% if include.model_src_medium %}{{ include.model_src_medium | relative_url }}{% endif %}";
+  const explicitLowSrc = "{% if include.model_src_low %}{{ include.model_src_low | relative_url }}{% endif %}";
   const defaultQuality = "{{ include.default_quality | default: 'high' }}";
   const storageKey = `model-viewer-quality-${modelSrc}-{{ site.time | date: '%s' }}`;
+  const autoRotateOffKey = `model-viewer-auto-rotate-off-${modelSrc}`;
+  const cacheVersion = "{{ site.time | date: '%s' }}";
+
+  function withVersion(path) {
+    return `${path}?v=${cacheVersion}`;
+  }
   
   // Auto-detect LOD variants from source path
   function getModelVariants(basePath) {
@@ -122,34 +134,77 @@ Requires site.features.cad_viewer to be true
   const variants = getModelVariants(modelSrc);
   const currentQuality = getOptimalQuality();
   const qualityPaths = {
-    high: `${variants.high}?v={{ site.time | date: '%s' }}`,
-    medium: `${variants.medium}?v={{ site.time | date: '%s' }}`,
-    low: `${variants.low}?v={{ site.time | date: '%s' }}`
+    high: withVersion(modelSrc),
+    medium: withVersion(explicitMediumSrc || variants.medium),
+    low: withVersion(explicitLowSrc || variants.low)
   };
+
+  const availableQualities = ['low', 'medium', 'high'].filter((quality, idx, arr) => {
+    const path = qualityPaths[quality];
+    return path && arr.findIndex((q) => qualityPaths[q] === path) === idx;
+  });
   
   // Setup model viewer
-  const viewer = document.getElementById('model-viewer');
-  const qualityBtn = document.getElementById('quality-toggle');
+  const viewer = container.querySelector('#model-viewer');
+  const qualityBtn = container.querySelector('#quality-toggle');
   
   if (!viewer) return;
+
+  // Spin only until the first manual interaction, then keep spin disabled.
+  const autoRotateWasDisabled = localStorage.getItem(autoRotateOffKey) === '1';
+  if (autoRotateWasDisabled) {
+    viewer.removeAttribute('auto-rotate');
+  } else {
+    viewer.setAttribute('auto-rotate', '');
+  }
+
+  let autoRotateInteractionHandled = autoRotateWasDisabled;
+  function disableAutoRotatePermanently() {
+    if (autoRotateInteractionHandled) return;
+    autoRotateInteractionHandled = true;
+    viewer.removeAttribute('auto-rotate');
+    localStorage.setItem(autoRotateOffKey, '1');
+  }
+
+  viewer.addEventListener('pointerdown', disableAutoRotatePermanently, { once: true });
+  viewer.addEventListener('touchstart', disableAutoRotatePermanently, { once: true });
+  viewer.addEventListener('wheel', disableAutoRotatePermanently, { once: true });
   
   // Load initial quality
-  let loadedQuality = currentQuality;
-  viewer.src = qualityPaths[loadedQuality];
+  let loadedQuality = availableQualities.includes(currentQuality) ? currentQuality : 'high';
+  if (!availableQualities.includes(loadedQuality)) {
+    loadedQuality = availableQualities[availableQualities.length - 1] || 'high';
+  }
+
+  viewer.src = qualityPaths[loadedQuality] || qualityPaths.high;
   localStorage.setItem(storageKey, loadedQuality);
+
+  viewer.addEventListener('error', () => {
+    if (loadedQuality !== 'high' && qualityPaths.high) {
+      loadedQuality = 'high';
+      viewer.src = qualityPaths.high;
+      localStorage.setItem(storageKey, loadedQuality);
+      updateQualityButton();
+    }
+  });
   
   // Update quality button and toggle functionality
   function updateQualityButton() {
-    const options = ['low', 'medium', 'high'];
+    const options = availableQualities;
+    if (options.length <= 1) {
+      qualityBtn.classList.add('hidden');
+      return;
+    }
+
     const currentIdx = options.indexOf(loadedQuality);
     const nextIdx = (currentIdx + 1) % options.length;
     const nextQuality = options[nextIdx];
     
     // Show button only if alternatives exist
-    qualityBtn.textContent = `Load ${nextQuality.charAt(0).toUpperCase() + nextQuality.slice(1)}`;
+    qualityBtn.textContent = `Memory usage: ${loadedQuality.charAt(0).toUpperCase() + loadedQuality.slice(1)}`;
     qualityBtn.onclick = () => {
       loadedQuality = nextQuality;
-      viewer.src = qualityPaths[nextQuality];
+      viewer.src = qualityPaths[nextQuality] || qualityPaths.high;
       localStorage.setItem(storageKey, nextQuality);
       updateQualityButton();
       qualityBtn.classList.toggle('hidden');
