@@ -48,7 +48,7 @@ License: MIT
 import argparse
 import sys
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Union
 
 # =============================================================================
 # Dependency Check
@@ -103,68 +103,34 @@ def load_stl(input_path: Path) -> trimesh.Trimesh:
     return mesh
 
 
-def load_3mf(input_path: Path) -> trimesh.Trimesh:
-    """Load a 3MF file with color/material extraction.
-    
-    3MF format can contain per-object colors which are extracted and
-    baked as vertex colors in the output mesh. This avoids needing
-    separate texture files.
-    """
+def load_3mf(input_path: Path) -> trimesh.Scene:
+    """Load a 3MF file while preserving scene hierarchy and colors."""
     print(f"  Loading 3MF: {input_path.name}")
-    
-    # Load the 3MF file as a scene (preserves assembly structure)
+
     scene = trimesh.load(str(input_path), file_type='3mf', force='scene')
-    
+
     print(f"  Found {len(scene.geometry)} geometries in scene")
-    
-    # Collect all meshes while preserving colors from per-geometry visual data
-    meshes_with_colors = []
-    
+
+    # Keep geometry/material assignments attached to each node.
     for geom_name, geom in scene.geometry.items():
         if isinstance(geom, trimesh.Trimesh):
-            # Try to extract vertex colors from the visual property
             try:
-                # Check if geometry has vertex colors
                 if hasattr(geom.visual, 'vertex_colors'):
                     vertex_colors = geom.visual.vertex_colors
                     if vertex_colors is not None and len(vertex_colors) > 0:
-                        geom.visual.vertex_colors = vertex_colors
                         print(f"    {geom_name}: {len(geom.vertices)} vertices with colors")
                     else:
                         print(f"    {geom_name}: {len(geom.vertices)} vertices (no color data)")
                 elif hasattr(geom.visual, 'face_colors'):
                     face_colors = geom.visual.face_colors
                     if face_colors is not None and len(face_colors) > 0:
-                        # Convert face colors to vertex colors
-                        vertex_colors = np.zeros((len(geom.vertices), 4), dtype=np.uint8)
-                        # Average face colors at each vertex
-                        for face_idx, face in enumerate(geom.faces):
-                            color = face_colors[face_idx]
-                            for vertex_idx in face:
-                                if np.all(vertex_colors[vertex_idx] == 0):
-                                    vertex_colors[vertex_idx] = color
-                        geom.visual.vertex_colors = vertex_colors
-                        print(f"    {geom_name}: {len(geom.vertices)} vertices (colors converted from faces)")
+                        print(f"    {geom_name}: {len(geom.vertices)} vertices with face colors")
                 else:
                     print(f"    {geom_name}: {len(geom.vertices)} vertices")
             except Exception as e:
                 print(f"    {geom_name}: {len(geom.vertices)} vertices (color extraction: {e})")
-            
-            meshes_with_colors.append(geom)
-    
-    if not meshes_with_colors:
-        print("  WARNING: No geometries found in 3MF file")
-        return None
-    
-    # Merge all meshes while preserving visual data
-    if len(meshes_with_colors) == 1:
-        return meshes_with_colors[0]
-    
-    # For multiple geometries, merge them while trying to preserve colors
-    print("  Merging multiple geometries...")
-    combined_mesh = trimesh.util.concatenate(meshes_with_colors)
-    
-    return combined_mesh
+
+    return scene
 
 
 def load_step(input_path: Path) -> trimesh.Trimesh:
@@ -254,7 +220,7 @@ def load_step(input_path: Path) -> trimesh.Trimesh:
 # =============================================================================
 
 def optimize_mesh(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
-    """Optimize mesh for web viewing."""
+    """Optimize a single mesh for web viewing."""
     print("  Optimizing...")
     mesh.merge_vertices()
     # Use update_faces with a mask to remove degenerate/duplicate faces
@@ -282,30 +248,51 @@ def optimize_mesh(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
     return mesh
 
 
-def export_with_draco(mesh: trimesh.Trimesh, output_path: Path) -> bool:
-    """Try to export glTF with Draco compression for smaller file sizes."""
-    try:
-        import draco3d
-        print("  Applying Draco compression...")
-        scene = trimesh.Scene(mesh)
-        # Export to glb with compression option
-        glb_data = scene.export(file_type='glb')
-        # Draco compression is applied by trimesh when support is available
-        with open(output_path, 'wb') as f:
-            f.write(glb_data)
-        return True
-    except ImportError:
-        print("  Note: Draco compression not available (install draco3d for smaller files)")
-        return False
+def optimize_model(model: Union[trimesh.Trimesh, trimesh.Scene]) -> Union[trimesh.Trimesh, trimesh.Scene]:
+    """Optimize either a single mesh or all meshes in a scene."""
+    if isinstance(model, trimesh.Scene):
+        optimized_scene = trimesh.Scene()
+        cache: dict[str, trimesh.Trimesh] = {}
+
+        for node_name in model.graph.nodes_geometry:
+            transform, geom_name = model.graph.get(node_name)
+            geom = model.geometry.get(geom_name)
+            if geom is None:
+                continue
+
+            if isinstance(geom, trimesh.Trimesh):
+                if geom_name not in cache:
+                    optimized = optimize_mesh(geom.copy())
+                    try:
+                        optimized.visual = geom.visual.copy()
+                    except Exception:
+                        pass
+                    cache[geom_name] = optimized
+                optimized_scene.add_geometry(
+                    cache[geom_name],
+                    geom_name=geom_name,
+                    node_name=node_name,
+                    transform=transform,
+                )
+            else:
+                optimized_scene.add_geometry(
+                    geom,
+                    geom_name=geom_name,
+                    node_name=node_name,
+                    transform=transform,
+                )
+
+        return optimized_scene
+
+    return optimize_mesh(model)
 
 
-
-def export_gltf(mesh: trimesh.Trimesh, output_path: Path) -> None:
-    """Export to GLTF with Draco compression and embedded binary."""
+def export_gltf(model: Union[trimesh.Trimesh, trimesh.Scene], output_path: Path) -> None:
+    """Export model to binary GLB while preserving scene structure."""
     print(f"  Exporting: {output_path.name}")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
-    scene = trimesh.Scene(mesh)
+    scene = model if isinstance(model, trimesh.Scene) else trimesh.Scene(model)
     
     # GLB format (binary GLTF) - more reliable, better for Draco
     glb_data = scene.export(file_type='glb')
@@ -355,18 +342,18 @@ def convert(input_file: str, output_file: str) -> bool:
     
     try:
         if ext == '.stl':
-            mesh = load_stl(input_path)
+            model = load_stl(input_path)
         elif ext == '.3mf':
-            mesh = load_3mf(input_path)
+            model = load_3mf(input_path)
         else:  # .step, .stp
-            mesh = load_step(input_path)
-        
-        if mesh is None:
+            model = load_step(input_path)
+
+        if model is None:
             print("ERROR: Failed to load mesh")
             return False
-        
-        mesh = optimize_mesh(mesh)
-        export_gltf(mesh, output_path)
+
+        model = optimize_model(model)
+        export_gltf(model, output_path)
         print(f"\n✓ Success!\n")
         return True
     except ImportError as e:

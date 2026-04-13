@@ -72,7 +72,11 @@ def simplify_scene(scene: trimesh.Scene, ratio: float) -> trimesh.Scene:
             if geom_name not in simplified_cache:
                 simplified = simplify_mesh(geom.copy(), ratio)
                 try:
-                    simplified.visual = geom.visual.copy()
+                    # Only copy visuals when vertex counts still align.
+                    original_vertices = len(geom.vertices)
+                    simplified_vertices = len(simplified.vertices)
+                    if original_vertices == simplified_vertices:
+                        simplified.visual = geom.visual.copy()
                 except Exception:
                     pass
                 simplified_cache[geom_name] = simplified

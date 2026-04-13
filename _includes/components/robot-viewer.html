@@ -71,7 +71,7 @@ Requires site.features.cad_viewer to be true
 (function() {
   const modelSrc = "{{ include.model_src | relative_url }}";
   const defaultQuality = "{{ include.default_quality | default: 'high' }}";
-  const storageKey = `model-viewer-quality-${modelSrc}`;
+  const storageKey = `model-viewer-quality-${modelSrc}-{{ site.time | date: '%s' }}`;
   
   // Auto-detect LOD variants from source path
   function getModelVariants(basePath) {
