@@ -182,9 +182,24 @@ Requires site.features.cad_viewer to be true
   localStorage.setItem(storageKey, loadedQuality);
 
   viewer.addEventListener('error', () => {
-    if (loadedQuality !== 'high' && qualityPaths.high) {
-      loadedQuality = 'high';
-      viewer.src = qualityPaths.high;
+    const fallbackOrder = ['low', 'medium', 'high'];
+    const currentIdx = fallbackOrder.indexOf(loadedQuality);
+
+    for (let i = 0; i < fallbackOrder.length; i += 1) {
+      const candidate = fallbackOrder[i];
+      if (candidate === loadedQuality) continue;
+      if (!qualityPaths[candidate]) continue;
+
+      loadedQuality = candidate;
+      viewer.src = qualityPaths[candidate];
+      localStorage.setItem(storageKey, loadedQuality);
+      updateQualityButton();
+      return;
+    }
+
+    if (currentIdx !== -1 && qualityPaths.low) {
+      loadedQuality = 'low';
+      viewer.src = qualityPaths.low;
       localStorage.setItem(storageKey, loadedQuality);
       updateQualityButton();
     }
