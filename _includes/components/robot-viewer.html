@@ -1,12 +1,22 @@
 {% comment %}
-Usage: {% include components/robot-viewer.html model_src="/assets/models/robot.glb" alt_text="Robot 3D Model" poster_image="/assets/images/robot-poster.jpg" %}
+Usage: {% include components/robot-viewer.html model_src="/assets/models/robot-high.glb" alt_text="Robot 3D Model" poster_image="/assets/images/robot-poster.jpg" %}
+
+Advanced options:
+  - model_src_medium: Path to medium quality model (defaults to auto-detection)
+  - model_src_low: Path to low quality model (defaults to auto-detection)
+  - default_quality: "high", "medium", or "low" (default: "medium")
+
+The component automatically detects LOD variants:
+  /path/model-high.glb, /path/model-medium.glb, /path/model-low.glb
+
 Requires site.features.cad_viewer to be true
 {% endcomment %}
 
 {% if site.features.cad_viewer %}
-<div class="robot-viewer-container">
+<div class="robot-viewer-container" id="cad-viewer-{{ include.model_src | slugify }}">
   <div class="relative bg-[var(--color-surface)] rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
     <model-viewer
+      id="model-viewer"
       src="{{ include.model_src | relative_url }}?v={{ site.time | date: '%s' }}"
       alt="{{ include.alt_text | default: '3D Model of the robot' }}"
       {% if include.poster_image %}poster="{{ include.poster_image | relative_url }}"{% endif %}
@@ -23,10 +33,11 @@ Requires site.features.cad_viewer to be true
       class="w-full h-full robot-model-viewer"
       loading="lazy"
     >
-      <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+      <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center gap-2">
         <button slot="ar-button" class="btn-primary text-sm" hidden>
           View in AR
         </button>
+        <button id="quality-toggle" class="btn-secondary text-xs hidden"></button>
       </div>
 
       <!-- Loading State -->
@@ -53,6 +64,103 @@ Requires site.features.cad_viewer to be true
   <p class="text-center text-[var(--color-text-muted)] mt-4">{{ include.description }}</p>
   {% endif %}
 </div>
+
+<script type="module">
+// LOD (Level of Detail) Model Viewer Enhancement
+// Intelligently loads model quality based on device & user preference
+(function() {
+  const modelSrc = "{{ include.model_src | relative_url }}";
+  const defaultQuality = "{{ include.default_quality | default: 'high' }}";
+  const storageKey = `model-viewer-quality-${modelSrc}`;
+  
+  // Auto-detect LOD variants from source path
+  function getModelVariants(basePath) {
+    // Remove cache busting and file extension
+    const cleanPath = basePath.split('?')[0];
+    const lastDot = cleanPath.lastIndexOf('.');
+    const baseName = cleanPath.substring(0, lastDot);
+    const extension = cleanPath.substring(lastDot);
+    
+    // Check if path already has quality suffix
+    if (baseName.endsWith('-high') || baseName.endsWith('-medium') || baseName.endsWith('-low')) {
+      // Remove quality suffix to find base
+      const match = baseName.match(/^(.*?)(-high|-medium|-low)$/);
+      if (match) {
+        const base = match[1];
+        return {
+          high: `${base}-high${extension}`,
+          medium: `${base}-medium${extension}`,
+          low: `${base}-low${extension}`,
+          base: base
+        };
+      }
+    }
+    
+    return {
+      high: `${baseName}-high${extension}`,
+      medium: `${baseName}-medium${extension}`,
+      low: `${baseName}-low${extension}`,
+      base: baseName
+    };
+  }
+  
+  // Determine optimal quality based on device
+  function getOptimalQuality() {
+    const stored = localStorage.getItem(storageKey);
+    if (stored) return stored;
+    
+    // Device detection: use medium for most devices, high for high-end
+    const memory = navigator.deviceMemory;
+    const cores = navigator.hardwareConcurrency;
+    
+    if (memory && memory >= 8 && cores && cores >= 4) {
+      return "high";
+    }
+    return defaultQuality || "medium";
+  }
+  
+  const variants = getModelVariants(modelSrc);
+  const currentQuality = getOptimalQuality();
+  const qualityPaths = {
+    high: `${variants.high}?v={{ site.time | date: '%s' }}`,
+    medium: `${variants.medium}?v={{ site.time | date: '%s' }}`,
+    low: `${variants.low}?v={{ site.time | date: '%s' }}`
+  };
+  
+  // Setup model viewer
+  const viewer = document.getElementById('model-viewer');
+  const qualityBtn = document.getElementById('quality-toggle');
+  
+  if (!viewer) return;
+  
+  // Load initial quality
+  let loadedQuality = currentQuality;
+  viewer.src = qualityPaths[loadedQuality];
+  localStorage.setItem(storageKey, loadedQuality);
+  
+  // Update quality button and toggle functionality
+  function updateQualityButton() {
+    const options = ['low', 'medium', 'high'];
+    const currentIdx = options.indexOf(loadedQuality);
+    const nextIdx = (currentIdx + 1) % options.length;
+    const nextQuality = options[nextIdx];
+    
+    // Show button only if alternatives exist
+    qualityBtn.textContent = `Load ${nextQuality.charAt(0).toUpperCase() + nextQuality.slice(1)}`;
+    qualityBtn.onclick = () => {
+      loadedQuality = nextQuality;
+      viewer.src = qualityPaths[nextQuality];
+      localStorage.setItem(storageKey, nextQuality);
+      updateQualityButton();
+      qualityBtn.classList.toggle('hidden');
+      setTimeout(() => qualityBtn.classList.toggle('hidden'), 2000);
+    };
+    qualityBtn.classList.remove('hidden');
+  }
+  
+  updateQualityButton();
+})();
+</script>
 
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
 {% else %}

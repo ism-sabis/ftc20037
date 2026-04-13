@@ -16,6 +16,16 @@ PyYAML>=6.0
 # Note: This is a large package (~100MB) with OpenCASCADE bindings
 cadquery-ocp>=7.8.0
 
+# Optional: Mesh simplification for LOD generation
+# Without this, LOD tiers will be generated at same size
+# Install with: pip install fast_simplification
+fast_simplification>=0.3.6
+
+# Optional: Draco compression for smaller glTF/GLB files (50-70% reduction)
+# Note: draco3d package may not be available on all Python versions
+# draco3d>=1.5.0
+# As alternative, try: conda install -c conda-forge draco
+
 # Optional: Additional mesh format support
 # pygltflib>=1.16.0  # For advanced GLTF manipulation
 # fast-simplification>=0.1.8  # Improves trimesh decimation quality/performance

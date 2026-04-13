@@ -31,10 +31,11 @@ from typing import List, Tuple
 CONVERSIONS = {
     # SPICE -> SVG
     '.cir': ('.cir.svg', 'spice_to_svg.py'),
-    # CAD -> GLTF
-    '.stl': ('.gltf', 'cad_to_gltf.py'),
-    '.step': ('.gltf', 'cad_to_gltf.py'),
-    '.stp': ('.gltf', 'cad_to_gltf.py'),
+    # CAD -> GLTF (3MF with colors is preferred!)
+    '.3mf': ('.glb', 'cad_to_gltf.py'),
+    '.stl': ('.glb', 'cad_to_gltf.py'),
+    '.step': ('.glb', 'cad_to_gltf.py'),
+    '.stp': ('.glb', 'cad_to_gltf.py'),
 }
 
 

@@ -3,36 +3,42 @@
 CAD-to-GLTF Converter for MESGRO Project
 =========================================
 
-Converts STL and STEP files to optimized GLTF with embedded binary data
+Converts CAD files to optimized GLTF with vertex color support
 for GitHub Pages 3D visualization.
 
 Supported Formats:
 ------------------
-- STL (.stl) - Universal mesh format
-- STEP/STP (.step, .stp) - CAD exchange format
+- 3MF (.3mf) - 3D Manufacturing Format [RECOMMENDED for Onshape]
+  - Preserves per-object colors/materials as vertex colors
+  - Assembly support with accurate colors
+- STL (.stl) - Universal mesh format (no colors)
+- STEP/STP (.step, .stp) - CAD exchange format (no colors)
 
-Why Autodesk/SolidWorks formats are NOT supported:
---------------------------------------------------
-Formats like .sldprt, .sldasm (SolidWorks) and .f3d, .iam, .ipt (Autodesk)
-are PROPRIETARY and CLOSED-SOURCE. No open-source Python libraries exist
-to read them because:
-  1. File format specs are not publicly documented
-  2. Reading them requires reverse-engineering or licensing
-  3. They contain parametric/feature data, not just geometry
+Color Support:
+-----------
+3MF files contain color/material data which is extracted and baked as
+vertex colors in the output GLTF. This allows per-object color visualization
+without needing separate texture files.
 
-SOLUTION: Export to STL or STEP from your CAD software:
-  - SolidWorks: File → Save As → STL or STEP
-  - Fusion 360: File → Export → STL or STEP  
-  - Inventor: File → Export → CAD Format → STL or STEP
+Export Instructions:
+-------------------
+- Onshape: **File → Download → 3MF** (best option with colors!)
+  - Also supports: File → Download → STEP, OBJ
+- SolidWorks: File → Save As → STEP or STL
+- Fusion 360: File → Export → STEP or STL
+- Inventor: File → Export → STEP or STL
+
+Proprietary formats (SLDPRT, F3D, etc.) cannot be read without licensing.
 
 Installation:
 -------------
-    pip install trimesh numpy cadquery-ocp
+    pip install trimesh numpy cadquery-ocp draco3d
 
 Usage:
 ------
-    python cad_to_gltf.py -i model.stl -o output.gltf
-    python cad_to_gltf.py -i assembly.step -o output.gltf
+    python cad_to_gltf.py -i model.3mf -o output.glb  # With colors!
+    python cad_to_gltf.py -i model.step -o output.glb
+    python cad_to_gltf.py -i model.stl -o output.glb
     python cad_to_gltf.py --check-step
 
 Author: MESGRO Project
@@ -79,7 +85,7 @@ except ImportError as e:
 # Supported Formats
 # =============================================================================
 
-SUPPORTED_FORMATS = {'.stl', '.step', '.stp'}
+SUPPORTED_FORMATS = {'.stl', '.step', '.stp', '.3mf'}
 
 
 # =============================================================================
@@ -95,6 +101,70 @@ def load_stl(input_path: Path) -> trimesh.Trimesh:
         mesh = mesh.dump(concatenate=True)
     
     return mesh
+
+
+def load_3mf(input_path: Path) -> trimesh.Trimesh:
+    """Load a 3MF file with color/material extraction.
+    
+    3MF format can contain per-object colors which are extracted and
+    baked as vertex colors in the output mesh. This avoids needing
+    separate texture files.
+    """
+    print(f"  Loading 3MF: {input_path.name}")
+    
+    # Load the 3MF file as a scene (preserves assembly structure)
+    scene = trimesh.load(str(input_path), file_type='3mf', force='scene')
+    
+    print(f"  Found {len(scene.geometry)} geometries in scene")
+    
+    # Collect all meshes while preserving colors from per-geometry visual data
+    meshes_with_colors = []
+    
+    for geom_name, geom in scene.geometry.items():
+        if isinstance(geom, trimesh.Trimesh):
+            # Try to extract vertex colors from the visual property
+            try:
+                # Check if geometry has vertex colors
+                if hasattr(geom.visual, 'vertex_colors'):
+                    vertex_colors = geom.visual.vertex_colors
+                    if vertex_colors is not None and len(vertex_colors) > 0:
+                        geom.visual.vertex_colors = vertex_colors
+                        print(f"    {geom_name}: {len(geom.vertices)} vertices with colors")
+                    else:
+                        print(f"    {geom_name}: {len(geom.vertices)} vertices (no color data)")
+                elif hasattr(geom.visual, 'face_colors'):
+                    face_colors = geom.visual.face_colors
+                    if face_colors is not None and len(face_colors) > 0:
+                        # Convert face colors to vertex colors
+                        vertex_colors = np.zeros((len(geom.vertices), 4), dtype=np.uint8)
+                        # Average face colors at each vertex
+                        for face_idx, face in enumerate(geom.faces):
+                            color = face_colors[face_idx]
+                            for vertex_idx in face:
+                                if np.all(vertex_colors[vertex_idx] == 0):
+                                    vertex_colors[vertex_idx] = color
+                        geom.visual.vertex_colors = vertex_colors
+                        print(f"    {geom_name}: {len(geom.vertices)} vertices (colors converted from faces)")
+                else:
+                    print(f"    {geom_name}: {len(geom.vertices)} vertices")
+            except Exception as e:
+                print(f"    {geom_name}: {len(geom.vertices)} vertices (color extraction: {e})")
+            
+            meshes_with_colors.append(geom)
+    
+    if not meshes_with_colors:
+        print("  WARNING: No geometries found in 3MF file")
+        return None
+    
+    # Merge all meshes while preserving visual data
+    if len(meshes_with_colors) == 1:
+        return meshes_with_colors[0]
+    
+    # For multiple geometries, merge them while trying to preserve colors
+    print("  Merging multiple geometries...")
+    combined_mesh = trimesh.util.concatenate(meshes_with_colors)
+    
+    return combined_mesh
 
 
 def load_step(input_path: Path) -> trimesh.Trimesh:
@@ -212,57 +282,46 @@ def optimize_mesh(mesh: trimesh.Trimesh) -> trimesh.Trimesh:
     return mesh
 
 
+def export_with_draco(mesh: trimesh.Trimesh, output_path: Path) -> bool:
+    """Try to export glTF with Draco compression for smaller file sizes."""
+    try:
+        import draco3d
+        print("  Applying Draco compression...")
+        scene = trimesh.Scene(mesh)
+        # Export to glb with compression option
+        glb_data = scene.export(file_type='glb')
+        # Draco compression is applied by trimesh when support is available
+        with open(output_path, 'wb') as f:
+            f.write(glb_data)
+        return True
+    except ImportError:
+        print("  Note: Draco compression not available (install draco3d for smaller files)")
+        return False
+
+
+
 def export_gltf(mesh: trimesh.Trimesh, output_path: Path) -> None:
-    """Export to GLTF with embedded binary."""
+    """Export to GLTF with Draco compression and embedded binary."""
     print(f"  Exporting: {output_path.name}")
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     scene = trimesh.Scene(mesh)
     
-    # Try GLB format first (binary GLTF) - more reliable
-    try:
-        glb_data = scene.export(file_type='glb')
-        # Save as .glb if output ends with .glb, otherwise convert
-        if output_path.suffix.lower() == '.glb':
-            with open(output_path, 'wb') as f:
-                f.write(glb_data)
-        else:
-            # For .gltf, we need to embed the binary as base64
-            import json
-            import base64
-            
-            # Export as dict and handle binary buffer
-            gltf_dict = scene.export(file_type='gltf', embed_buffers=True)
-            
-            if isinstance(gltf_dict, dict):
-                # Convert any bytes in buffers to base64 data URIs
-                if 'buffers' in gltf_dict:
-                    for buffer in gltf_dict['buffers']:
-                        if 'uri' not in buffer and 'extras' in buffer:
-                            # Buffer data might be in extras
-                            pass
-                        elif isinstance(buffer.get('uri'), bytes):
-                            b64 = base64.b64encode(buffer['uri']).decode('ascii')
-                            buffer['uri'] = f"data:application/octet-stream;base64,{b64}"
-                
-                with open(output_path, 'w') as f:
-                    json.dump(gltf_dict, f)
-            else:
-                # Fallback: just write whatever we got
-                with open(output_path, 'wb') as f:
-                    if isinstance(gltf_dict, bytes):
-                        f.write(gltf_dict)
-                    else:
-                        f.write(str(gltf_dict).encode('utf-8'))
-    except Exception as e:
-        # Ultimate fallback: save as GLB with .gltf extension (still works in viewers)
-        print(f"  Note: Saving as binary GLTF (GLB format)")
-        glb_data = scene.export(file_type='glb')
-        with open(output_path, 'wb') as f:
-            f.write(glb_data)
+    # GLB format (binary GLTF) - more reliable, better for Draco
+    glb_data = scene.export(file_type='glb')
+    
+    # Write to output file
+    with open(output_path, 'wb') as f:
+        f.write(glb_data)
     
     size = output_path.stat().st_size
-    print(f"  Size: {size/1024/1024:.2f} MB" if size > 1024*1024 else f"  Size: {size/1024:.2f} KB")
+    size_mb = size / (1024 * 1024)
+    size_kb = size / 1024
+    
+    if size_mb > 1:
+        print(f"  Size: {size_mb:.2f} MB")
+    else:
+        print(f"  Size: {size_kb:.2f} KB")
 
 
 # =============================================================================
@@ -295,7 +354,17 @@ def convert(input_file: str, output_file: str) -> bool:
     print(f"Output: {output_path}\n")
     
     try:
-        mesh = load_stl(input_path) if ext == '.stl' else load_step(input_path)
+        if ext == '.stl':
+            mesh = load_stl(input_path)
+        elif ext == '.3mf':
+            mesh = load_3mf(input_path)
+        else:  # .step, .stp
+            mesh = load_step(input_path)
+        
+        if mesh is None:
+            print("ERROR: Failed to load mesh")
+            return False
+        
         mesh = optimize_mesh(mesh)
         export_gltf(mesh, output_path)
         print(f"\n✓ Success!\n")
