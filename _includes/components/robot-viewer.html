@@ -13,7 +13,7 @@ Requires site.features.cad_viewer to be true
 {% endcomment %}
 
 {% if site.features.cad_viewer %}
-<div class="robot-viewer-container" id="cad-viewer-{{ include.model_src | slugify }}">
+<div class="robot-viewer-container" id="cad-viewer-{{ include.model_src | slugify }}-{{ page.url | slugify }}">
   <div class="relative bg-[var(--color-surface)] rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
     <model-viewer
       id="model-viewer"
@@ -40,7 +40,7 @@ Requires site.features.cad_viewer to be true
       </div>
 
       <!-- Loading State -->
-      <div slot="poster" class="absolute inset-0 flex items-center justify-center bg-[var(--color-surface)]">
+      <div id="viewer-poster" slot="poster" class="absolute inset-0 hidden items-center justify-center bg-[var(--color-surface)]">
         <div class="text-center">
           <div class="animate-spin rounded-full h-12 w-12 border-4 border-primary border-t-transparent mx-auto mb-4"></div>
           <p class="text-[var(--color-text-muted)]">Loading 3D model...</p>
@@ -48,7 +48,7 @@ Requires site.features.cad_viewer to be true
       </div>
 
       <!-- Progress Bar -->
-      <div slot="progress-bar" class="absolute bottom-0 left-0 right-0 h-1 bg-[var(--color-border)]">
+      <div id="viewer-progress" slot="progress-bar" class="absolute bottom-0 left-0 right-0 h-1 bg-[var(--color-border)] hidden">
         <div class="h-full bg-primary transition-all" style="width: 0%"></div>
       </div>
     </model-viewer>
@@ -79,7 +79,7 @@ Requires site.features.cad_viewer to be true
 // LOD (Level of Detail) Model Viewer Enhancement
 // Intelligently loads model quality based on device & user preference
 (function() {
-  const containerId = "cad-viewer-{{ include.model_src | slugify }}";
+  const containerId = "cad-viewer-{{ include.model_src | slugify }}-{{ page.url | slugify }}";
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -87,7 +87,7 @@ Requires site.features.cad_viewer to be true
   const explicitMediumSrc = "{% if include.model_src_medium %}{{ include.model_src_medium | relative_url }}{% endif %}";
   const explicitLowSrc = "{% if include.model_src_low %}{{ include.model_src_low | relative_url }}{% endif %}";
   const defaultQuality = "{{ include.default_quality | default: 'high' }}";
-  const storageKey = `model-viewer-quality-${modelSrc}-{{ site.time | date: '%s' }}`;
+  const storageKey = `model-viewer-quality-${modelSrc}-{{ page.url | slugify }}-{{ site.time | date: '%s' }}`;
   const autoRotateOffKey = `model-viewer-auto-rotate-off-${modelSrc}`;
   const cacheVersion = "{{ site.time | date: '%s' }}";
 
@@ -161,8 +161,13 @@ Requires site.features.cad_viewer to be true
   const qualityBtn = container.querySelector('#quality-toggle');
   const clickToLoadOverlay = container.querySelector('#click-to-load');
   const clickToLoadButton = container.querySelector('#click-to-load-button');
+  const posterSlot = container.querySelector('#viewer-poster');
+  const progressSlot = container.querySelector('#viewer-progress');
   
   if (!viewer) return;
+
+  // Ensure the element never restores a previous src before user consent.
+  viewer.removeAttribute('src');
 
   // Spin only until the first manual interaction, then keep spin disabled.
   const autoRotateWasDisabled = localStorage.getItem(autoRotateOffKey) === '1';
@@ -194,6 +199,11 @@ Requires site.features.cad_viewer to be true
   function loadModel() {
     if (modelLoaded) return;
     modelLoaded = true;
+    if (posterSlot) {
+      posterSlot.classList.remove('hidden');
+      posterSlot.classList.add('flex');
+    }
+    progressSlot?.classList.remove('hidden');
     viewer.src = qualityPaths[loadedQuality] || qualityPaths.high;
     localStorage.setItem(storageKey, loadedQuality);
     clickToLoadOverlay?.classList.add('hidden');
