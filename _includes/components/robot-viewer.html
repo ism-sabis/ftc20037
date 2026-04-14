@@ -17,7 +17,6 @@ Requires site.features.cad_viewer to be true
   <div class="relative bg-[var(--color-surface)] rounded-xl overflow-hidden" style="aspect-ratio: 16/9;">
     <model-viewer
       id="model-viewer"
-      src="{{ include.model_src | relative_url }}?v={{ site.time | date: '%s' }}"
       alt="{{ include.alt_text | default: '3D Model of the robot' }}"
       {% if include.poster_image %}poster="{{ include.poster_image | relative_url }}"{% endif %}
       camera-controls
@@ -53,6 +52,17 @@ Requires site.features.cad_viewer to be true
         <div class="h-full bg-primary transition-all" style="width: 0%"></div>
       </div>
     </model-viewer>
+
+    <div id="click-to-load" class="absolute inset-0 flex items-center justify-center bg-[var(--color-surface)]/95 z-10">
+      <button
+        id="click-to-load-button"
+        type="button"
+        class="btn-primary"
+        aria-label="Load 3D model"
+      >
+        Load 3D Model
+      </button>
+    </div>
 
     <!-- Controls Hint -->
     <div class="absolute top-4 right-4 text-xs text-[var(--color-text-muted)] bg-[var(--color-background)]/80 px-2 py-1 rounded">
@@ -149,6 +159,8 @@ Requires site.features.cad_viewer to be true
   // Setup model viewer
   const viewer = container.querySelector('#model-viewer');
   const qualityBtn = container.querySelector('#quality-toggle');
+  const clickToLoadOverlay = container.querySelector('#click-to-load');
+  const clickToLoadButton = container.querySelector('#click-to-load-button');
   
   if (!viewer) return;
 
@@ -172,16 +184,26 @@ Requires site.features.cad_viewer to be true
   viewer.addEventListener('touchstart', disableAutoRotatePermanently, { once: true });
   viewer.addEventListener('wheel', disableAutoRotatePermanently, { once: true });
   
-  // Load initial quality
+  // Resolve initial quality, but defer loading until user explicitly clicks.
   let loadedQuality = availableQualities.includes(currentQuality) ? currentQuality : 'high';
   if (!availableQualities.includes(loadedQuality)) {
     loadedQuality = availableQualities[availableQualities.length - 1] || 'high';
   }
+  let modelLoaded = false;
 
-  viewer.src = qualityPaths[loadedQuality] || qualityPaths.high;
-  localStorage.setItem(storageKey, loadedQuality);
+  function loadModel() {
+    if (modelLoaded) return;
+    modelLoaded = true;
+    viewer.src = qualityPaths[loadedQuality] || qualityPaths.high;
+    localStorage.setItem(storageKey, loadedQuality);
+    clickToLoadOverlay?.classList.add('hidden');
+    updateQualityButton();
+  }
+
+  clickToLoadButton?.addEventListener('click', loadModel);
 
   viewer.addEventListener('error', () => {
+    if (!modelLoaded) return;
     const fallbackOrder = ['low', 'medium', 'high'];
     const currentIdx = fallbackOrder.indexOf(loadedQuality);
 
@@ -230,7 +252,7 @@ Requires site.features.cad_viewer to be true
     qualityBtn.classList.remove('hidden');
   }
   
-  updateQualityButton();
+  qualityBtn.classList.add('hidden');
 })();
 </script>
 
