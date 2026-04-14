@@ -41,3 +41,17 @@ assets/models/**/*.mtl
 assets/models/**/*.png
 assets/models/**/*.jpg
 assets/models/**/*.jpeg
+
+# Manually blocked oversized 3D outputs (>100MB)
+assets/models/2024-2025/Assembly 1 - Into the Deep-fullobj-draco.glb
+assets/models/2024-2025/Assembly 1 - Into the Deep-fullobj-draco11.glb
+assets/models/2024-2025/Assembly 1 - Into the Deep-fullobj-draco12.glb
+assets/models/2024-2025/Assembly 1 - Into the Deep-fullobj-si010.glb
+assets/models/2024-2025/Assembly 1 - Into the Deep-fullobj.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-high.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-draco10.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-draco3444.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-draco5666.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-draco6.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-draco7.glb
+assets/models/2025-2026/Assembly 1 - Decode-fullobj-draco8.glb
