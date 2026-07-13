@@ -23,13 +23,17 @@ This website is operated by **Team Standard Deviation**, a FIRST Tech Challenge 
 ## Intellectual Property
 
 ### Team Content
-All original content on this website — including text, photography, CAD models, robot designs, and code — is the intellectual property of Team Standard Deviation unless otherwise noted. You may:
+Team Standard Deviation believes in open-source robotics and knowledge sharing. Unless otherwise noted, original content on this website — including text, photography, CAD models, robot designs, code, and documentation — is shared under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) or similar open license. You may:
 - View and browse the website for personal, educational purposes
-- Share links to our pages on social media or other platforms with attribution
+- Share links to our pages on social media or other platforms
+- Reproduce, distribute, or adapt our content (including robot designs, CAD models, and code) for educational or non-commercial purposes
+- Use our content as inspiration for your own projects
+
+**Requirement:** You must provide **appropriate credit** to Team Standard Deviation (FTC #20037) when using or adapting our content. Include a link back to [ism-sabis.github.io/ftc20037](https://ism-sabis.github.io/ftc20037/) when feasible.
 
 You may **not**:
-- Reproduce, distribute, or republish content without explicit permission from team leadership
-- Use our images, robot designs, or branding for commercial purposes
+- Use our images, robot designs, or branding for commercial purposes without explicit permission
+- Misrepresent your affiliation with Team Standard Deviation or claim ownership of our original work
 - Remove copyright notices or attributions from any materials you access
 
 ### FIRST® Intellectual Property
