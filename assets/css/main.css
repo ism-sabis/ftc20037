@@ -2,42 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Custom Properties for Theme - Official FTC Colors */
+/* CSS Custom Properties for Theme - Team Jersey Red */
 :root {
-  /* FTC Color Palette */
-  --color-primary: #003974;    /* Deep Blue */
-  --color-primary-highlight: #002855;
-  --color-secondary: #F57E25;  /* FIRST Orange */
+  /* Primary Red Palette (from team jerseys) */
+  --color-primary: #DC2626;    /* Vibrant red from jerseys */
+  --color-primary-highlight: #B91C1C;
+  --color-secondary: #F57E25;  /* FIRST Orange (accent) */
   --color-secondary-highlight: #d96a1f;
   --color-success: #28a745;    /* Success green */
-  --color-info: #17a2b8;       /* Info teal */
-  --color-warning: #f0b37e;    /* Warning */
-  --color-danger: #dc3545;     /* Danger red */
+  --color-info: #0ea5e9;       /* Sky blue accent */
+  --color-warning: #f59e0b;    /* Warning amber */
+  --color-danger: #DC2626;     /* Danger red (same as primary) */
 
   /* Light mode surfaces */
   --color-background: #ffffff;
-  --color-surface: #f8f9fa;    /* Light gray surface */
-  --color-text: #212529;       /* Dark text */
-  --color-text-muted: #6c757d; /* Muted gray */
-  --color-border: #dee2e6;     /* Light border */
-  --color-link: #003974;       /* Blue link */
-  --color-link-hover: #002855;
+  --color-surface: #fafafa;    /* Warm white surface */
+  --color-text: #111827;       /* Near-black text */
+  --color-text-muted: #6B7280; /* Gray muted */
+  --color-border: #e5e7eb;     /* Light border */
+  --color-link: #DC2626;       /* Red link */
+  --color-link-hover: #B91C1C;
 }
 
 .dark {
-  --color-background: #1a1a1a; /* Dark bg */
-  --color-surface: #2d2d2d;    /* Dark surface */
-  --color-text: #c1c1c1;       /* Light gray text */
-  --color-text-muted: #8a8a8a; /* Muted text */
-  --color-border: #404040;     /* Dark border */
-  --color-link: #249ee8;       /* Bright blue link */
-  --color-link-hover: #5cb8f0;
+  --color-background: #0a0a0a; /* Deep black bg */
+  --color-surface: #171717;    /* Dark surface */
+  --color-text: #f9fafb;       /* Near-white text */
+  --color-text-muted: #9CA3AF; /* Light gray muted */
+  --color-border: #262626;     /* Dark border */
+  --color-link: #EF4444;       /* Bright red link */
+  --color-link-hover: #F87171;
 }
 
 /* Base Layer */
 @layer base {
   html {
-    font-family: 'Lato', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -45,14 +45,14 @@
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: 'Lato', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     transition: background-color 0.2s ease, color 0.2s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Lato', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
     letter-spacing: -0.025em;
     line-height: 1.2;
@@ -238,12 +238,12 @@
     align-items: center;
     justify-content: center;
     padding: 0.625rem 1.25rem;
-    font-family: 'Lato', 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 0.9375rem;
     font-weight: 700;
     line-height: 1.5;
     border-radius: 0.375rem;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
     text-decoration: none;
     border: none;
@@ -382,14 +382,16 @@
 
   .nav-link.active {
     color: var(--color-primary);
-    background-color: rgba(37, 99, 235, 0.1);
+    background-color: rgba(220, 38, 38, 0.1);
+    border-bottom: 2px solid var(--color-primary);
   }
 
   .dark .nav-link.active {
-    background-color: rgba(96, 165, 250, 0.1);
+    background-color: rgba(239, 68, 68, 0.15);
+    border-bottom: 2px solid var(--color-primary);
   }
 
-  /* Badges - FTC Colors */
+  /* Badges - Red Theme */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -400,13 +402,13 @@
   }
 
   .badge-primary {
-    background-color: rgba(0, 123, 255, 0.15);
-    color: #0069d9;
+    background-color: rgba(220, 38, 38, 0.15);
+    color: #B91C1C;
   }
 
   .dark .badge-primary {
-    background-color: rgba(36, 158, 232, 0.2);
-    color: #249ee8;
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #F87171;
   }
 
   .badge-secondary {
@@ -430,23 +432,23 @@
   }
 
   .badge-info {
-    background-color: rgba(23, 162, 184, 0.15);
-    color: #148a9c;
+    background-color: rgba(14, 165, 233, 0.15);
+    color: #0369a1;
   }
 
   .dark .badge-info {
-    background-color: rgba(23, 162, 184, 0.2);
-    color: #17a2b8;
+    background-color: rgba(14, 165, 233, 0.2);
+    color: #38bdf8;
   }
 
   .badge-warning {
-    background-color: rgba(240, 179, 126, 0.2);
-    color: #a67a4a;
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #b45309;
   }
 
   .dark .badge-warning {
-    background-color: rgba(240, 179, 126, 0.25);
-    color: #f0b37e;
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
   }
 
   .badge-danger {
@@ -461,13 +463,25 @@
 
   /* Glass Effect */
   .glass {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .glass.shadow-md {
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   }
 
   .dark .glass {
-    background-color: rgba(15, 23, 42, 0.9);
+    background-color: rgba(10, 10, 10, 0.85);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .dark .glass.shadow-md {
+    background-color: rgba(10, 10, 10, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
   }
 
   /* Prose - Markdown Content */
@@ -595,19 +609,23 @@
   .input {
     width: 100%;
     padding: 0.625rem 1rem;
-    font-family: 'Inter', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 1rem;
     color: var(--color-text);
     background-color: var(--color-background);
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
   .input:focus {
     outline: none;
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+  }
+
+  .dark .input:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
   }
 
   /* Skip Link */
@@ -657,10 +675,10 @@
 
   /* Accessibility Mode - High contrast */
   .accessibility-mode {
-    --color-primary: #0056b3;
+    --color-primary: #B91C1C;
     --color-secondary: #d96a1f;
-    --color-link: #0056b3;
-    --color-link-hover: #003d7a;
+    --color-link: #B91C1C;
+    --color-link-hover: #991B1B;
     --color-text: #000000;
     --color-background: #ffffff;
   }
@@ -668,7 +686,8 @@
   .accessibility-mode.dark {
     --color-text: #ffffff;
     --color-background: #000000;
-    --color-link: #5cb8f0;
+    --color-link: #F87171;
+    --color-primary: #EF4444;
   }
 
   .accessibility-mode body {

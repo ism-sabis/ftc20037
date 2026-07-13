@@ -67,6 +67,12 @@ navigation:
   - id: contact
     title: Contact
     url: /contact/
+  - id: privacy
+    title: Privacy
+    url: /privacy/
+  - id: terms
+    title: Terms
+    url: /terms-of-use/
 
 # Social links
 socials:

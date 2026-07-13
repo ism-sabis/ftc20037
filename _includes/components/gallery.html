@@ -8,7 +8,7 @@ Expected images array: [{ src, alt, caption }]
     {% for image in include.images %}
     <a
       href="{{ image.src | relative_url }}"
-      class="gallery-item group relative aspect-square rounded-lg overflow-hidden cursor-pointer"
+      class="gallery-item group relative aspect-square rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
       data-caption="{{ image.caption | default: '' }}"
     >
       <img

@@ -1,0 +1,330 @@
+{% comment %}
+Gallery Admin Component - Dynamic tag editor for gallery images.
+Usage: {% include components/gallery-admin.html %}
+
+This component provides a mobile-friendly interface where users can:
+1. Browse all gallery images
+2. Click tags to add/remove them from each image
+3. Edit captions and descriptions inline
+4. Copy the updated YAML metadata to clipboard
+{% endcomment %}
+
+<div class="gallery-admin" id="gallery-admin">
+  <!-- Tag Filter Bar -->
+  <div class="admin-filters mb-6 flex flex-wrap gap-2 items-center justify-between">
+    <div class="flex flex-wrap gap-2" id="tag-filters">
+      <button type="button" class="btn btn-sm btn-outline admin-tag-filter active" data-filter="all">All</button>
+      {% for filter in site.data.gallery_tags.filters %}
+      <button type="button" class="btn btn-sm btn-outline admin-tag-filter" data-filter="{{ filter.value }}">{{ filter.label }}</button>
+      {% endfor %}
+    </div>
+    <button type="button" id="copy-yaml-btn" class="btn btn-primary btn-sm">Copy YAML</button>
+  </div>
+
+  <!-- Image Grid -->
+  <div class="admin-image-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="admin-image-grid">
+    {% assign gallery_images = site.static_files | sort: "name" %}
+    {% for image in gallery_images %}
+      {% if image.path contains '/assets/images/gallery/uploads/' and image.name != '.gitkeep' %}
+        {% assign image_base = image.name | split: '.' | first %}
+        {% assign file_type = image.extname | downcase | remove: '.' %}
+        
+        {% skipif %}{% endif %}{% comment %} Skip DNG files if preview exists {% endcomment %}{% skipif %}
+        {% if file_type == 'dng' %}
+          {% for candidate in gallery_images %}
+            {% assign candidate_base = candidate.name | split: '.' | first %}
+            {% assign candidate_ext = candidate.extname | downcase | remove: '.' %}
+            {% if candidate.path contains '/assets/images/gallery/uploads/' and candidate.path != image.path and candidate_base == image_base and candidate_ext != 'dng' and candidate_ext != 'gitkeep' %}
+              {% skipif %}{% endif %}{% comment %} Skip this DNG {% endcomment %}{% skipif %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+
+        {% assign meta = site.data.gallery.items | where: "src", image.path | first %}
+        
+        <div class="admin-image-card rounded-lg overflow-hidden bg-[var(--color-surface)] border border-[var(--color-border)]" data-tags="{{ meta.tags | join: ',' }}" data-src="{{ image.path }}">
+          <!-- Image Preview -->
+          <div class="relative aspect-square bg-[var(--color-background)]">
+            {% assign preview_src = image.path %}
+            {% if file_type == 'dng' %}
+              {% for candidate in gallery_images %}
+                {% assign candidate_base = candidate.name | split: '.' | first %}
+                {% assign candidate_ext = candidate.extname | downcase | remove: '.' %}
+                {% if candidate.path != image.path and candidate_base == image_base and candidate_ext != 'dng' and candidate_ext != 'gitkeep' %}
+                  {% assign preview_src = candidate.path %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            
+            <img src="{{ preview_src | relative_url }}" alt="Gallery image" class="w-full h-full object-cover">
+          </div>
+
+          <!-- Editable Fields -->
+          <div class="p-4 space-y-3">
+            <!-- Caption Input -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)] mb-1">Caption</label>
+              <input type="text" 
+                     class="admin-input w-full px-3 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+                     data-field="caption"
+                     data-src="{{ image.path }}"
+                     value="{{ meta.caption | default: '' }}">
+            </div>
+
+            <!-- Description Input -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)] mb-1">Description</label>
+              <textarea class="admin-input w-full px-3 py-2 rounded-md border border-[var(--color-border)] bg-[var(--color-background)] text-[var(--color-text)] text-sm focus:outline-none focus:ring-2 focus:ring-primary resize-vertical" 
+                        rows="2"
+                        data-field="description"
+                        data-src="{{ image.path }}"
+                        placeholder="Optional description...">{{ meta.description | default: '' }}</textarea>
+            </div>
+
+            <!-- Clickable Tags -->
+            <div>
+              <label class="block text-xs font-semibold uppercase tracking-wide text-[var(--color-text-muted)] mb-2">Tags</label>
+              <div class="flex flex-wrap gap-1.5" id="tags-{{ image_base }}">
+                {% for filter in site.data.gallery_tags.filters %}
+                  {% assign is_selected = false %}
+                  {% if meta.tags contains filter.value %}
+                    {% assign is_selected = true %}
+                  {% endif %}
+                  <button type="button" 
+                          class="admin-tag-btn px-2.5 py-1 rounded-full text-xs font-medium transition-all {{ is_selected | then: 'bg-primary text-white' | else: 'bg-[var(--color-background)] text-[var(--color-text-muted)] border border-[var(--color-border)] hover:border-primary' }}"
+                          data-tag="{{ filter.value }}"
+                          data-src="{{ image.path }}">
+                    {{ filter.label }}
+                  </button>
+                {% endfor %}
+              </div>
+            </div>
+
+            <!-- Source Info -->
+            <div class="text-xs text-[var(--color-text-muted)] pt-2 border-t border-[var(--color-border)]">
+              <span class="font-mono">{{ image.name }}</span>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <!-- YAML Output Modal -->
+  <div id="yaml-modal" class="fixed inset-0 z-50 hidden bg-black/80 items-center justify-center p-4">
+    <div class="bg-[var(--color-surface)] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-auto p-6">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold">Updated Gallery Metadata</h3>
+        <button type="button" id="close-yaml-modal" class="p-2 hover:bg-[var(--color-background)] rounded-lg">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </button>
+      </div>
+      
+      <p class="text-sm text-[var(--color-text-muted)] mb-4">Copy this YAML and replace the contents of <code class="px-1.5 py-0.5 bg-[var(--color-background)] rounded">_data/gallery.yml</code>:</p>
+      
+      <pre class="bg-[var(--color-background)] p-4 rounded-lg overflow-x-auto text-sm"><code id="yaml-output"></code></pre>
+      
+      <div class="mt-4 flex gap-3">
+        <button type="button" id="copy-yaml-modal-btn" class="btn btn-primary flex-1">Copy to Clipboard</button>
+        <button type="button" id="close-yaml-modal-btn" class="btn btn-secondary flex-1">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-4 right-4 z-50 hidden bg-primary text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300">
+    <span id="toast-message"></span>
+  </div>
+</div>
+
+<script>
+(function() {
+  // Gallery Admin JavaScript
+  const adminGrid = document.getElementById('admin-image-grid');
+  if (!adminGrid) return;
+
+  // Tag filter buttons
+  const tagFilters = document.querySelectorAll('.admin-tag-filter');
+  const imageCards = document.querySelectorAll('.admin-image-card');
+
+  tagFilters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.dataset.filter;
+      
+      // Update active state
+      tagFilters.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filter images
+      imageCards.forEach(card => {
+        if (filter === 'all') {
+          card.style.display = '';
+        } else {
+          const tags = card.dataset.tags || '';
+          card.style.display = tags.includes(filter) ? '' : 'none';
+        }
+      });
+    });
+  });
+
+  // Tag toggle buttons
+  document.querySelectorAll('.admin-tag-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const tag = btn.dataset.tag;
+      const src = btn.dataset.src;
+      
+      // Toggle selected state
+      const isSelected = btn.classList.contains('bg-primary');
+      if (isSelected) {
+        btn.classList.remove('bg-primary', 'text-white');
+        btn.classList.add('bg-[var(--color-background)]', 'border', 'border-[var(--color-border)]', 'text-[var(--color-text-muted)]');
+      } else {
+        btn.classList.remove('bg-[var(--color-background)]', 'border', 'border-[var(--color-border)]', 'text-[var(--color-text-muted)]');
+        btn.classList.add('bg-primary', 'text-white');
+      }
+      
+      // Update card data attribute
+      const card = document.querySelector(`.admin-image-card[data-src="${src}"]`);
+      if (card) {
+        let currentTags = card.dataset.tags || '';
+        let tagsArray = currentTags ? currentTags.split(',') : [];
+        
+        if (isSelected) {
+          tagsArray = tagsArray.filter(t => t !== tag);
+        } else {
+          if (!tagsArray.includes(tag)) {
+            tagsArray.push(tag);
+          }
+        }
+        
+        card.dataset.tags = tagsArray.join(',');
+      }
+    });
+  });
+
+  // Generate YAML output
+  function generateYaml() {
+    const items = [];
+    
+    imageCards.forEach(card => {
+      const src = card.dataset.src;
+      const caption = card.querySelector(`input[data-field="caption"][data-src="${src}"]`)?.value || '';
+      const description = card.querySelector(`textarea[data-field="description"][data-src="${src}"]`)?.value || '';
+      const tags = (card.dataset.tags || '').split(',').filter(t => t);
+      
+      if (caption || description || tags.length > 0) {
+        items.push({
+          src: src,
+          caption: caption,
+          description: description,
+          tags: tags
+        });
+      }
+    });
+
+    let yaml = '# Gallery metadata file\n# Add/adjust tags and descriptions under each item.\n# Add new available filter tags in _data/gallery_tags.yml\n\nitems:\n';
+    
+    items.forEach(item => {
+      yaml += '- src: {{ item.src }}\n';
+      yaml += `  caption: "${item.caption.replace(/"/g, '\\"')}"\n`;
+      yaml += `  description: "${item.description.replace(/"/g, '\\"')}"\n`;
+      yaml += `  tags: [${item.tags.join(', ')}]\n`;
+    });
+
+    return yaml;
+  }
+
+  // Show YAML modal
+  const copyYamlBtn = document.getElementById('copy-yaml-btn');
+  const yamlModal = document.getElementById('yaml-modal');
+  const closeYamlModal = document.getElementById('close-yaml-modal');
+  const closeYamlModalBtn = document.getElementById('close-yaml-modal-btn');
+  const copyYamlModalBtn = document.getElementById('copy-yaml-modal-btn');
+  const yamlOutput = document.getElementById('yaml-output');
+
+  function showToast(message) {
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toast-message');
+    toastMessage.textContent = message;
+    toast.classList.remove('hidden');
+    
+    setTimeout(() => {
+      toast.classList.add('hidden');
+    }, 3000);
+  }
+
+  copyYamlBtn?.addEventListener('click', () => {
+    const yaml = generateYaml();
+    yamlOutput.textContent = yaml;
+    yamlModal.classList.remove('hidden');
+    yamlModal.classList.add('flex');
+  });
+
+  function closeModal() {
+    yamlModal.classList.add('hidden');
+    yamlModal.classList.remove('flex');
+  }
+
+  closeYamlModal?.addEventListener('click', closeModal);
+  closeYamlModalBtn?.addEventListener('click', closeModal);
+  
+  yamlModal?.addEventListener('click', (e) => {
+    if (e.target === yamlModal) closeModal();
+  });
+
+  copyYamlModalBtn?.addEventListener('click', () => {
+    const yaml = yamlOutput.textContent;
+    navigator.clipboard.writeText(yaml).then(() => {
+      showToast('YAML copied to clipboard!');
+      closeModal();
+    }).catch(() => {
+      // Fallback for older browsers
+      const textarea = document.createElement('textarea');
+      textarea.value = yaml;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      showToast('YAML copied to clipboard!');
+      closeModal();
+    });
+  });
+
+})();
+</script>
+
+<style>
+/* Gallery Admin Styles */
+.admin-tag-filter.active {
+  background-color: var(--color-primary) !important;
+  color: white !important;
+  border-color: var(--color-primary) !important;
+}
+
+.admin-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.1);
+}
+
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 640px) {
+  .admin-image-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .admin-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  #tag-filters {
+    justify-content: center;
+  }
+}
+</style>

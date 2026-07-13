@@ -23,6 +23,33 @@ if (accessibilityToggle) {
   });
 }
 
+// Sticky header shadow on scroll
+const header = document.querySelector('header');
+if (header) {
+  let lastScrollY = window.scrollY;
+  
+  const updateHeader = () => {
+    if (window.scrollY > 50) {
+      header.classList.add('shadow-md');
+    } else {
+      header.classList.remove('shadow-md');
+    }
+    lastScrollY = window.scrollY;
+  };
+
+  // Throttle scroll events for performance
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        updateHeader();
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
+
 // Mobile Menu
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
