@@ -49,21 +49,24 @@ navigation:
   - id: awards
     title: Awards
     url: /awards/
-  - id: sponsors
-    title: Sponsors
-    url: /sponsors/
-  - id: docs
-    title: Docs
-    url: /docs/
+  # Sponsors removed from frontend — re-enable by adding back below and setting show_sponsors: true in _data/site_visibility.yml
+  # - id: sponsors
+  #   title: Sponsors
+  #   url: /sponsors/
+  # Docs hidden — re-enable by setting show_docs: true in _data/site_visibility.yml
+  # - id: docs
+  #   title: Docs
+  #   url: /docs/
   - id: portfolio
     title: Portfolio
     url: /portfolio/
   - id: gallery
     title: Gallery
     url: /gallery/
-  - id: news
-    title: News
-    url: /news/
+  # News hidden — re-enable by setting show_news: true in _data/site_visibility.yml
+  # - id: news
+  #   title: News
+  #   url: /news/
   - id: contact
     title: Contact
     url: /contact/
