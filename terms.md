@@ -109,7 +109,8 @@ This website may contain links to external websites or services, including:
 - Social media platforms (Instagram, GitHub)
 - FIRST® official resources and competition materials
 - Sponsor websites
-- Google Fonts for typography
+- Google CDN for 3D model viewer functionality (`ajax.googleapis.com`)
+- AR (Augmented Reality) features on compatible devices
 
 We do not control these third-party sites and are not responsible for their content, privacy practices, or terms of use. Accessing linked sites is at your own risk.
 

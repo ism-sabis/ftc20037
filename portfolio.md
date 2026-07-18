@@ -21,14 +21,14 @@ Our engineering portfolio documents the full journey of Team Standard Deviation 
   <div class="text-center mt-4">
     <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf' | relative_url }}"
        download
-       class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3 inline-block">
-      ⬇️ Download Portfolio PDF
+       class="btn btn-secondary font-semibold px-6 py-3 inline-block">
+      Download Portfolio PDF
     </a>
     <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf' | relative_url }}"
        target="_blank"
        rel="noopener noreferrer"
-       class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-6 py-3 inline-block ml-3">
-      🔗 Open in New Tab
+       class="btn btn-primary font-semibold px-6 py-3 inline-block ml-3">
+      Open in New Tab
     </a>
   </div>
 </div>

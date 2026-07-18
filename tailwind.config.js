@@ -15,15 +15,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Official FTC Color Palette
+        // Team Jersey Red + FIRST Orange Accent
         primary: {
-          DEFAULT: '#003974', // FTC Blue
-          light: '#6cc2c9',
-          dark: '#0069d9',
-          highlight: '#0056b3',
+          DEFAULT: '#DC2626', // Vibrant red from jerseys
+          light: '#EF4444',
+          dark: '#B91C1C',
+          highlight: '#991B1B',
         },
         secondary: {
-          DEFAULT: '#F57E25', // FIRST Orange
+          DEFAULT: '#F57E25', // FIRST Orange (accent)
           light: '#f79b54',
           dark: '#d96a1f',
         },

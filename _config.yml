@@ -76,6 +76,9 @@ navigation:
   - id: terms
     title: Terms
     url: /terms-of-use/
+  - id: accessibility
+    title: Accessibility
+    url: /accessibility/
 
 # Social links
 socials:

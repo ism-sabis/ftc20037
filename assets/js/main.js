@@ -340,33 +340,42 @@ const highContrastToggle = document.getElementById('high-contrast-toggle');
 const reducedMotionToggle = document.getElementById('reduced-motion-toggle');
 const largeTextToggle = document.getElementById('large-text-toggle');
 
+function updateAriaChecked(toggle) {
+  if (toggle && toggle.hasAttribute('role', 'switch')) {
+    toggle.setAttribute('aria-checked', String(toggle.checked));
+  }
+}
+
 highContrastToggle?.addEventListener('change', () => {
   document.documentElement.classList.toggle('high-contrast', highContrastToggle.checked);
   localStorage.setItem('highContrast', highContrastToggle.checked);
+  updateAriaChecked(highContrastToggle);
 });
 
 reducedMotionToggle?.addEventListener('change', () => {
   document.documentElement.classList.toggle('reduced-motion', reducedMotionToggle.checked);
   localStorage.setItem('reducedMotion', reducedMotionToggle.checked);
+  updateAriaChecked(reducedMotionToggle);
 });
 
 largeTextToggle?.addEventListener('change', () => {
   document.documentElement.classList.toggle('large-text', largeTextToggle.checked);
   localStorage.setItem('largeText', largeTextToggle.checked);
+  updateAriaChecked(largeTextToggle);
 });
 
 // Restore accessibility preferences
 if (localStorage.getItem('highContrast') === 'true') {
   document.documentElement.classList.add('high-contrast');
-  if (highContrastToggle) highContrastToggle.checked = true;
+  if (highContrastToggle) { highContrastToggle.checked = true; updateAriaChecked(highContrastToggle); }
 }
 if (localStorage.getItem('reducedMotion') === 'true') {
   document.documentElement.classList.add('reduced-motion');
-  if (reducedMotionToggle) reducedMotionToggle.checked = true;
+  if (reducedMotionToggle) { reducedMotionToggle.checked = true; updateAriaChecked(reducedMotionToggle); }
 }
 if (localStorage.getItem('largeText') === 'true') {
   document.documentElement.classList.add('large-text');
-  if (largeTextToggle) largeTextToggle.checked = true;
+  if (largeTextToggle) { largeTextToggle.checked = true; updateAriaChecked(largeTextToggle); }
 }
 
 console.log('Robo-Folio initialized');

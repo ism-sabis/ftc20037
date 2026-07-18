@@ -28,10 +28,15 @@ This policy applies only to this website and does not cover third-party websites
 
 ### Information Stored Locally in Your Browser
 We use localStorage to store your preferences for:
-- **Dark mode preference** — remembers whether you prefer light or dark theme
-- **Accessibility mode preference** — remembers whether you've enabled accessibility enhancements
+- **Dark mode preference** — remembers whether you prefer light or dark theme (`darkMode`)
+- **Accessibility mode preference** — remembers whether you've enabled accessibility enhancements (`accessibilityMode`)
+- **High contrast preference** — stores whether high contrast is enabled (`highContrast`)
+- **Reduced motion preference** — stores whether animations should be disabled (`reducedMotion`)
+- **Large text preference** — stores font size scaling preference (`largeText`)
+- **3D viewer quality setting** — remembers your preferred model rendering quality (`modelQuality`: high/medium/low)
+- **3D viewer auto-rotate preference** — remembers whether 3D models should auto-rotate (`autoRotateOff`)
 
-These local storage items are strictly necessary for website functionality and do not transmit data to any external server.
+These local storage items are strictly necessary for website functionality and do not transmit data to any external server. You can clear these at any time by clearing your browser's site data.
 
 ### Information from Third Parties
 When you click on links to our social media accounts (Instagram, GitHub), those platforms may collect information according to their own privacy policies. We are not responsible for the data practices of these third-party sites.
@@ -49,13 +54,13 @@ We do **not** sell, rent, or share your personal information with third parties 
 
 ---
 
-## Google Fonts (Third-Party Service)
+## 3D Model Viewer (Third-Party Service)
 
-Our website uses Google Fonts to display custom typography. When you visit our site, your browser connects to Google's servers (fonts.googleapis.com and fonts.gstatic.com), which may transmit your IP address to Google in the United States or your country of residence.
+Our website includes an interactive 3D model viewer that loads JavaScript from Google's CDN (`ajax.googleapis.com`). When you access a page containing the 3D viewer, your browser may transmit your IP address to Google servers.
 
-Google Fonts is used solely for displaying text on our website and does not collect personal data beyond what is transmitted during a standard web request.
+This service is used solely for displaying our robot models in 3D and does not collect personal data beyond what is transmitted during a standard web request. The 3D viewer also supports AR (Augmented Reality) features on compatible devices, which may transmit additional data to device manufacturers (e.g., Samsung Scene Viewer, Apple Quick Look) when activated.
 
-**To opt out**: You can prevent Google Fonts from loading by using browser extensions that block third-party resources, or by configuring your browser settings. Alternatively, you may use the font fallback provided by your operating system.
+**To opt out**: You can disable JavaScript in your browser settings or use browser extensions that block third-party resources. The 3D viewer will not load without JavaScript enabled.
 
 For more information about Google's data practices, see [Google's Privacy Policy](https://policies.google.com/privacy).
 

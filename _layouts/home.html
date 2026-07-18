@@ -17,7 +17,7 @@ layout: default
     <div class="grid md:grid-cols-3 gap-8">
       <a href="{{ '/season/' | relative_url }}" class="card group">
         <div class="card-body text-center">
-          <div class="text-4xl mb-4">🤖</div>
+          <svg class="w-10 h-10 mx-auto mb-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
           <h3 class="card-title">Our Robot</h3>
           <p class="text-[var(--color-text-muted)]">See our robot design and capabilities</p>
         </div>
@@ -25,7 +25,7 @@ layout: default
 
       <a href="{{ '/season/' | relative_url }}#team" class="card group">
         <div class="card-body text-center">
-          <div class="text-4xl mb-4">👥</div>
+          <svg class="w-10 h-10 mx-auto mb-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
           <h3 class="card-title">The Team</h3>
           <p class="text-[var(--color-text-muted)]">Meet our talented team members</p>
         </div>
@@ -33,7 +33,7 @@ layout: default
 
       <a href="{{ '/season/' | relative_url }}#outreach" class="card group">
         <div class="card-body text-center">
-          <div class="text-4xl mb-4">🌍</div>
+          <svg class="w-10 h-10 mx-auto mb-4 text-[var(--color-primary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <h3 class="card-title">Outreach</h3>
           <p class="text-[var(--color-text-muted)]">Our community impact initiatives</p>
         </div>
@@ -57,7 +57,7 @@ layout: default
       {% for award in site.data.awards limit:4 %}
       <div class="card">
         <div class="card-body text-center">
-          <div class="text-3xl mb-2">🏆</div>
+          <svg class="w-8 h-8 mx-auto mb-2 text-[var(--color-secondary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
           <h4 class="font-bold">{{ award.name }}</h4>
           <p class="text-sm text-[var(--color-text-muted)]">{{ award.event }}</p>
           <span class="badge badge-primary mt-2">{{ award.season }}</span>
@@ -67,8 +67,8 @@ layout: default
     </div>
 
     <div class="text-center mt-8">
-      <a href="{{ '/awards/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all">
-        🏆 View All Awards
+      <a href="{{ '/awards/' | relative_url }}" class="btn btn-primary text-white font-bold text-lg px-8 py-4 rounded-lg shadow-lg hover:shadow-xl transition-all">
+        View All Awards
       </a>
     </div>
   </div>
@@ -95,17 +95,7 @@ layout: default
 </section>
 {% endif %}
 
-<!-- Sponsors Section -->
-<section class="section">
-  <div class="container">
-    <div class="card max-w-3xl mx-auto">
-      <div class="card-body text-center py-12">
-        <h2 class="mb-4">Our Sponsors</h2>
-        <p class="text-[var(--color-text-muted)]">Coming Soon - Check Back Later.</p>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- Sponsors Section — Hidden from frontend. Re-enable by setting show_sponsors: true in _data/site_visibility.yml and uncommenting nav entry in _config.yml -->
 
 <!-- Portfolio Section -->
 <section class="section bg-[var(--color-surface)]">
@@ -124,11 +114,11 @@ layout: default
           outreach initiatives, and team development.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="{{ '/portfolio/' | relative_url }}" class="btn bg-[#003974] text-white hover:bg-[#002855] font-semibold px-6 py-3">
-            📄 View Portfolio
+          <a href="{{ '/portfolio/' | relative_url }}" class="btn btn-primary font-semibold px-6 py-3">
+            View Portfolio
           </a>
-          <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
-            ⬇️ Download PDF
+          <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="btn btn-secondary font-semibold px-6 py-3">
+            Download PDF
           </a>
         </div>
       </div>
@@ -136,7 +126,7 @@ layout: default
 </section>
 
 <!-- Join Section -->
-<section class="section bg-gradient-to-r from-[#003974] to-[#002855] text-white">
+<section class="section bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-highlight)] text-white">
   <div class="container text-center">
     <h2 class="mb-4 text-white">Join Our Team</h2>
     <p class="max-w-2xl mx-auto mb-8 text-white/90">
@@ -144,10 +134,10 @@ layout: default
       We're always looking for passionate students to join our team.
     </p>
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="{{ '/about/' | relative_url }}#join" class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
+      <a href="{{ '/about/' | relative_url }}#join" class="btn btn-secondary font-semibold px-6 py-3">
         Learn More
       </a>
-      <a href="{{ '/contact/' | relative_url }}" class="btn bg-white text-[#003974] hover:bg-gray-100 font-semibold px-6 py-3">
+      <a href="{{ '/contact/' | relative_url }}" class="btn bg-white text-[var(--color-primary)] hover:bg-gray-100 font-semibold px-6 py-3">
         Contact Us
       </a>
     </div>

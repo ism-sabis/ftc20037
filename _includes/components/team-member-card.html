@@ -7,7 +7,7 @@ Expected member object: { name, role, grade, graduation_year, bio, image, skills
   <div class="relative w-full aspect-square overflow-hidden bg-[var(--color-surface)] leading-none">
     <img
       src="{{ include.member.image | default: '/assets/images/placeholder.svg' | relative_url }}"
-      alt="{{ include.member.name }}"
+      alt="{{ include.member.name }} — {{ include.member.role }}"
       class="absolute inset-0 block w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
       loading="lazy"
     >
