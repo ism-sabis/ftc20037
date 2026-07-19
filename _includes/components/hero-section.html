@@ -1,36 +1,74 @@
-<section class="relative overflow-hidden bg-gradient-to-br from-[#003974] via-[#002855] to-[#001a3d] text-white">
-  <div class="absolute inset-0 bg-black/5"></div>
-  <!-- Orange accent stripe -->
-  <div class="absolute bottom-0 left-0 right-0 h-2 bg-[#F57E25]"></div>
+<section class="relative min-h-[90vh] flex items-center overflow-hidden">
+  <!-- Background with geometric pattern -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950"></div>
+  
+  <!-- Orange accent line - top right corner -->
+  <div class="absolute top-0 right-0 w-[40%] h-1 bg-gradient-to-l from-[#F57E25] to-transparent"></div>
+  
+  <!-- Red accent line - bottom left corner -->
+  <div class="absolute bottom-0 left-0 w-[30%] h-1 bg-gradient-to-r from-red-600 to-transparent"></div>
 
-  <div class="relative container py-20 md:py-32">
-    <div class="max-w-3xl">
-      <div class="flex items-center gap-2 mb-4">
-        <span class="px-3 py-1 rounded-full bg-white/20 text-white text-sm font-medium">{{ site.site.program }} Team #{{ site.site.team_number }}</span>
-        <span class="px-3 py-1 rounded-full bg-[#F57E25] text-white text-sm font-semibold">{{ site.site.current_season }}</span>
+  <!-- Grid pattern overlay -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+
+  <div class="relative container py-24 md:py-32">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left content column -->
+      <div class="order-2 lg:order-1">
+        <!-- Team badge - horizontal pill -->
+        <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8">
+          <span class="h-2 w-2 rounded-full bg-[#F57E25]"></span>
+          <span class="text-sm font-medium text-gray-300">{{ site.site.program }} Team #{{ site.site.team_number }}</span>
+        </div>
+
+        <!-- Main heading - large and bold -->
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-tight leading-[0.9]">
+          {{ site.site.team_name }}
+        </h1>
+
+        <!-- Season indicator -->
+        <div class="inline-block px-4 py-1.5 rounded-lg bg-[#F57E25]/20 border border-[#F57E25]/30 mb-8">
+          <span class="text-sm font-bold text-[#F57E25] uppercase tracking-wider">{{ site.site.current_season }}</span>
+        </div>
+
+        <!-- Description -->
+        <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-lg leading-relaxed">
+          {{ site.description | default: "Building robots. Building futures. Building community." }}
+        </p>
+
+        <!-- Action buttons - horizontal layout with different weights -->
+        <div class="flex flex-wrap gap-4">
+          <a href="{{ '/season/' | relative_url }}" class="inline-flex items-center px-8 py-3.5 bg-[#F57E25] hover:bg-[#d96a1f] text-white font-semibold rounded-lg transition-all duration-200 focus-visible:ring-2 focus-visible:ring-[#F57E25] focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">
+            Explore Season
+          </a>
+          <a href="{{ '/about/' | relative_url }}" class="inline-flex items-center px-8 py-3.5 bg-white/10 hover:bg-white/20 text-white font-medium rounded-lg border border-white/20 transition-all duration-200 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900">
+            About Us
+          </a>
+        </div>
       </div>
 
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-white">
-        {{ site.site.team_name }}
-      </h1>
+      <!-- Right visual column - team number display -->
+      <div class="order-1 lg:order-2 flex justify-center lg:justify-end">
+        <div class="relative">
+          <!-- Large team number background -->
+          <span class="text-[180px] md:text-[240px] font-black text-white/[0.03] leading-none select-none">#{{ site.site.team_number }}</span>
+          
+          <!-- Logo overlay -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <img
+              src="{{ site.site.logo | default: '/assets/images/placeholder.svg' | relative_url }}"
+              alt="{{ site.site.team_name }} logo"
+              class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-2xl ring-1 ring-white/10 shadow-2xl"
+            >
+          </div>
 
-      <p class="text-xl md:text-2xl mb-8 text-white/90">
-        {{ site.description | default: "Building robots. Building futures. Building community." }}
-      </p>
-
-      <div class="flex flex-col sm:flex-row gap-4">
-        <a href="{{ '/season/' | relative_url }}" class="btn bg-[#F57E25] text-white hover:bg-[#d96a1f] font-semibold px-6 py-3">
-          Current Season
-        </a>
-        <a href="{{ '/about/' | relative_url }}" class="btn bg-white text-[#003974] hover:bg-gray-100 font-semibold px-6 py-3">
-          Meet the Team
-        </a>
+          <!-- Orange accent corner -->
+          <div class="absolute -top-4 -right-4 w-24 h-24 bg-[#F57E25]/10 rounded-full blur-2xl"></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <!-- Decorative Elements -->
-  <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-[#F57E25]/20 rounded-full blur-3xl"></div>
-  <div class="absolute -top-20 -left-20 w-80 h-80 bg-white/5 rounded-full blur-3xl"></div>
-  <div class="absolute bottom-2 left-0 right-0 h-24 bg-gradient-to-t from-[var(--color-background)] to-transparent"></div>
+  <!-- Bottom fade to content -->
+  <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[var(--color-background)] to-transparent"></div>
 </section>
