@@ -2,124 +2,77 @@
 layout: default
 ---
 
-<!-- Season Hero - Full-width with left accent -->
-<section class="relative bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 text-white overflow-hidden">
-  <div class="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-red-600 to-[#F57E25]"></div>
-  
-  <!-- Grid pattern overlay -->
-  <div class="absolute inset-0 opacity-[0.03]" style="background-image: linear-gradient(rgba(255,255,255,.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.1) 1px, transparent 1px); background-size: 60px 60px;"></div>
+<article class="bg-white dark:bg-gray-900">
+  <!-- Season Hero -->
+  <section class="py-12 bg-gray-50 dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {% if page.season %}
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 mb-4">{{ page.season }}</span>
+      {% endif %}
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">{{ page.title }}</h1>
+      {% if page.game_name %}
+      <p class="text-lg text-gray-600 dark:text-gray-400">
+        {{ site.site.program }} Game: {{ page.game_name }}
+      </p>
+      {% endif %}
 
-  <div class="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
-    <div class="grid lg:grid-cols-2 gap-8 items-center">
-      <!-- Left - Info -->
-      <div>
-        {% if page.season %}
-        <span class="inline-block px-3 py-1 rounded-full bg-white/10 border border-white/20 text-xs font-bold uppercase tracking-wider mb-4">{{ page.season }}</span>
+      {% if page.robot_name %}
+      <p class="mt-3 text-gray-700 dark:text-gray-300">Robot: <strong>{{ page.robot_name }}</strong></p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Season Navigation -->
+  <nav class="sticky top-16 z-40 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800" aria-label="Season sections">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex overflow-x-auto gap-2 py-3 no-scrollbar">
+        <a href="#robot" class="nav-link whitespace-nowrap text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 px-3 py-1.5 rounded-md transition-colors">Robot</a>
+        <a href="#team" class="nav-link whitespace-nowrap text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 px-3 py-1.5 rounded-md transition-colors">Team</a>
+        <a href="#outreach" class="nav-link whitespace-nowrap text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 px-3 py-1.5 rounded-md transition-colors">Outreach</a>
+        {% if site.features.code_links %}
+        <a href="#code" class="nav-link whitespace-nowrap text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 px-3 py-1.5 rounded-md transition-colors">Code</a>
         {% endif %}
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 tracking-tight leading-none">{{ page.title }}</h1>
-        
-        <div class="flex flex-wrap gap-4 mt-6">
-          {% if page.game_name %}
-          <div class="px-4 py-2 rounded-lg bg-white/5 border border-white/10">
-            <span class="text-xs text-gray-400 uppercase tracking-wider block">Game</span>
-            <span class="font-semibold text-[#F57E25]">{{ page.game_name }}</span>
-          </div>
-          {% endif %}
-          
-          {% if page.robot_name %}
-          <div class="px-4 py-2 rounded-lg bg-white/5 border border-white/10">
-            <span class="text-xs text-gray-400 uppercase tracking-wider block">Robot</span>
-            <span class="font-semibold text-red-400">{{ page.robot_name }}</span>
-          </div>
-          {% endif %}
-        </div>
+        {% if site.features.cad_viewer %}
+        <a href="#cad" class="nav-link whitespace-nowrap text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 px-3 py-1.5 rounded-md transition-colors">CAD</a>
+        {% endif %}
       </div>
-
-      <!-- Right - Quick nav pills -->
-      <nav class="lg:text-right" aria-label="Season sections">
-        <div class="inline-flex flex-wrap justify-center lg:justify-end gap-2 bg-white/5 rounded-xl p-3 border border-white/10">
-          <a href="#robot" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#F57E25]">Robot</a>
-          <a href="#team" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#F57E25]">Team</a>
-          <a href="#outreach" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#F57E25]">Outreach</a>
-          {% if site.features.code_links %}
-          <a href="#code" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#F57E25]">Code</a>
-          {% endif %}
-          {% if site.features.cad_viewer %}
-          <a href="#cad" class="px-4 py-2 rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-[#F57E25]">CAD</a>
-          {% endif %}
-        </div>
-      </nav>
     </div>
-  </div>
+  </nav>
 
-  <!-- Bottom fade -->
-  <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white dark:from-gray-950 to-transparent"></div>
-</section>
+  <!-- Content -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300">
+        {{ content }}
+      </div>
+    </div>
+  </section>
 
-<!-- Season Content - Full-width sections -->
-<section id="main-content" class="bg-white dark:bg-gray-950">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-12 py-16">
-    <!-- Main content with sidebar pattern -->
-    <div class="grid lg:grid-cols-[1fr_280px] gap-12">
-      <!-- Content area -->
-      <article>
-        <div class="prose prose-lg max-w-none text-gray-700 dark:text-gray-300 prose-headings:font-bold prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-red-600 dark:prose-a:text-red-400">
-          {{ content }}
-        </div>
-      </article>
-
-      <!-- Right sidebar - season info -->
-      <aside class="hidden lg:block">
-        <div class="sticky top-32 space-y-4">
-          <div class="p-5 rounded-xl bg-gray-50 dark:bg-gray-900 border border-gray-100 dark:border-gray-800">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-3">This Season</h3>
-            {% if page.season %}
-            <p class="font-semibold text-gray-900 dark:text-white">{{ page.season }}</p>
+  <!-- All Seasons -->
+  <section class="py-12 bg-gray-50 dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">Browse All Seasons</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% assign sorted_seasons = site.seasons | sort: 'season' | reverse %}
+        {% for season in sorted_seasons %}
+        <a href="{{ season.url | relative_url }}" class="block bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-700 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300 {% if season.season == page.season %}ring-2 ring-red-500{% endif %}">
+          <div class="text-center">
+            {% if season.season == site.site.current_season %}
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 mb-3">Current</span>
+            {% else %}
+            <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 mb-3">Archive</span>
             {% endif %}
-            {% if page.game_name %}
-            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">Game: {{ page.game_name }}</p>
+            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">{{ season.season }}</h3>
+            {% if season.game_name %}
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{{ season.game_name }}</p>
+            {% endif %}
+            {% if season.robot_name %}
+            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 mt-1">{{ season.robot_name }}</p>
             {% endif %}
           </div>
-
-          <!-- Quick links -->
-          <div class="p-5 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-100 dark:border-red-950/30">
-            <h3 class="text-xs font-bold uppercase tracking-wider text-red-700 dark:text-red-400 mb-3">Quick Links</h3>
-            <ul class="space-y-2">
-              <li><a href="#robot" class="block text-sm text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Robot Design</a></li>
-              <li><a href="#team" class="block text-sm text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Team Members</a></li>
-              <li><a href="#outreach" class="block text-sm text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Outreach</a></li>
-            </ul>
-          </div>
-        </div>
-      </aside>
+        </a>
+        {% endfor %}
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- All Seasons - Horizontal scroll layout -->
-<section class="py-16 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-12">
-    <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-8">All Seasons</h2>
-    
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-      {% assign sorted_seasons = site.seasons | sort: 'season' | reverse %}
-      {% for season in sorted_seasons %}
-      <a href="{{ season.url | relative_url }}" class="group block p-5 rounded-xl bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 transition-colors {% if season.season == page.season %}ring-2 ring-red-600{% endif %}">
-        <div>
-          {% if season.season == site.site.current_season %}
-          <span class="inline-block px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white mb-2">Current</span>
-          {% else %}
-          <span class="inline-block px-2 py-0.5 rounded-md text-[10px] font-bold uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 mb-2">Archive</span>
-          {% endif %}
-          
-          <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">{{ season.season }}</h3>
-          
-          {% if season.game_name %}
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{{ season.game_name }}</p>
-          {% endif %}
-        </div>
-      </a>
-      {% endfor %}
-    </div>
-  </div>
-</section>
+  </section>
+</article>

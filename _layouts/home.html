@@ -5,99 +5,108 @@ layout: default
 <!-- Hero Section -->
 {% include components/hero-section.html %}
 
-<!-- Season Navigation - Horizontal pill-style cards -->
-<section class="py-16 bg-white dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800">
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-gray-100 dark:divide-gray-800">
-      <!-- Robot Card -->
-      <a href="{{ '/season/' | relative_url }}" class="group flex items-center gap-5 py-6 px-2 hover:bg-red-50/50 dark:hover:bg-red-950/10 -mx-2 px-4 rounded-lg transition-colors">
-        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-red-600 to-red-700 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-          <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+<!-- Season Overview -->
+<section class="py-20 bg-white dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">{{ site.site.current_season }} Season</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Explore Our Season</h2>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      <a href="{{ '/season/' | relative_url }}" class="group block p-8 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300">
+        <div class="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-950/50 flex items-center justify-center mb-4 group-hover:bg-red-100 dark:group-hover:bg-red-950 transition-colors">
+          <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-        <div class="min-w-0">
-          <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Robot</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Design & engineering</p>
-        </div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Our Robot</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Design, engineering, and capabilities for this season's challenge.</p>
       </a>
 
-      <!-- Team Card -->
-      <a href="{{ '/season/' | relative_url }}#team" class="group flex items-center gap-5 py-6 px-2 hover:bg-red-50/50 dark:hover:bg-red-950/10 -mx-2 px-4 rounded-lg transition-colors">
-        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-[#F57E25] to-[#e06b1a] flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-          <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+      <a href="{{ '/season/' | relative_url }}#team" class="group block p-8 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300">
+        <div class="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-950/50 flex items-center justify-center mb-4 group-hover:bg-red-100 dark:group-hover:bg-red-950 transition-colors">
+          <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
         </div>
-        <div class="min-w-0">
-          <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Team</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Meet our members</p>
-        </div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">The Team</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Meet the students building and leading our team.</p>
       </a>
 
-      <!-- Outreach Card -->
-      <a href="{{ '/season/' | relative_url }}#outreach" class="group flex items-center gap-5 py-6 px-2 hover:bg-red-50/50 dark:hover:bg-red-950/10 -mx-2 px-4 rounded-lg transition-colors">
-        <div class="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-gray-700 to-gray-800 dark:from-gray-600 dark:to-gray-700 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-          <svg class="h-7 w-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <a href="{{ '/season/' | relative_url }}#outreach" class="group block p-8 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300">
+        <div class="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-950/50 flex items-center justify-center mb-4 group-hover:bg-red-100 dark:group-hover:bg-red-950 transition-colors">
+          <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <div class="min-w-0">
-          <h3 class="font-bold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">Outreach</h3>
-          <p class="text-sm text-gray-500 dark:text-gray-400 truncate">Community impact</p>
-        </div>
+        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Outreach</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Community events, STEM education, and outreach initiatives.</p>
       </a>
     </div>
   </div>
 </section>
 
-<!-- Awards - Asymmetric two-column layout -->
+<!-- Awards -->
 {% if site.data.awards %}
-<section class="py-20 bg-white dark:bg-gray-950">
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
-    <div class="grid lg:grid-cols-2 gap-12 items-start">
-      <!-- Left - Title section -->
-      <div class="lg:sticky lg:top-32">
-        <span class="inline-block px-3 py-1 rounded-full bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400 text-xs font-bold uppercase tracking-wider mb-4">Recognition</span>
-        <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 leading-tight">Awards &<br>Achievements</h2>
-        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-md">Our dedication to engineering excellence and sportsmanship has earned recognition at competitions.</p>
-        <a href="{{ '/awards/' | relative_url }}" class="inline-flex items-center gap-2 mt-8 px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950">
-          View All Awards
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-        </a>
-      </div>
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">Achievements</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Awards & Recognition</h2>
+    </div>
 
-      <!-- Right - Award cards in vertical stack -->
-      <div class="space-y-4">
-        {% for award in site.data.awards limit:6 %}
-        <div class="group flex items-start gap-4 p-5 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:bg-red-50/30 dark:hover:bg-red-950/10 transition-colors">
-          <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center shadow-sm">
-            <svg class="h-5 w-5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-          </div>
-          <div class="flex-grow min-w-0">
-            <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-red-600 dark:group-hover:text-red-400 transition-colors">{{ award.name }}</h4>
-            <p class="text-sm text-gray-600 dark:text-gray-400 mt-0.5">{{ award.event }}</p>
-            <span class="inline-block mt-2 px-2 py-0.5 rounded-md text-xs font-medium bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400">{{ award.season }}</span>
-          </div>
-        </div>
-        {% endfor %}
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      {% for award in site.data.awards limit:4 %}
+      <div class="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
+        <svg class="h-8 w-8 text-red-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+        <h4 class="font-semibold text-gray-900 dark:text-white">{{ award.name }}</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{{ award.event }}</p>
+        <span class="inline-block mt-3 px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400">{{ award.season }}</span>
       </div>
+      {% endfor %}
+    </div>
+
+    <div class="text-center mt-10">
+      <a href="{{ '/awards/' | relative_url }}" class="inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors">
+        View all awards
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
     </div>
   </div>
 </section>
 {% endif %}
 
-<!-- Portfolio - Full-width colored band -->
-<section class="py-24 bg-gradient-to-r from-red-600 to-[#F57E25]">
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <!-- Left - Content -->
-      <div>
-        <span class="inline-block px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold uppercase tracking-wider mb-4">Engineering Portfolio</span>
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">See What We<br>Built This Season</h2>
-        <p class="text-lg text-white/90 max-w-lg leading-relaxed">Our engineering portfolio documents every aspect of our design process, from CAD models to outreach initiatives.</p>
-      </div>
+<!-- Events -->
+{% if site.data.events %}
+<section class="py-20 bg-white dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">Calendar</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Upcoming Events</h2>
+    </div>
 
-      <!-- Right - Action cards -->
-      <div class="flex flex-col sm:flex-row gap-4 lg:justify-end">
-        <a href="{{ '/portfolio/' | relative_url }}" class="inline-flex items-center justify-center px-8 py-4 bg-white text-red-600 hover:bg-gray-100 font-bold rounded-lg transition-colors shadow-lg focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-600">
-          View Portfolio Online
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+      {% for event in site.data.events limit:3 %}
+      {% include components/event-card.html event=event %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Portfolio -->
+<section class="py-20 bg-gray-50 dark:bg-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">Engineering</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Our Portfolio</h2>
+    </div>
+
+    <div class="max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-100 dark:border-gray-700">
+      <p class="text-gray-600 dark:text-gray-400 mb-6 text-center">
+        Team Standard Deviation's engineering portfolio covers every facet of our season: mechanical design,
+        outreach initiatives, and team development.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="{{ '/portfolio/' | relative_url }}" class="inline-flex items-center justify-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+          View Portfolio
         </a>
-        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="inline-flex items-center justify-center px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-semibold rounded-lg border-2 border-white/30 transition-colors focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-red-600">
+        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="inline-flex items-center justify-center px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
           Download PDF
         </a>
       </div>
@@ -105,17 +114,19 @@ layout: default
   </div>
 </section>
 
-<!-- Join CTA - Minimal centered -->
-<section class="py-24 bg-white dark:bg-gray-950">
-  <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-12 text-center">
-    <h2 class="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">Ready to Build<br>Something Amazing?</h2>
-    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-10">We're always looking for passionate students interested in robotics, engineering, outreach, or team management.</p>
-    <div class="flex flex-wrap justify-center gap-4">
-      <a href="{{ '/about/' | relative_url }}#join" class="inline-flex items-center px-8 py-4 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:border-red-600 dark:hover:border-red-500 hover:text-red-600 dark:hover:text-red-400 font-semibold rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950">
+<!-- Join CTA -->
+<section class="py-20 bg-white dark:bg-gray-900">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Join Our Team</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
+      Interested in robotics, engineering, outreach, or business? We're always looking for passionate students.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <a href="{{ '/about/' | relative_url }}#join" class="inline-flex items-center justify-center px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
         Learn More
       </a>
-      <a href="{{ '/contact/' | relative_url }}" class="inline-flex items-center px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg transition-colors shadow-md focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-gray-950">
-        Get in Touch
+      <a href="{{ '/contact/' | relative_url }}" class="inline-flex items-center justify-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+        Contact Us
       </a>
     </div>
   </div>

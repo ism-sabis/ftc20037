@@ -1,40 +1,37 @@
-<header class="sticky top-0 z-50 bg-white/90 dark:bg-gray-950/90 backdrop-blur-lg border-b border-red-100 dark:border-red-950/30">
-  <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-12">
-    <nav class="flex items-center justify-between h-20" aria-label="Main navigation">
-      <!-- Logo - Left aligned -->
-      <a href="{{ '/' | relative_url }}" class="flex items-center gap-4 no-underline group" aria-label="{{ site.site.team_name }} home">
-        <div class="relative">
-          <img
-            src="{{ site.site.logo | default: '/assets/images/placeholder.svg' | relative_url }}"
-            alt="{{ site.site.team_name }} logo"
-            class="h-12 w-12 rounded-xl object-cover ring-2 ring-red-100 dark:ring-red-950 group-hover:ring-red-300 dark:group-hover:ring-red-800 transition-all duration-300"
-          >
-          <div class="absolute -top-1 -right-1 h-4 w-4 rounded-full bg-[#F57E25] ring-2 ring-white dark:ring-gray-950"></div>
-        </div>
-        <div class="hidden lg:block">
-          <span class="block font-bold text-gray-900 dark:text-white leading-none tracking-tight">{{ site.site.team_name }}</span>
-          <span class="block text-xs font-medium text-red-600 dark:text-red-400 leading-none mt-1">#{{ site.site.team_number }} · {{ site.site.program }}</span>
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="{{ '/' | relative_url }}" class="flex items-center gap-3 no-underline group" aria-label="{{ site.site.team_name }} home">
+        <img
+          src="{{ site.site.logo | default: '/assets/images/placeholder.svg' | relative_url }}"
+          alt="{{ site.site.team_name }} logo"
+          class="h-10 w-10 rounded-lg object-cover ring-1 ring-gray-200 dark:ring-gray-700 group-hover:ring-red-500 transition-all duration-300"
+        >
+        <div class="hidden sm:block">
+          <span class="block font-bold text-gray-900 dark:text-white leading-tight">{{ site.site.team_name }}</span>
+          <span class="block text-xs text-gray-500 dark:text-gray-400 leading-tight">#{{ site.site.team_number }} · {{ site.site.program }}</span>
         </div>
       </a>
 
-      <!-- Desktop Navigation - Centered with pill indicators -->
-      <div class="hidden lg:flex items-center bg-gray-50 dark:bg-gray-900 rounded-full px-2 py-1.5 gap-1">
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-1">
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
-           class="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 {% if page.url == item.url %}bg-red-600 text-white shadow-md{% else %}text-gray-700 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 hover:text-red-600 dark:hover:text-red-400{% endif %}"
+           class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
           {{ item.title }}
         </a>
         {% endfor %}
       </div>
 
-      <!-- Right Side Actions - Compact -->
+      <!-- Right Side Actions -->
       <div class="flex items-center gap-2">
         <!-- Dark Mode Toggle -->
         <button
           id="dark-mode-toggle"
-          class="p-2.5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
           aria-label="Toggle dark mode"
         >
           <svg class="h-5 w-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -49,7 +46,7 @@
         <!-- Accessibility Toggle -->
         <button
           id="accessibility-toggle"
-          class="p-2.5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
           aria-label="Toggle accessibility mode"
         >
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -62,7 +59,7 @@
         <!-- Mobile Menu Button -->
         <button
           id="mobile-menu-button"
-          class="lg:hidden p-2.5 rounded-full text-gray-600 dark:text-gray-400 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="md:hidden p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
           aria-label="Open menu"
           aria-expanded="false"
         >
@@ -74,24 +71,24 @@
     </nav>
   </div>
 
-  <!-- Mobile Menu Overlay -->
+  <!-- Mobile Menu Drawer -->
   <div
     id="mobile-menu"
-    class="hidden fixed inset-0 z-50 lg:hidden"
+    class="hidden fixed inset-0 z-50 md:hidden"
   >
     <!-- Backdrop -->
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" id="mobile-menu-backdrop"></div>
+    <div class="absolute inset-0 bg-black/50" id="mobile-menu-backdrop"></div>
 
-    <!-- Centered Card Drawer -->
-    <div class="absolute inset-x-4 top-[50%] translate-y-[-50%] sm:inset-x-auto sm:left-1/2 sm:translate-x-[-50%] sm:w-full sm:max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800">
-      <div class="p-6 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-        <span class="font-bold text-gray-900 dark:text-white text-lg">Navigation</span>
+    <!-- Drawer -->
+    <div class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-gray-900 shadow-xl">
+      <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
+        <span class="font-semibold text-gray-900 dark:text-white">Menu</span>
         <button
           id="mobile-menu-close"
-          class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
           aria-label="Close menu"
         >
-          <svg class="h-5 w-5 text-gray-600 dark:text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
@@ -101,16 +98,16 @@
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
-           class="block py-3 px-4 rounded-xl text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors {% if page.url == item.url %}bg-red-50 dark:bg-red-950/30 text-red-600 dark:text-red-400{% endif %}"
+           class="block py-2.5 px-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
           {{ item.title }}
         </a>
         {% endfor %}
 
-        <div class="pt-4 mt-2 border-t border-gray-100 dark:border-gray-800">
-          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-4 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Privacy</a>
-          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-4 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Terms of Use</a>
-          <a href="{{ '/accessibility/' | relative_url }}" class="block py-2 px-4 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Accessibility</a>
+        <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800">
+          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Privacy</a>
+          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Terms</a>
+          <a href="{{ '/accessibility/' | relative_url }}" class="block py-2 px-3 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Accessibility</a>
         </div>
       </nav>
     </div>
