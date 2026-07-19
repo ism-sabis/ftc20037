@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Custom Properties for Theme - Team Jersey Red */
+/* CSS Custom Properties for Theme - Clean Red Accent */
 :root {
   /* Primary Red Palette (from team jerseys) */
   --color-primary: #DC2626;    /* Vibrant red from jerseys */
@@ -14,12 +14,12 @@
   --color-warning: #f59e0b;    /* Warning amber */
   --color-danger: #DC2626;     /* Danger red (same as primary) */
 
-  /* Light mode surfaces */
+  /* Light mode surfaces - clean white/gray palette */
   --color-background: #ffffff;
-  --color-surface: #fafafa;    /* Warm white surface */
-  --color-text: #111827;       /* Near-black text */
-  --color-text-muted: #6B7280; /* Gray muted */
-  --color-border: #e5e7eb;     /* Light border */
+  --color-surface: #f9fafb;    /* Gray-50 surface */
+  --color-text: #111827;       /* Gray-900 text */
+  --color-text-muted: #6B7280; /* Gray-500 muted */
+  --color-border: #e5e7eb;     /* Gray-200 border */
   --color-link: #DC2626;       /* Red link */
   --color-link-hover: #B91C1C;
 }

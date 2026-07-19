@@ -1,119 +1,54 @@
-<section class="relative overflow-hidden py-16 md:py-24 lg:py-32">
-  <!-- Animated gradient background -->
-  <div class="absolute inset-0 bg-gradient-to-br from-[var(--color-primary)] via-[#B91C1C] to-[var(--color-secondary)] animate-gradient-shift"></div>
-  
-  <!-- Geometric pattern overlay (robotics/tech feel) -->
-  <div class="absolute inset-0 opacity-10">
-    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id="hex-grid" width="60" height="60" patternUnits="userSpaceOnUse">
-          <path d="M30 0 L60 17.32 L60 51.96 L30 69.28 L0 51.96 L0 17.32 Z" fill="none" stroke="white" stroke-width="0.5"/>
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#hex-grid)"/>
-    </svg>
-  </div>
-  
-  <!-- Floating orbs -->
-  <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-white/5 rounded-full blur-3xl animate-float-slow"></div>
-  <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[#F57E25]/10 rounded-full blur-3xl animate-float-fast"></div>
-  
-  <!-- Content -->
-  <div class="container relative z-10">
-    <div class="max-w-4xl mx-auto text-center">
-      <!-- Team badge -->
-      <span class="inline-block px-5 py-2 rounded-full bg-white/15 backdrop-blur-sm text-white text-sm font-semibold mb-8 border border-white/20 animate-fade-in-up">
-        {{ site.site.program }} Team #{{ site.site.team_number }}
-      </span>
-      
-      <!-- Main heading -->
-      <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-6 leading-tight tracking-tight animate-fade-in-up" style="animation-delay: 0.1s;">
-        {{ site.site.team_name }}
-      </h1>
-      
-      <!-- Subtitle -->
-      <p class="text-lg md:text-xl lg:text-2xl text-white/90 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-        {{ site.description | default: "Building robots, inspiring futures, and making a difference in our community." }}
-      </p>
-      
-      <!-- CTA buttons -->
-      <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up" style="animation-delay: 0.3s;">
-        <a href="{{ '/about/' | relative_url }}" class="group bg-white text-[var(--color-primary)] hover:bg-gray-50 font-bold px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-          <span>Meet the Team</span>
-          <svg class="inline-block w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
-          </svg>
-        </a>
-        <a href="{{ '/season/' | relative_url }}" class="group bg-transparent border-2 border-white text-white hover:bg-white/10 font-bold px-8 py-4 rounded-lg transition-all duration-300 transform hover:-translate-y-1">
-          <span>Current Season</span>
-        </a>
+<section class="relative overflow-hidden bg-white dark:bg-gray-900">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Left: Content -->
+      <div>
+        <!-- Team badge -->
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 mb-6">
+          {{ site.site.program }} Team #{{ site.site.team_number }}
+        </span>
+        
+        <!-- Main heading -->
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+          {{ site.site.team_name }}
+        </h1>
+        
+        <!-- Subtitle -->
+        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
+          {{ site.description | default: "Building robots, inspiring futures, and making a difference in our community." }}
+        </p>
+        
+        <!-- CTA buttons -->
+        <div class="flex flex-wrap gap-3">
+          <a href="{{ '/about/' | relative_url }}" class="inline-flex items-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+            Meet the Team
+          </a>
+          <a href="{{ '/season/' | relative_url }}" class="inline-flex items-center px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+            Current Season
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Logo/Visual -->
+      <div class="flex justify-center md:justify-end">
+        <div class="relative w-64 h-64 md:w-80 md:h-80">
+          <!-- Background accent -->
+          <div class="absolute inset-0 bg-gradient-to-br from-red-100 to-red-50 dark:from-red-950/30 dark:to-gray-800 rounded-2xl transform rotate-6"></div>
+          <!-- Logo image -->
+          <img
+            src="{{ site.site.logo | default: '/assets/images/placeholder.svg' | relative_url }}"
+            alt="{{ site.site.team_name }} logo"
+            class="relative w-full h-full object-cover rounded-2xl shadow-lg ring-1 ring-gray-200 dark:ring-gray-700"
+          >
+        </div>
       </div>
     </div>
   </div>
-  
+
   <!-- Bottom wave -->
   <div class="absolute bottom-0 left-0 right-0">
-    <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
-      <path d="M0 120L60 110C120 100 240 80 360 70C480 60 600 60 720 65C840 70 960 80 1080 85C1200 90 1320 90 1380 90L1440 90V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="var(--color-background)"/>
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto" preserveAspectRatio="none">
+      <path d="M0 80L48 74.7C96 69 192 59 288 53.3C384 48 480 48 576 53.3C672 59 768 69 864 69.3C960 69 1056 59 1152 53.3C1248 48 1344 48 1392 48L1440 48V80H1392C1344 80 1248 80 1152 80C1056 80 960 80 864 80C768 80 672 80 576 80C480 80 384 80 288 80C192 80 96 80 48 80H0Z" fill="var(--color-surface, #f9fafb)"/>
     </svg>
   </div>
 </section>
-
-<style>
-/* Hero animations */
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes float-slow {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-30px) scale(1.05); }
-}
-
-@keyframes float-fast {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-20px) scale(1.1); }
-}
-
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-gradient-shift {
-  background-size: 200% 200%;
-  animation: gradient-shift 8s ease infinite;
-}
-
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
-
-.animate-float-fast {
-  animation: float-fast 4s ease-in-out infinite;
-}
-
-.animate-fade-in-up {
-  opacity: 0;
-  animation: fade-in-up 0.8s ease forwards;
-}
-
-/* Dark mode adjustments */
-.dark .animate-gradient-shift {
-  background: linear-gradient(135deg, #7F1D1D 0%, #991B1B 25%, #DC2626 50%, #B91C1C 75%, #7F1D1D 100%);
-  background-size: 200% 200%;
-  animation: gradient-shift-dark 8s ease infinite;
-}
-
-@keyframes gradient-shift-dark {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-</style>
