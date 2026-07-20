@@ -2,96 +2,120 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Custom Properties for Theme - Clean Red Accent */
+/* CSS Custom Properties for Theme - Modern Bold Design */
 :root {
-  /* Primary Red Palette (from team jerseys) */
-  --color-primary: #DC2626;    /* Vibrant red from jerseys */
-  --color-primary-highlight: #B91C1C;
-  --color-secondary: #F57E25;  /* FIRST Orange (accent) */
+  /* Primary Blue Palette (team identity) */
+  --color-primary: #003974;    /* Deep Blue - primary brand */
+  --color-primary-highlight: #002855;
+  --color-primary-light: #0047AB;
+  --color-secondary: #F57E25;  /* FIRST Orange - accent */
   --color-secondary-highlight: #d96a1f;
-  --color-success: #28a745;    /* Success green */
-  --color-info: #0ea5e9;       /* Sky blue accent */
-  --color-warning: #f59e0b;    /* Warning amber */
-  --color-danger: #DC2626;     /* Danger red (same as primary) */
+  --color-secondary-light: #FF9A44;
+  --color-accent: #DC2626;     /* Red accent */
+  --color-accent-highlight: #B91C1C;
+  --color-success: #10B981;
+  --color-info: #0EA5E9;
+  --color-warning: #F59E0B;
+  --color-danger: #DC2626;
 
-  /* Light mode surfaces - clean white/gray palette */
-  --color-background: #ffffff;
-  --color-surface: #f9fafb;    /* Gray-50 surface */
-  --color-text: #111827;       /* Gray-900 text */
-  --color-text-muted: #6B7280; /* Gray-500 muted */
-  --color-border: #e5e7eb;     /* Gray-200 border */
-  --color-link: #DC2626;       /* Red link */
-  --color-link-hover: #B91C1C;
+  /* Light mode surfaces - modern warm palette */
+  --color-background: #FAFBFC;
+  --color-surface: #FFFFFF;
+  --color-surface-alt: #F1F5F9; /* slate-100 */
+  --color-text: #0F172A;        /* slate-900 */
+  --color-text-muted: #475569;  /* slate-600 */
+  --color-text-light: #94A3B8;  /* slate-400 */
+  --color-border: #E2E8F0;      /* slate-200 */
+  --color-border-strong: #CBD5E1; /* slate-300 */
+  --color-link: #003974;
+  --color-link-hover: #002855;
+  --color-gradient-start: #003974;
+  --color-gradient-end: #F57E25;
+  --color-glow: rgba(0, 57, 116, 0.12);
 }
 
 .dark {
-  --color-background: #0a0a0a; /* Deep black bg */
-  --color-surface: #171717;    /* Dark surface */
-  --color-text: #f9fafb;       /* Near-white text */
-  --color-text-muted: #9CA3AF; /* Light gray muted */
-  --color-border: #262626;     /* Dark border */
-  --color-link: #EF4444;       /* Bright red link */
-  --color-link-hover: #F87171;
+  --color-background: #0B1121;  /* Deep navy */
+  --color-surface: #111827;     /* gray-900 */
+  --color-surface-alt: #1E293B; /* slate-800 */
+  --color-text: #F8FAFC;        /* slate-50 */
+  --color-text-muted: #94A3B8;  /* slate-400 */
+  --color-text-light: #64748B;  /* slate-500 */
+  --color-border: #1E293B;      /* slate-800 */
+  --color-border-strong: #334155; /* slate-700 */
+  --color-link: #60A5FA;        /* blue-400 */
+  --color-link-hover: #93C5FD;  /* blue-300 */
+  --color-gradient-start: #1E3A8A; /* blue-900 */
+  --color-gradient-end: #F57E25;
+  --color-glow: rgba(245, 126, 37, 0.15);
 }
 
 /* Base Layer */
 @layer base {
   html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   body {
     background-color: var(--color-background);
     color: var(--color-text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
-    line-height: 1.6;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    line-height: 1.7;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    line-height: 1.2;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
     color: var(--color-text);
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
   }
 
-  h1 { font-size: 2.5rem; }
-  h2 { font-size: 2rem; }
-  h3 { font-size: 1.5rem; }
-  h4 { font-size: 1.25rem; }
-  h5 { font-size: 1.125rem; }
-  h6 { font-size: 1rem; }
+  h1 { font-size: 2.75rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.75rem; }
+  h4 { font-size: 1.375rem; }
+  h5 { font-size: 1.25rem; }
+  h6 { font-size: 1.125rem; }
 
   @media (min-width: 768px) {
-    h1 { font-size: 3rem; }
-    h2 { font-size: 2.25rem; }
-    h3 { font-size: 1.75rem; }
+    h1 { font-size: 3.5rem; }
+    h2 { font-size: 2.5rem; }
+    h3 { font-size: 2rem; }
+  }
+
+  @media (min-width: 1024px) {
+    h1 { font-size: 4rem; }
+    h2 { font-size: 2.75rem; }
   }
 
   p {
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
     color: var(--color-text);
+    line-height: 1.8;
   }
 
   a {
     color: var(--color-link);
     text-decoration: none;
-    transition: color 0.15s ease;
+    transition: color 0.2s ease, transform 0.15s ease;
   }
 
   a:hover {
     color: var(--color-link-hover);
     text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   ul, ol {
-    margin-bottom: 1rem;
-    padding-left: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-left: 1.75rem;
     color: var(--color-text);
   }
 
@@ -104,74 +128,92 @@
   }
 
   li {
-    margin-bottom: 0.5rem;
-    padding-left: 0.25rem;
+    margin-bottom: 0.625rem;
+    padding-left: 0.375rem;
+    line-height: 1.75;
   }
 
   li::marker {
     color: var(--color-primary);
+    font-weight: 700;
   }
 
   code {
-    font-family: 'JetBrains Mono', 'Fira Code', monospace;
-    background-color: var(--color-surface);
-    padding: 0.125rem 0.375rem;
-    border-radius: 0.25rem;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+    background-color: var(--color-surface-alt);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.375rem;
     font-size: 0.875em;
+    border: 1px solid var(--color-border);
+    font-weight: 500;
   }
 
   pre {
-    background-color: var(--color-surface);
-    padding: 1rem;
-    border-radius: 0.5rem;
+    background-color: var(--color-surface-alt);
+    padding: 1.25rem;
+    border-radius: 0.75rem;
     overflow-x: auto;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-border);
   }
 
   pre code {
     background-color: transparent;
     padding: 0;
+    border: none;
+    border-radius: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
   }
 
   hr {
     border: none;
-    border-top: 1px solid var(--color-border);
-    margin: 2rem 0;
+    border-top: 2px solid var(--color-border);
+    margin: 2.5rem 0;
   }
 
   table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1rem;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 1.5rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
   }
 
   th, td {
     border: 1px solid var(--color-border);
-    padding: 0.75rem 1rem;
+    padding: 0.875rem 1.125rem;
     text-align: left;
   }
 
   th {
-    background-color: var(--color-surface);
-    font-weight: 600;
+    background-color: var(--color-surface-alt);
+    font-weight: 700;
+    color: var(--color-text);
   }
 
   blockquote {
     border-left: 4px solid var(--color-primary);
-    padding-left: 1rem;
-    margin: 1rem 0;
+    padding-left: 1.25rem;
+    margin: 1.5rem 0;
     font-style: italic;
     color: var(--color-text-muted);
+    background-color: var(--color-surface-alt);
+    padding: 1rem 1.25rem;
+    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   img {
     max-width: 100%;
     height: auto;
     display: block;
+    border-radius: 0.75rem;
   }
 
   strong, b {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--color-text);
   }
 

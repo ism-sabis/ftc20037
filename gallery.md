@@ -1,13 +1,12 @@
 ---
 layout: page
 title: Team Gallery
-description: Photos uploaded to assets/images/gallery/uploads/ appear here automatically.
+description: A collection of photos from our team events, competitions, and build season.
 permalink: /gallery/
 ---
 
 {% assign gallery_images = site.static_files | sort: "name" %}
 {% assign gallery_meta = site.data.gallery.items | default: empty %}
-{% assign gallery_filters = site.data.gallery_tags.filters | default: empty %}
 
 {% assign gallery_count = 0 %}
 {% for image in gallery_images %}
@@ -17,14 +16,7 @@ permalink: /gallery/
 {% endfor %}
 
 {% if gallery_count > 0 %}
-<div class="flex flex-wrap gap-2 mb-6">
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="all">All</button>
-  {% for filter in gallery_filters %}
-  <button type="button" class="btn btn-secondary gallery-filter-btn" data-gallery-filter="{{ filter.value }}">{{ filter.label }}</button>
-  {% endfor %}
-</div>
-
-<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-8" id="gallery-grid">
   {% for image in gallery_images %}
   {% if image.path contains '/assets/images/gallery/uploads/' and image.name != '.gitkeep' %}
   {% assign image_base = image.name | split: '.' | first %}
@@ -93,25 +85,6 @@ permalink: /gallery/
       {% endif %}
 
       <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
-
-      <div class="absolute top-2 left-2 flex flex-wrap gap-1 max-w-[calc(100%-5rem)] opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-        {% if meta and meta.tags %}
-          {% for tag in meta.tags %}
-          {% if tag == '2025-2026-DECODE' or tag == '2024-2025-Into-the-Deep' %}
-          <span class="badge badge-primary text-[10px]">{{ season_label }}</span>
-          {% else %}
-          <span class="badge bg-black/60 text-white text-[10px]">{{ tag }}</span>
-          {% endif %}
-          {% endfor %}
-        {% endif %}
-      </div>
-
-      <div class="absolute bottom-0 left-0 right-0 bg-black/70 text-white text-sm p-2 translate-y-full group-hover:translate-y-0 transition-transform">
-        <div class="flex items-center justify-between gap-2">
-          <span class="truncate">{{ caption }}</span>
-          <span class="text-xs opacity-90 whitespace-nowrap">Tap to open</span>
-        </div>
-      </div>
     </a>
   </div>
   {% endunless %}
@@ -122,7 +95,6 @@ permalink: /gallery/
 <div class="card">
   <div class="card-body text-center py-12">
     <h2 class="text-2xl font-bold mb-3">Coming Soon - Check Back Later.</h2>
-    <p class="text-[var(--color-text-muted)]">Upload photos into assets/images/gallery/uploads/ to populate this page.</p>
   </div>
 </div>
 {% endif %}
