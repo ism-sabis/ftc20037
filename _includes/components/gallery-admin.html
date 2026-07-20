@@ -10,8 +10,14 @@ This component provides a mobile-friendly interface where users can:
 {% endcomment %}
 
 <div class="gallery-admin" id="gallery-admin">
-  <!-- Action Bar -->
-  <div class="admin-filters mb-6 flex justify-end">
+  <!-- Tag Filter Bar -->
+  <div class="admin-filters mb-6 flex flex-wrap gap-2 items-center justify-between">
+    <div class="flex flex-wrap gap-2" id="tag-filters">
+      <button type="button" class="btn btn-sm btn-outline admin-tag-filter active" data-filter="all">All</button>
+      {% for filter in site.data.gallery_tags.filters %}
+      <button type="button" class="btn btn-sm btn-outline admin-tag-filter" data-filter="{{ filter.value }}">{{ filter.label }}</button>
+      {% endfor %}
+    </div>
     <button type="button" id="copy-yaml-btn" class="btn btn-primary btn-sm">Copy YAML</button>
   </div>
 
