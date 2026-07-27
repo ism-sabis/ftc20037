@@ -2,36 +2,77 @@
 @tailwind components;
 @tailwind utilities;
 
-/* CSS Custom Properties for Theme - Clean Red Accent */
-:root {
-  /* Primary Red Palette (from team jerseys) */
-  --color-primary: #DC2626;    /* Vibrant red from jerseys */
-  --color-primary-highlight: #B91C1C;
-  --color-secondary: #F57E25;  /* FIRST Orange (accent) */
-  --color-secondary-highlight: #d96a1f;
-  --color-success: #28a745;    /* Success green */
-  --color-info: #0ea5e9;       /* Sky blue accent */
-  --color-warning: #f59e0b;    /* Warning amber */
-  --color-danger: #DC2626;     /* Danger red (same as primary) */
+/* ── Precision Engineering Theme ──────────────────────────────
+   Deep Navy + Electric Cyan + FIRST Orange
+   Geometric, grid-based, robotics-aesthetic
+   ─────────────────────────────────────────────────────────── */
 
-  /* Light mode surfaces - clean white/gray palette */
-  --color-background: #ffffff;
-  --color-surface: #f9fafb;    /* Gray-50 surface */
-  --color-text: #111827;       /* Gray-900 text */
-  --color-text-muted: #6B7280; /* Gray-500 muted */
-  --color-border: #e5e7eb;     /* Gray-200 border */
-  --color-link: #DC2626;       /* Red link */
-  --color-link-hover: #B91C1C;
+:root {
+  /* Primary Palette — Deep Navy */
+  --color-primary: #0B1426;        /* Deepest navy */
+  --color-primary-light: #1C2D4A;  /* Lighter navy for surfaces */
+  --color-primary-highlight: #2A3F5F;
+
+  /* Accent — Electric Cyan (robotics energy) */
+  --color-accent: #06D6A0;         /* Electric cyan */
+  --color-accent-light: #0BF0B0;
+  --color-accent-dark: #05B88A;
+
+  /* FIRST Orange — brand secondary */
+  --color-secondary: #F57E25;      /* FIRST Orange */
+  --color-secondary-light: #FF9A44;
+  --color-secondary-dark: #D96A1F;
+
+  /* Semantic colors */
+  --color-success: #06D6A0;
+  --color-info: #3B82F6;
+  --color-warning: #F59E0B;
+  --color-danger: #EF4444;
+
+  /* Light mode surfaces */
+  --color-background: #FAFBFC;     /* Warm white */
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F1F5F9;
+  --color-text: #0B1426;           /* Navy text */
+  --color-text-muted: #475569;     /* Slate muted */
+  --color-text-faint: #94A3B8;
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+  --color-link: #0B1426;
+  --color-link-hover: #06D6A0;
+
+  /* Accent gradient */
+  --gradient-accent: linear-gradient(135deg, #06D6A0 0%, #0BF0B0 100%);
+  --gradient-navy: linear-gradient(135deg, #0B1426 0%, #1C2D4A 100%);
+  --gradient-hero: linear-gradient(160deg, #0B1426 0%, #1C2D4A 40%, #0B1426 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(11,20,38,0.05);
+  --shadow-md: 0 4px 6px -1px rgba(11,20,38,0.07), 0 2px 4px -2px rgba(11,20,38,0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(11,20,38,0.08), 0 4px 6px -4px rgba(11,20,38,0.04);
+  --shadow-xl: 0 20px 25px -5px rgba(11,20,38,0.1), 0 8px 10px -6px rgba(11,20,38,0.04);
+  --shadow-accent: 0 4px 14px rgba(6,214,160,0.25);
 }
 
 .dark {
-  --color-background: #0a0a0a; /* Deep black bg */
-  --color-surface: #171717;    /* Dark surface */
-  --color-text: #f9fafb;       /* Near-white text */
-  --color-text-muted: #9CA3AF; /* Light gray muted */
-  --color-border: #262626;     /* Dark border */
-  --color-link: #EF4444;       /* Bright red link */
-  --color-link-hover: #F87171;
+  /* Dark mode surfaces */
+  --color-background: #060D1A;     /* Near-black navy */
+  --color-surface: #0B1426;        /* Deep navy surface */
+  --color-surface-elevated: #1C2D4A;
+  --color-text: #E8EDF4;           /* Light text */
+  --color-text-muted: #94A3B8;     /* Muted slate */
+  --color-text-faint: #475569;
+  --color-border: #1C2D4A;
+  --color-border-strong: #2A3F5F;
+  --color-link: #06D6A0;
+  --color-link-hover: #0BF0B0;
+
+  /* Dark shadows */
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -4px rgba(0,0,0,0.3);
+  --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.3);
+  --shadow-accent: 0 4px 20px rgba(6,214,160,0.2);
 }
 
 /* Base Layer */
@@ -40,6 +81,10 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    color-scheme: light dark;
   }
 
   body {
@@ -54,7 +99,7 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 700;
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
     line-height: 1.2;
     color: var(--color-text);
     margin-bottom: 0.5em;
@@ -109,7 +154,7 @@
   }
 
   li::marker {
-    color: var(--color-primary);
+    color: var(--color-accent);
   }
 
   code {
@@ -157,7 +202,7 @@
   }
 
   blockquote {
-    border-left: 4px solid var(--color-primary);
+    border-left: 4px solid var(--color-accent);
     padding-left: 1rem;
     margin: 1rem 0;
     font-style: italic;
@@ -232,7 +277,7 @@
     }
   }
 
-  /* Buttons */
+  /* Buttons — Precision Engineering (sharp corners) */
   .btn {
     display: inline-flex;
     align-items: center;
@@ -242,7 +287,8 @@
     font-size: 0.9375rem;
     font-weight: 700;
     line-height: 1.5;
-    border-radius: 0.375rem;
+    letter-spacing: -0.02em;
+    border-radius: 0.25rem; /* Slightly sharper for precision feel */
     transition: all 0.2s ease;
     cursor: pointer;
     text-decoration: none;
@@ -254,12 +300,12 @@
   }
 
   .btn-primary {
-    background-color: var(--color-primary);
-    color: #ffffff;
+    background-color: var(--color-accent);
+    color: var(--color-primary); /* Dark text on cyan for contrast */
   }
 
   .btn-primary:hover {
-    background-color: var(--color-primary-highlight);
+    background-color: var(--color-accent-dark);
     color: #ffffff;
   }
 
@@ -335,21 +381,39 @@
     color: #ffffff;
   }
 
-  /* Cards */
+  /* Cards — Precision Engineering (sharp top accent) */
   .card {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
-    border-radius: 0.75rem;
+    border-radius: 0.5rem; /* Sharper corners */
     overflow: hidden;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    position: relative;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.2s ease;
   }
 
   .card:hover {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-border-strong);
+  }
+
+  .card:hover::before {
+    opacity: 1; /* Show accent strip on hover */
   }
 
   .dark .card:hover {
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-accent);
   }
 
   .card-body {
@@ -363,35 +427,49 @@
     color: var(--color-text);
   }
 
-  /* Navigation Links */
+  /* Navigation Links — Cyan accent underline */
   .nav-link {
     display: inline-block;
     padding: 0.5rem 0.75rem;
     color: var(--color-text-muted);
     font-weight: 500;
-    border-radius: 0.375rem;
+    border-radius: 0.25rem; /* Sharper corners */
     transition: all 0.15s ease;
     text-decoration: none;
+    position: relative;
   }
 
   .nav-link:hover {
-    color: var(--color-text);
-    background-color: var(--color-surface);
+    color: var(--color-accent);
+    background-color: transparent;
     text-decoration: none;
   }
 
   .nav-link.active {
-    color: var(--color-primary);
-    background-color: rgba(220, 38, 38, 0.1);
-    border-bottom: 2px solid var(--color-primary);
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0.75rem;
+    right: 0.75rem;
+    height: 2px;
+    background-color: var(--color-accent);
+    border-radius: 1px;
   }
 
   .dark .nav-link.active {
-    background-color: rgba(239, 68, 68, 0.15);
-    border-bottom: 2px solid var(--color-primary);
+    color: var(--color-accent-light);
   }
 
-  /* Badges - Red Theme (WCAG AA compliant contrast) */
+  .dark .nav-link.active::after {
+    background-color: var(--color-accent-light);
+  }
+
+  /* Badges — Precision Engineering (cyan/navy palette) */
   .badge {
     display: inline-flex;
     align-items: center;
@@ -402,66 +480,66 @@
   }
 
   .badge-primary {
-    background-color: #DC2626;
-    color: #ffffff;
+    background-color: var(--color-accent);
+    color: var(--color-primary); /* Dark text on cyan */
   }
 
   .dark .badge-primary {
-    background-color: #EF4444;
-    color: #ffffff;
+    background-color: var(--color-accent-light);
+    color: var(--color-primary-dark);
   }
 
   .badge-secondary {
-    background-color: #D97706;
+    background-color: #F57E25;
     color: #ffffff;
   }
 
   .dark .badge-secondary {
-    background-color: #F59E0B;
+    background-color: #fbbf24;
     color: #111827;
   }
 
   .badge-success {
-    background-color: #16A34A;
-    color: #ffffff;
+    background-color: #06D6A0;
+    color: var(--color-primary);
   }
 
   .dark .badge-success {
-    background-color: #22C55E;
-    color: #111827;
+    background-color: #5eead4;
+    color: var(--color-primary-dark);
   }
 
   .badge-info {
-    background-color: #0369A1;
+    background-color: #0B1426;
     color: #ffffff;
   }
 
   .dark .badge-info {
-    background-color: #0EA5E9;
-    color: #ffffff;
+    background-color: #1a2744;
+    color: var(--color-accent-light);
   }
 
   .badge-warning {
-    background-color: #B45309;
-    color: #ffffff;
-  }
-
-  .dark .badge-warning {
     background-color: #F59E0B;
     color: #111827;
   }
 
+  .dark .badge-warning {
+    background-color: #fbbf24;
+    color: #111827;
+  }
+
   .badge-danger {
-    background-color: #DC2626;
-    color: #ffffff;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
   }
 
   .dark .badge-danger {
-    background-color: #EF4444;
+    background-color: var(--color-accent-light);
     color: #ffffff;
   }
 
-  /* Glass Effect */
+  /* Glass Effect — Navy-tinted with cyan shadow in dark mode */
   .glass {
     background-color: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(16px);
@@ -471,17 +549,17 @@
 
   .glass.shadow-md {
     background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 6px -1px rgba(11, 20, 38, 0.1), 0 2px 4px -1px rgba(11, 20, 38, 0.06);
   }
 
   .dark .glass {
-    background-color: rgba(10, 10, 10, 0.85);
+    background-color: rgba(11, 20, 38, 0.85); /* Navy-tinted */
     border-bottom: 1px solid var(--color-border);
   }
 
   .dark .glass.shadow-md {
-    background-color: rgba(10, 10, 10, 0.95);
-    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    background-color: rgba(11, 20, 38, 0.95);
+    box-shadow: 0 4px 6px -1px rgba(6, 214, 160, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.3); /* Cyan shadow */
   }
 
   /* Prose - Markdown Content */
@@ -527,7 +605,7 @@
   }
 
   .prose li::marker {
-    color: var(--color-primary);
+    color: var(--color-accent);
   }
 
   .prose a {
@@ -546,7 +624,7 @@
   }
 
   .prose blockquote {
-    border-left: 4px solid var(--color-primary);
+    border-left: 4px solid var(--color-accent);
     padding-left: 1rem;
     margin: 1.5rem 0;
     font-style: italic;
@@ -620,12 +698,12 @@
 
   .input:focus {
     outline: none;
-    border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15);
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(6, 214, 160, 0.15);
   }
 
   .dark .input:focus {
-    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.25);
+    box-shadow: 0 0 0 3px rgba(94, 234, 212, 0.25);
   }
 
   /* Skip Link */
@@ -645,41 +723,50 @@
     width: auto;
     height: auto;
     padding: 0.75rem 1.5rem;
-    background-color: var(--color-primary);
-    color: #ffffff;
-    border-radius: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-primary); /* Dark text on cyan for contrast */
+    border-radius: 0.25rem; /* Sharper corners */
     z-index: 9999;
     text-decoration: none;
   }
 
-  /* WCAG 2.2 AA Focus Visible Styles (Criterion 2.4.7) */
+  /* WCAG 2.2 AA Focus Visible Styles (Criterion 2.4.7) — Cyan accent */
   .btn:focus-visible,
   .nav-link:focus-visible,
   a:focus-visible {
-    outline: 3px solid var(--color-primary);
+    outline: 3px solid var(--color-accent);
     outline-offset: 2px;
   }
 
   .dark .btn:focus-visible,
   .dark .nav-link:focus-visible,
   .dark a:focus-visible {
-    outline-color: var(--color-link);
+    outline-color: var(--color-accent-light);
   }
 
   /* Icon buttons in header - ensure focus visible */
   #dark-mode-toggle:focus-visible,
   #accessibility-toggle:focus-visible,
   #mobile-menu-button:focus-visible {
-    outline: 3px solid var(--color-primary);
+    outline: 3px solid var(--color-accent);
     outline-offset: 2px;
   }
 
   .dark #dark-mode-toggle:focus-visible,
   .dark #accessibility-toggle:focus-visible,
   .dark #mobile-menu-button:focus-visible {
-    outline-color: var(--color-link);
+    outline-color: var(--color-accent-light);
   }
 }
+
+  /* Header scrolled state — navy shadow in light mode, cyan glow in dark */
+  .header-scrolled header {
+    box-shadow: var(--shadow-md);
+  }
+
+  .dark.header-scrolled header {
+    box-shadow: 0 4px 6px -1px rgba(6, 214, 160, 0.15), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+  }
 
 /* Utility Layer */
 @layer utilities {
@@ -701,12 +788,12 @@
     background-color: var(--color-primary);
   }
 
-  /* Accessibility Mode - High contrast */
+  /* Accessibility Mode - High contrast (cyan/navy palette) */
   .accessibility-mode {
-    --color-primary: #B91C1C;
+    --color-accent: #05b385; /* Darker cyan for light bg contrast */
     --color-secondary: #d96a1f;
-    --color-link: #B91C1C;
-    --color-link-hover: #991B1B;
+    --color-link: #05b385;
+    --color-link-hover: #04926e;
     --color-text: #000000;
     --color-background: #ffffff;
   }
@@ -714,8 +801,8 @@
   .accessibility-mode.dark {
     --color-text: #ffffff;
     --color-background: #000000;
-    --color-link: #F87171;
-    --color-primary: #EF4444;
+    --color-link: #5eead4; /* Bright cyan for dark bg */
+    --color-accent: #6ee7b7;
   }
 
   .accessibility-mode body {

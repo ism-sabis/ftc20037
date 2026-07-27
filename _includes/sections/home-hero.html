@@ -4,7 +4,7 @@
       <!-- Left: Content -->
       <div>
         <!-- Team badge -->
-        <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-red-50 dark:bg-red-950/50 text-red-700 dark:text-red-400 mb-6">
+        <span class="inline-flex items-center px-3 py-1 rounded-sm text-xs font-mono tracking-wide uppercase bg-[var(--color-surface-elevated)] text-[var(--color-text-muted)] mb-6">
           {{ site.site.program }} Team #{{ site.site.team_number }}
         </span>
         
@@ -20,10 +20,10 @@
         
         <!-- CTA buttons -->
         <div class="flex flex-wrap gap-3">
-          <a href="{{ '/about/' | relative_url }}" class="inline-flex items-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+          <a href="{{ '/about/' | relative_url }}" class="inline-flex items-center px-6 py-2.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] text-white font-medium rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
             Meet the Team
           </a>
-          <a href="{{ '/season/' | relative_url }}" class="inline-flex items-center px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+          <a href="{{ '/season/' | relative_url }}" class="inline-flex items-center px-6 py-2.5 border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white font-medium rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
             Current Season
           </a>
         </div>

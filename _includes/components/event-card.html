@@ -3,15 +3,15 @@ Usage: {% include components/event-card.html event=event %}
 Expected event object: { name, date, location, type, description, url }
 {% endcomment %}
 
-<div class="card">
+<div class="card rounded-sm">
   <div class="card-body">
     <div class="flex items-start gap-4">
       <!-- Date Box -->
-      <div class="flex-shrink-0 text-center bg-primary/10 rounded-lg p-3 min-w-[60px]">
-        <span class="block text-2xl font-bold text-primary">
+      <div class="flex-shrink-0 text-center bg-[rgba(6,214,160,0.1)] dark:bg-[rgba(6,214,160,0.15)] rounded-sm p-3 min-w-[60px]">
+        <span class="block text-2xl font-bold text-[var(--color-accent)] dark:text-[var(--color-accent-light)]">
           {{ include.event.date | date: "%d" }}
         </span>
-        <span class="block text-sm text-primary uppercase">
+        <span class="block text-sm text-[var(--color-accent-dark)] dark:text-[var(--color-accent)] uppercase font-medium">
           {{ include.event.date | date: "%b" }}
         </span>
       </div>
@@ -20,13 +20,13 @@ Expected event object: { name, date, location, type, description, url }
       <div class="flex-grow">
         <div class="flex items-center gap-2 mb-1">
           {% if include.event.type %}
-          <span class="badge badge-{% if include.event.type == 'competition' %}primary{% elsif include.event.type == 'outreach' %}accent{% else %}secondary{% endif %} text-xs">
+          <span class="badge badge-{% if include.event.type == 'competition' %}primary{% elsif include.event.type == 'outreach' %}secondary{% else %}info{% endif %} text-xs">
             {{ include.event.type | capitalize }}
           </span>
           {% endif %}
         </div>
 
-        <h3 class="font-bold text-lg">{{ include.event.name }}</h3>
+        <h3 class="font-bold text-lg text-[var(--color-text)]">{{ include.event.name }}</h3>
 
         {% if include.event.location %}
         <p class="text-[var(--color-text-muted)] text-sm flex items-center gap-1 mt-1">
@@ -43,7 +43,7 @@ Expected event object: { name, date, location, type, description, url }
         {% endif %}
 
         {% if include.event.url %}
-        <a href="{{ include.event.url }}" class="inline-flex items-center gap-1 text-primary text-sm mt-2 hover:underline">
+        <a href="{{ include.event.url }}" class="inline-flex items-center gap-1 text-[var(--color-accent)] dark:text-[var(--color-accent-light)] text-sm mt-2 hover:underline">
           Learn more
           <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>

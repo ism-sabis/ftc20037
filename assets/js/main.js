@@ -23,16 +23,18 @@ if (accessibilityToggle) {
   });
 }
 
-// Sticky header shadow on scroll
+// Sticky header shadow on scroll — navy-tinted in dark mode, cyan accent glow
 const header = document.querySelector('header');
 if (header) {
   let lastScrollY = window.scrollY;
   
   const updateHeader = () => {
     if (window.scrollY > 50) {
-      header.classList.add('shadow-md');
+      // Use CSS custom property for shadow color — navy in light mode, cyan glow in dark
+      header.style.setProperty('--shadow-color', 'rgba(11, 20, 38, 0.1)');
+      document.documentElement.classList.add('header-scrolled');
     } else {
-      header.classList.remove('shadow-md');
+      document.documentElement.classList.remove('header-scrolled');
     }
     lastScrollY = window.scrollY;
   };

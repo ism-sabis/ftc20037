@@ -6,36 +6,37 @@ layout: default
 {% include components/hero-section.html %}
 
 <!-- Season Overview -->
-<section class="py-20 bg-white dark:bg-gray-900">
+<section class="py-20 bg-[var(--color-surface)] dark:bg-[var(--color-background)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">{{ site.site.current_season }} Season</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Explore Our Season</h2>
+      <p class="text-sm font-semibold text-[var(--color-accent)] dark:text-[var(--color-accent-light)] uppercase tracking-wider mb-2">{{ site.site.current_season }} Season</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)]">Explore Our Season</h2>
+      <div class="w-12 h-0.5 bg-[var(--color-accent)] mx-auto mt-3"></div>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <a href="{{ '/season/' | relative_url }}" class="group block p-8 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-950/50 flex items-center justify-center mb-4 group-hover:bg-red-100 dark:group-hover:bg-red-950 transition-colors">
-          <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+      <a href="{{ '/season/' | relative_url }}" class="group block p-8 rounded-sm border border-[var(--color-border)] dark:border-[var(--color-border-strong)] hover:border-[var(--color-accent)] dark:hover:border-[var(--color-accent)] hover:shadow-lg transition-all duration-200">
+        <div class="w-12 h-12 rounded-sm bg-[rgba(6,214,160,0.1)] flex items-center justify-center mb-4 group-hover:bg-[rgba(6,214,160,0.15)] transition-colors">
+          <svg class="h-6 w-6 text-[var(--color-accent)] dark:text-[var(--color-accent-light)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Our Robot</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Design, engineering, and capabilities for this season's challenge.</p>
+        <h3 class="text-lg font-semibold text-[var(--color-text)] mb-2">Our Robot</h3>
+        <p class="text-sm text-[var(--color-text-muted)]">Design, engineering, and capabilities for this season's challenge.</p>
       </a>
 
-      <a href="{{ '/season/' | relative_url }}#team" class="group block p-8 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-950/50 flex items-center justify-center mb-4 group-hover:bg-red-100 dark:group-hover:bg-red-950 transition-colors">
-          <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+      <a href="{{ '/season/' | relative_url }}#team" class="group block p-8 rounded-sm border border-[var(--color-border)] dark:border-[var(--color-border-strong)] hover:border-[var(--color-accent)] dark:hover:border-[var(--color-accent)] hover:shadow-lg transition-all duration-200">
+        <div class="w-12 h-12 rounded-sm bg-[rgba(6,214,160,0.1)] flex items-center justify-center mb-4 group-hover:bg-[rgba(6,214,160,0.15)] transition-colors">
+          <svg class="h-6 w-6 text-[var(--color-accent)] dark:text-[var(--color-accent-light)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">The Team</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Meet the students building and leading our team.</p>
+        <h3 class="text-lg font-semibold text-[var(--color-text)] mb-2">The Team</h3>
+        <p class="text-sm text-[var(--color-text-muted)]">Meet the students building and leading our team.</p>
       </a>
 
-      <a href="{{ '/season/' | relative_url }}#outreach" class="group block p-8 rounded-xl border border-gray-100 dark:border-gray-800 hover:border-red-200 dark:hover:border-red-900 hover:shadow-lg transition-all duration-300">
-        <div class="w-12 h-12 rounded-lg bg-red-50 dark:bg-red-950/50 flex items-center justify-center mb-4 group-hover:bg-red-100 dark:group-hover:bg-red-950 transition-colors">
-          <svg class="h-6 w-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <a href="{{ '/season/' | relative_url }}#outreach" class="group block p-8 rounded-sm border border-[var(--color-border)] dark:border-[var(--color-border-strong)] hover:border-[var(--color-accent)] dark:hover:border-[var(--color-accent)] hover:shadow-lg transition-all duration-200">
+        <div class="w-12 h-12 rounded-sm bg-[rgba(6,214,160,0.1)] flex items-center justify-center mb-4 group-hover:bg-[rgba(6,214,160,0.15)] transition-colors">
+          <svg class="h-6 w-6 text-[var(--color-accent)] dark:text-[var(--color-accent-light)]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Outreach</h3>
-        <p class="text-sm text-gray-600 dark:text-gray-400">Community events, STEM education, and outreach initiatives.</p>
+        <h3 class="text-lg font-semibold text-[var(--color-text)] mb-2">Outreach</h3>
+        <p class="text-sm text-[var(--color-text-muted)]">Community events, STEM education, and outreach initiatives.</p>
       </a>
     </div>
   </div>
@@ -43,26 +44,27 @@ layout: default
 
 <!-- Awards -->
 {% if site.data.awards %}
-<section class="py-20 bg-gray-50 dark:bg-gray-800">
+<section class="py-20 bg-[var(--color-surface-elevated)] dark:bg-[var(--color-background)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">Achievements</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Awards & Recognition</h2>
+      <p class="text-sm font-semibold text-[var(--color-accent)] dark:text-[var(--color-accent-light)] uppercase tracking-wider mb-2">Achievements</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)]">Awards & Recognition</h2>
+      <div class="w-12 h-0.5 bg-[var(--color-accent)] mx-auto mt-3"></div>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
       {% for award in site.data.awards limit:4 %}
-      <div class="bg-white dark:bg-gray-900 rounded-xl p-6 border border-gray-100 dark:border-gray-700">
-        <svg class="h-8 w-8 text-red-500 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-        <h4 class="font-semibold text-gray-900 dark:text-white">{{ award.name }}</h4>
-        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">{{ award.event }}</p>
-        <span class="inline-block mt-3 px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 dark:bg-red-950/50 text-red-700 dark:text-red-400">{{ award.season }}</span>
+      <div class="bg-[var(--color-surface)] dark:bg-[var(--color-surface)] rounded-sm p-6 border border-[var(--color-border)] dark:border-[var(--color-border-strong)] hover:border-[var(--color-accent)] transition-colors">
+        <svg class="h-8 w-8 text-[var(--color-accent)] dark:text-[var(--color-accent-light)] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+        <h4 class="font-semibold text-[var(--color-text)]">{{ award.name }}</h4>
+        <p class="text-sm text-[var(--color-text-muted)] mt-1">{{ award.event }}</p>
+        <span class="inline-block mt-3 px-2.5 py-0.5 rounded-full text-xs font-medium bg-[rgba(6,214,160,0.1)] dark:bg-[rgba(6,214,160,0.15)] text-[var(--color-accent-dark)] dark:text-[var(--color-accent-light)]">{{ award.season }}</span>
       </div>
       {% endfor %}
     </div>
 
     <div class="text-center mt-10">
-      <a href="{{ '/awards/' | relative_url }}" class="inline-flex items-center gap-2 text-red-600 dark:text-red-400 font-medium hover:text-red-700 dark:hover:text-red-300 transition-colors">
+      <a href="{{ '/awards/' | relative_url }}" class="inline-flex items-center gap-2 text-[var(--color-accent)] dark:text-[var(--color-accent-light)] font-medium hover:underline transition-colors">
         View all awards
         <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
@@ -73,11 +75,12 @@ layout: default
 
 <!-- Events -->
 {% if site.data.events %}
-<section class="py-20 bg-white dark:bg-gray-900">
+<section class="py-20 bg-[var(--color-surface)] dark:bg-[var(--color-background)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">Calendar</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Upcoming Events</h2>
+      <p class="text-sm font-semibold text-[var(--color-accent)] dark:text-[var(--color-accent-light)] uppercase tracking-wider mb-2">Calendar</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)]">Upcoming Events</h2>
+      <div class="w-12 h-0.5 bg-[var(--color-accent)] mx-auto mt-3"></div>
     </div>
 
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
@@ -90,23 +93,24 @@ layout: default
 {% endif %}
 
 <!-- Portfolio -->
-<section class="py-20 bg-gray-50 dark:bg-gray-800">
+<section class="py-20 bg-[var(--color-surface-elevated)] dark:bg-[var(--color-background)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-12">
-      <p class="text-sm font-semibold text-red-600 dark:text-red-400 uppercase tracking-wider mb-2">Engineering</p>
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">Our Portfolio</h2>
+      <p class="text-sm font-semibold text-[var(--color-accent)] dark:text-[var(--color-accent-light)] uppercase tracking-wider mb-2">Engineering</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)]">Our Portfolio</h2>
+      <div class="w-12 h-0.5 bg-[var(--color-accent)] mx-auto mt-3"></div>
     </div>
 
-    <div class="max-w-3xl mx-auto bg-white dark:bg-gray-900 rounded-xl p-8 border border-gray-100 dark:border-gray-700">
-      <p class="text-gray-600 dark:text-gray-400 mb-6 text-center">
+    <div class="max-w-3xl mx-auto bg-[var(--color-surface)] dark:bg-[var(--color-surface)] rounded-sm p-8 border border-[var(--color-border)] dark:border-[var(--color-border-strong)]">
+      <p class="text-[var(--color-text-muted)] mb-6 text-center">
         Team Standard Deviation's engineering portfolio covers every facet of our season: mechanical design,
         outreach initiatives, and team development.
       </p>
       <div class="flex flex-col sm:flex-row gap-3 justify-center">
-        <a href="{{ '/portfolio/' | relative_url }}" class="inline-flex items-center justify-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+        <a href="{{ '/portfolio/' | relative_url }}" class="inline-flex items-center justify-center px-6 py-2.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] text-[var(--color-primary)] font-medium rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
           View Portfolio
         </a>
-        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="inline-flex items-center justify-center px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+        <a href="{{ '/assets/images/Robotics Portfolio 2025-2026.pdf?v=' | relative_url }}{{ site.time | date: '%s' }}" download class="inline-flex items-center justify-center px-6 py-2.5 border border-[var(--color-border-strong)] text-[var(--color-text-muted)] hover:bg-[var(--color-surface-elevated)] font-medium rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
           Download PDF
         </a>
       </div>
@@ -115,17 +119,18 @@ layout: default
 </section>
 
 <!-- Join CTA -->
-<section class="py-20 bg-white dark:bg-gray-900">
+<section class="py-20 bg-[var(--color-surface)] dark:bg-[var(--color-background)]">
   <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Join Our Team</h2>
-    <p class="text-gray-600 dark:text-gray-400 mb-8 max-w-xl mx-auto">
+    <h2 class="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">Join Our Team</h2>
+    <div class="w-12 h-0.5 bg-[var(--color-accent)] mx-auto mt-3 mb-6"></div>
+    <p class="text-[var(--color-text-muted)] mb-8 max-w-xl mx-auto">
       Interested in robotics, engineering, outreach, or business? We're always looking for passionate students.
     </p>
     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <a href="{{ '/about/' | relative_url }}#join" class="inline-flex items-center justify-center px-6 py-2.5 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+      <a href="{{ '/about/' | relative_url }}#join" class="inline-flex items-center justify-center px-6 py-2.5 border border-[var(--color-border-strong)] text-[var(--color-text-muted)] hover:text-[var(--color-accent)] hover:border-[var(--color-accent)] font-medium rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
         Learn More
       </a>
-      <a href="{{ '/contact/' | relative_url }}" class="inline-flex items-center justify-center px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none">
+      <a href="{{ '/contact/' | relative_url }}" class="inline-flex items-center justify-center px-6 py-2.5 bg-[var(--color-accent)] hover:bg-[var(--color-accent-dark)] text-[var(--color-primary)] font-medium rounded-sm transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]">
         Contact Us
       </a>
     </div>

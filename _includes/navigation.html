@@ -1,4 +1,4 @@
-<header class="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+<header class="sticky top-0 z-50 bg-[var(--color-surface)]/80 dark:bg-[var(--color-surface)]/80 backdrop-blur-md border-b border-[var(--color-border)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <nav class="flex items-center justify-between h-16">
       <!-- Logo -->
@@ -6,11 +6,11 @@
         <img
           src="{{ site.site.logo | default: '/assets/images/placeholder.svg' | relative_url }}"
           alt="{{ site.site.team_name }} logo"
-          class="h-10 w-10 rounded-lg object-cover ring-1 ring-gray-200 dark:ring-gray-700 group-hover:ring-red-500 transition-all duration-300"
+          class="h-10 w-10 rounded-sm object-cover ring-1 ring-[var(--color-border)] dark:ring-[var(--color-border-strong)] group-hover:ring-[var(--color-accent)] transition-all duration-300"
         >
         <div class="hidden sm:block">
-          <span class="block font-bold text-gray-900 dark:text-white leading-tight">{{ site.site.team_name }}</span>
-          <span class="block text-xs text-gray-500 dark:text-gray-400 leading-tight">#{{ site.site.team_number }} · {{ site.site.program }}</span>
+          <span class="block font-bold text-[var(--color-text)] leading-tight">{{ site.site.team_name }}</span>
+          <span class="block text-xs text-[var(--color-text-faint)] leading-tight">#{{ site.site.team_number }} · {{ site.site.program }}</span>
         </div>
       </a>
 
@@ -19,7 +19,7 @@
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
-           class="nav-link px-3 py-2 rounded-md text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-red-600 dark:hover:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/30 transition-colors"
+           class="nav-link px-3 py-2 rounded-sm text-sm font-medium text-[var(--color-text-muted)] dark:text-[var(--color-text-muted)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-light)] transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
           {{ item.title }}
         </a>
@@ -31,7 +31,7 @@
         <!-- Dark Mode Toggle -->
         <button
           id="dark-mode-toggle"
-          class="p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="p-2.5 rounded-sm text-[var(--color-text-muted)] dark:text-[var(--color-text-muted)] hover:bg-[var(--color-surface-elevated)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           aria-label="Toggle dark mode"
         >
           <svg class="h-5 w-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,7 +46,7 @@
         <!-- Accessibility Toggle -->
         <button
           id="accessibility-toggle"
-          class="p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="p-2.5 rounded-lg text-[var(--color-text-muted)] hover:bg-[var(--color-surface-elevated)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           aria-label="Toggle accessibility mode"
         >
           <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -59,7 +59,7 @@
         <!-- Mobile Menu Button -->
         <button
           id="mobile-menu-button"
-          class="md:hidden p-2.5 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="md:hidden p-2.5 rounded-sm text-[var(--color-text-muted)] dark:text-[var(--color-text-muted)] hover:bg-[var(--color-surface-elevated)] transition-colors focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           aria-label="Open menu"
           aria-expanded="false"
         >
@@ -80,15 +80,15 @@
     <div class="absolute inset-0 bg-black/50" id="mobile-menu-backdrop"></div>
 
     <!-- Drawer -->
-    <div class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-gray-900 shadow-xl">
-      <div class="p-4 border-b border-gray-100 dark:border-gray-800 flex justify-between items-center">
-        <span class="font-semibold text-gray-900 dark:text-white">Menu</span>
+    <div class="absolute right-0 top-0 h-full w-72 bg-[var(--color-surface)] dark:bg-[var(--color-background)] shadow-xl">
+      <div class="p-4 border-b border-[var(--color-border)] flex justify-between items-center">
+        <span class="font-semibold text-[var(--color-text)]">Menu</span>
         <button
           id="mobile-menu-close"
-          class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:outline-none"
+          class="p-2 rounded-sm hover:bg-[var(--color-surface-elevated)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           aria-label="Close menu"
         >
-          <svg class="h-5 w-5 text-gray-600 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="h-5 w-5 text-[var(--color-text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
           </svg>
         </button>
@@ -98,16 +98,18 @@
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
-           class="block py-2.5 px-3 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-red-50 dark:hover:bg-red-950/30 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+           class="block py-2.5 px-3 rounded-sm text-base font-medium text-[var(--color-text-muted)] hover:bg-[var(--color-surface-elevated)] hover:text-[var(--color-accent)] transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
           {{ item.title }}
         </a>
         {% endfor %}
 
-        <div class="pt-4 mt-4 border-t border-gray-100 dark:border-gray-800">
-          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Privacy</a>
-          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Terms</a>
-          <a href="{{ '/accessibility/' | relative_url }}" class="block py-2 px-3 text-sm text-gray-500 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors">Accessibility</a>
+        <div class="pt-4 mt-4 border-t border-[var(--color-border)]">
+          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors">Privacy</a>
+          <span aria-hidden="true" class="block py-1">·</span>
+          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors">Terms</a>
+          <span aria-hidden="true" class="block py-1">·</span>
+          <a href="{{ '/accessibility/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors">Accessibility</a>
         </div>
       </nav>
     </div>

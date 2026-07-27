@@ -15,15 +15,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Team Jersey Red + FIRST Orange Accent
+        // Precision Engineering — Deep Navy + Electric Cyan
         primary: {
-          DEFAULT: '#DC2626', // Vibrant red from jerseys
-          light: '#EF4444',
-          dark: '#B91C1C',
-          highlight: '#991B1B',
+          DEFAULT: '#0B1426', // Deep navy (team jersey)
+          light: '#1a2744',
+          dark: '#060d18',
+          highlight: '#030710',
+        },
+        accent: {
+          DEFAULT: '#06D6A0', // Electric cyan (energy)
+          light: '#5eead4',
+          dark: '#05b385',
         },
         secondary: {
-          DEFAULT: '#F57E25', // FIRST Orange (accent)
+          DEFAULT: '#F57E25', // FIRST Orange
           light: '#f79b54',
           dark: '#d96a1f',
         },
@@ -51,9 +56,12 @@ module.exports = {
         light: '#f8f9fa',
         dark: '#212529',
       },
+      letterSpacing: {
+        tighter: '-0.03em',
+      },
       fontFamily: {
-        sans: ['Lato', 'Inter', 'system-ui', 'sans-serif'],
-        mono: ['SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
+        sans: ['system-ui', '-apple-system', "BlinkMacSystemFont", "'Segoe UI'", 'Roboto', 'sans-serif'],
+        mono: ["'JetBrains Mono'", "'Fira Code'", 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'],
       },
     },
   },
