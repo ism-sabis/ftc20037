@@ -1,7 +1,6 @@
 ---
 layout: page
 title: Team Gallery
-description: Photos uploaded to assets/images/gallery/uploads/ appear here automatically.
 permalink: /gallery/
 ---
 

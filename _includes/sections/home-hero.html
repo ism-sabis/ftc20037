@@ -1,4 +1,4 @@
-<section class="relative overflow-hidden bg-white dark:bg-gray-900">
+<section class="relative overflow-hidden bg-[var(--color-surface)] dark:bg-[var(--color-background)]">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 lg:py-36">
     <div class="grid md:grid-cols-2 gap-12 items-center">
       <!-- Left: Content -->
@@ -9,12 +9,12 @@
         </span>
         
         <!-- Main heading -->
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-text)] leading-tight mb-6">
           {{ site.site.team_name }}
         </h1>
         
         <!-- Subtitle -->
-        <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-md leading-relaxed">
+        <p class="text-lg text-[var(--color-text-muted)] mb-8 max-w-md leading-relaxed">
           {{ site.description | default: "Building robots, inspiring futures, and making a difference in our community." }}
         </p>
         
