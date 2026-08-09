@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 /* ── Precision Engineering Theme ──────────────────────────────
-   Deep Navy + Electric Cyan + FIRST Orange
+   Deep Navy + Vibrant Red Accent + FIRST Orange
    Geometric, grid-based, robotics-aesthetic
    ─────────────────────────────────────────────────────────── */
 
@@ -13,10 +13,10 @@
   --color-primary-light: #1C2D4A;  /* Lighter navy for surfaces */
   --color-primary-highlight: #2A3F5F;
 
-  /* Accent — Electric Cyan (robotics energy) */
-  --color-accent: #06D6A0;         /* Electric cyan */
-  --color-accent-light: #0BF0B0;
-  --color-accent-dark: #05B88A;
+  /* Accent — Vibrant Red (team energy) */
+  --color-accent: #DC2626;         /* Vibrant red */
+  --color-accent-light: #EF4444;
+  --color-accent-dark: #991B1B;
 
   /* FIRST Orange — brand secondary */
   --color-secondary: #F57E25;      /* FIRST Orange */
@@ -24,7 +24,7 @@
   --color-secondary-dark: #D96A1F;
 
   /* Semantic colors */
-  --color-success: #06D6A0;
+  --color-success: #10B981;       /* Emerald green (updated from teal)
   --color-info: #3B82F6;
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
@@ -39,10 +39,10 @@
   --color-border: #E2E8F0;
   --color-border-strong: #CBD5E1;
   --color-link: #0B1426;
-  --color-link-hover: #06D6A0;
+  --color-link-hover: #DC2626;
 
   /* Accent gradient */
-  --gradient-accent: linear-gradient(135deg, #06D6A0 0%, #0BF0B0 100%);
+  --gradient-accent: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
   --gradient-navy: linear-gradient(135deg, #0B1426 0%, #1C2D4A 100%);
   --gradient-hero: linear-gradient(160deg, #0B1426 0%, #1C2D4A 40%, #0B1426 100%);
 
@@ -51,7 +51,7 @@
   --shadow-md: 0 4px 6px -1px rgba(11,20,38,0.07), 0 2px 4px -2px rgba(11,20,38,0.05);
   --shadow-lg: 0 10px 15px -3px rgba(11,20,38,0.08), 0 4px 6px -4px rgba(11,20,38,0.04);
   --shadow-xl: 0 20px 25px -5px rgba(11,20,38,0.1), 0 8px 10px -6px rgba(11,20,38,0.04);
-  --shadow-accent: 0 4px 14px rgba(6,214,160,0.25);
+  --shadow-accent: 0 4px 14px rgba(220,38,38,0.25);
 }
 
 .dark {
@@ -64,15 +64,15 @@
   --color-text-faint: #475569;
   --color-border: #1C2D4A;
   --color-border-strong: #2A3F5F;
-  --color-link: #06D6A0;
-  --color-link-hover: #0BF0B0;
+  --color-link: #EF4444;
+  --color-link-hover: #FCA5A5;
 
   /* Dark shadows */
   --shadow-sm: 0 1px 2px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.4), 0 2px 4px -2px rgba(0,0,0,0.3);
   --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.4), 0 4px 6px -4px rgba(0,0,0,0.3);
   --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.5), 0 8px 10px -6px rgba(0,0,0,0.3);
-  --shadow-accent: 0 4px 20px rgba(6,214,160,0.2);
+  --shadow-accent: 0 4px 20px rgba(220,38,38,0.2);
 }
 
 /* Base Layer */
@@ -500,12 +500,12 @@
   }
 
   .badge-success {
-    background-color: #06D6A0;
+    background-color: #10B981;
     color: var(--color-primary);
   }
 
   .dark .badge-success {
-    background-color: #5eead4;
+    background-color: #34D399;
     color: var(--color-primary-dark);
   }
 

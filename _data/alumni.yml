@@ -1,12 +1,18 @@
 # Team alumni - Members who have graduated
 # Automatically populated by the alumni archival workflow
 
-- name: null
-  role: null
-  graduation_year: null
+- name: Jason
+  role: Building & Driver
+  graduation_year: 2026
   seasons:
-    null
+    - "2023-2024"
+    - "2024-2025"
+    - "2025-2026"
   now: null
-  bio: null
-  image: /assets/images/placeholder.svg
+  bio: A senior at the International School of Minnesota. This was his third year in FTC. Jason focused on building and driving, and he enjoyed anime and physics.
+  image: /assets/images/Jason.png
+  skills:
+    - Driving
+    - Mechanical Assembly
+    - Systems Understanding
 

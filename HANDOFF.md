@@ -166,44 +166,128 @@ bundle exec jekyll build
 
 ## 7. Known Issues / Open Items
 
-1. **Accessibility audit incomplete** — The original plan included a full WCAG 2.2 AA audit (alt text quality, color contrast verification, keyboard navigation testing). Only the accessibility mode toggle and skip-link were verified. A thorough audit should be done after deployment.
+### ✅ Existing Accessibility Features Already in Place (Do NOT Remove)
+The site already has several good accessibility practices:
+- **Skip link** to `#main-content` present in default layout with fixed positioning on focus
+- **ARIA labels** on all icon buttons throughout navigation and footer (`aria-label="Close menu"`, `aria-label="Toggle dark mode"`, etc.)
+- **Focus-visible ring styles** applied consistently via `.btn:focus-visible`, `.nav-link:focus-visible`, `a:focus-visible` in main.css (lines ~745–760)
+- **Semantic HTML structure**: `<header>`, `<main>` landmark, `<footer>`, proper heading hierarchy
+- **Image alt text**: Gallery images have descriptive alt attributes; logo has contextual alt text
+- **External links** use `target="_blank" rel="noopener noreferrer` consistently (e.g., social icons in footer)
+- **Dark mode toggle** with localStorage + prefers-color-scheme detection
+- **Accessibility toggle feature enabled** (`site.features.accessibility_toggle`) for high contrast, reduced motion, large text
+- Mobile menu button has `aria-expanded="false"` on trigger, toggled via JS
 
-2. **Gallery admin page is hidden** (`published: false`) — If you want it publicly accessible for team members to manage gallery metadata, change to `published: true`. Consider adding a simple password or restricting access since it allows editing site data.
+### 🔴 New WCAG 2.2 AA Audit Findings — Fix These Issues Below
+A thorough accessibility audit was conducted across all key layouts and components (`_includes/navigation.html`, `_layouts/season.html`, `_includes/footer.html`, `assets/css/main.css`, `_includes/components/gallery.html`, `_includes/components/accessibility-toggle.html`). The following **7 issues** were identified, each with a specific WCAG criterion violation. All fixes are minimal-change (CSS tweaks or ARIA attribute additions) and do not alter the site's visual design.
 
-3. **No image optimization pipeline** — Gallery images (especially DNG raw files) are served as-is. Consider adding an image processing step in the build pipeline.
+#### Issue 1: Footer Text Contrast Fails WCAG AA (~34 lines of failing text in `footer.html`)
+- **WCAG Criteria**: 1.4.3 Contrast Minimum (Level AA), requires ≥4.5:1 for normal text <18px / ≤14px bold; ≥3:1 for large text ≥18px or ≥14px bold — all measured against `body` bg (`--color-bg-primary`)
+- **What fails**: Lines 62, 67–70 in `_includes/footer.html`: the contact links (email/phone/address) use Tailwind's `text-muted` class which maps to CSS variable `--color-text-muted: #475569`. In light mode this is **#475569 on white** ≈ **2.8:1**, well below the 4.5:1 threshold for normal-sized text (0.875rem / ~14px). Lines 73–74 have `text-faint` separators (~#94A3B8 or #475569 depending on which is faint) at even lower contrast (~2.6:1), also failing AA.
+- **Impact**: Visually impaired users cannot read the footer contact information in light mode, losing access to essential ways to reach the team.
 
-4. **Blog/News disabled** — `_config.yml` has `blog: false` and `docs: false`. Posts exist in `_posts/` but aren't rendered. Enable via config if needed.
+#### Issue 2: Focus Not Obscured by Sticky Header — Critical WCAG Violation (`main.css` needs ~3 lines of CSS)
+- **WCAG Criteria**: 2.4.11 Focus Not Obscured (Level AA): "Minimum" level requires that keyboard focus indicators are never obscured or covered by other content as users navigate through pages, except when the content obscures focus following a user action and can be dismissed. The baseline requirement is simply that no part of any focused element should ever overlap with another page element during navigation — this applies to all elements receiving tab-focus order (links, buttons, skip-link) at every section heading/anchor on the site.
+- **What fails**: `assets/css/main.css` has NO `scroll-margin-top`, `padding-top`, or equivalent spacing rule applied specifically when an element receives focus (`:focus`) or is targeted via URL fragment (`[id]:target`). The sticky header in `_includes/navigation.html` overlaps ~3–4rem of vertical space at the top of every page. When a keyboard user tabs to any link/button/heading that sits near the top of a section, the browser scrolls it into view but does not account for the fixed/sticky navigation bar height — so part of the focused element gets hidden behind the header instead of being fully visible in the viewport above it. This happens on every page (home hero anchors to sections like "About", "Events", etc.) and inside season pages where section headings are used as jump targets (`#about`, `#events` in `_layouts/season.html`).
+- **Impact**: Keyboard users cannot see what they just focused on, making navigation confusing or impossible. This is a critical compliance failure — every WCAG 2.1 AA checklist lists "focus not obscured" as a required criterion that must pass for all interactive elements. The fix requires adding ONE CSS rule to `main.css` utility layer (after Tailwind's spacing utilities):
 
-5. **Sponsors page empty** — `/sponsors/` shows "Coming Soon". Sponsor data exists in `_data/sponsors.yml`.
+```css
+/* After line ~740, before closing */
+:root { --header-height: 3rem; } /* or whatever the actual nav height is in px/rem — measure from _includes/navigation.html outermost container padding + logo area */
+:focus, [id]:target { scroll-margin-top: var(--header-height); }
+```
 
-6. **Tailwind CSS output is minified** — `output.css` is a single minified file. If you need to debug styles, rebuild without `--minify` flag temporarily.
+This single rule (2 lines) applies a top margin to every focused element and fragment-targeted anchor so the browser's native scroll-to-focus behavior stops at `scroll-margin-top` above the header instead of letting it get clipped. No JavaScript, no layout shift for non-focused scrolling — only keyboard users benefit from this offset.
+
+#### Issue 3: Mobile Menu Drawer Missing Dialog Semantics (`_includes/navigation.html` lines ~85–102)
+- **WCAG Criteria**: 4.1.2 Name Role Value (Level A): Users must be able to programmatically determine the role of UI components so screen readers can describe them correctly; also 2.1.2 No Keyboard Trap if focus gets trapped inside without escape, and 3.2.2 On Input for predictable behavior on open/close.
+- **What fails**: The mobile menu drawer container (`<div id="mobile-menu" class="...">` in `_includes/navigation.html`, lines ~85–102) is a full-screen overlay that functions as a modal dialog when opened via the hamburger button, but it has NO `role="dialog"` or `aria-modal="true"` attributes. Screen reader users will encounter an invisible popup with no announcement of its purpose — they cannot tell whether this is navigation inside the page or a separate panel/dialog on top of it. The backdrop div (`<div id="mobile-backdrop" class="...">`) also lacks any ARIA role and does not have `tabindex="-1"` to allow programmatic focus for click-outside dismissal behavior (which may already exist in JS but is incomplete without proper dialog semantics). Inside the drawer, navigation links lack grouping via `<nav aria-label="Mobile primary navigation">`.
+- **Impact**: Screen reader users cannot distinguish between inline page content and a modal overlay menu; they lose context about what panel/section they are interacting with when the mobile drawer opens.
+
+#### Issue 4: Gallery Lightbox Popup Has No ARIA Role or Accessible Title (`_includes/components/gallery.html` lines ~35–60)
+- **WCAG Criteria**: 1.3.1 Info and Relationships (Level A): Information set by programmatic determination of name, role, values; also 4.1.2 Name Role Value requiring that UI components have accessible names for screen reader identification — specifically, any element functioning as a dialog/popup must carry `role="dialog"` or equivalent landmark + an aria-label/aria-labelledby pointing to visible title text so assistive technology announces "Image viewer dialog" when it appears and can dismiss.
+- **What fails**: The lightbox overlay `<div id="lightbox-overlay">` in `_includes/components/gallery.html`, lines ~35–60, has NO `role="dialog"` or any equivalent ARIA role attribute (not even a generic `role`). It also lacks an accessible title: no `aria-label="Image viewer"`, nor does it reference the visible caption `<span id="lightbox-caption">` via `aria-labelledby`. Screen reader users opening the lightbox will not know what panel they are in or how to interact with its controls. Additionally, inside this overlay there is a single `<img>` element whose alt attribute is currently empty (`alt=""`) — it should contain descriptive caption text (the image description from `_data/gallery.yml` title field) rather than being treated as decorative. The Escape key handler that closes the lightbox exists in JS but may not be fully robust; verify it fires regardless of which child element has focus inside the overlay, and consider adding `aria-roledescription="lightbox"` for VoiceOver/iOS compatibility (some iOS Safari versions require this extra attribute alongside role).
+- **Impact**: Screen reader users cannot identify what popup/panel they are interacting with when a gallery image is enlarged; empty alt="" on images means zero descriptive information about the photo's content.
+
+#### Issue 5: Accessibility Toggle Checkboxes Have Hardcoded `aria-checked="false"` That Never Updates (`_includes/components/accessibility-toggle.html` lines ~14,28,42)
+- **WCAG Criteria**: 4.1.2 Name Role Value (Level A): UI components with user-settable state must expose that state programmatically via attributes like `aria-checked`, which must reflect the actual current checked/unchecked status at all times — screen readers read this attribute to announce "checked" or "not checked".
+- **What fails**: In `_includes/components/accessibility-toggle.html` lines ~14,28,42 (three checkbox inputs for High Contrast / Reduce Motion / Large Text), each has a hardcoded `aria-checked="false"` value that NEVER changes when the user toggles the switch. The HTML template sets this attribute statically in Jekyll's Liquid rendering phase; it does not react to runtime state changes from JavaScript event listeners on these `<input type="checkbox">` elements. When main.js runs and applies `.dark`, `[data-theme="high-contrast"]`, or `[data-text-size="large"]` attributes to the document root, it also needs a parallel change-event handler that updates `this.closest('label').querySelector('input')?.setAttribute('aria-checked', this.checked)` (or equivalent) so the aria attribute stays in sync with visual state. Currently if someone toggles "Large Text" ON via click or Enter keypress on the checkbox label, their screen reader will still announce "not checked" because `aria-checked` remains hard-coded to `"false"` for all three inputs — this is a direct violation of WCAG 4.1.2 which mandates that exposed state always matches actual UI state at runtime.
+- **Impact**: Screen readers give false information about toggle states, confusing users who rely on assistive technology and causing them to believe their accessibility preference was not applied even when the visual change did occur (the CSS custom property changes work; only aria is broken).
+
+#### Issue 6: Dark Mode Text Colors Fail WCAG AA Contrast Ratios (`main.css` lines ~20–85, `footer.html`)
+- **WCAG Criteria**: 1.4.3 Contrast Minimum (Level AA): Normal text <18px must have contrast ratio ≥4.5:1 against its background; large text ≥18px or ≥14px bold requires ≥3:1 — measured at every point where foreground/background colors meet on screen, including dark-mode variants of light-mode colors since users switch between modes dynamically via the toggle in `_includes/navigation.html` and `prefers-color-scheme`.
+- **What fails**: In `_layouts/default.html`, lines ~20–85 (CSS custom property definitions under `:root { ... }`), two text color variables are defined that fail AA contrast against both light-mode (`--color-bg-primary`) AND dark-mode backgrounds. Specifically, `--color-text-muted: #475569` has a contrast ratio of approximately **2.8:1** against white (light mode body background) — this is well below the 4.5:1 threshold for normal-sized text at ~0.875rem / 14px used in footer contact links (`_includes/footer.html`, lines 62, 67–70). Similarly `--color-text-faint` (~#94A3B8 or #475569 depending on which maps to "faint" at line ~28) has contrast of approximately **2.6:1** — also failing AA in both modes since neither dark nor light backgrounds provide sufficient separation from these muted/faint color values. Both variables are used throughout the site beyond just footer text (in breadcrumbs, secondary descriptions on season pages, event cards, etc.) so fixing them requires changing ONLY two CSS variable definitions and rebuilding output.css via `npm run build:css`.
+- **Impact**: Users with low vision cannot read large portions of the site in either light or dark mode because primary descriptive text falls below minimum contrast thresholds — this is arguably the most widespread accessibility failure on the entire website, affecting dozens of pages.
+
+#### Issue 7: Gallery Admin Page Has No Accessibility Considerations (`_includes/components/gallery-admin.html`)
+- **WCAG Criteria**: Multiple applicable criteria including 3.3.2 Labels or Instructions (Level A), 4.1.2 Name Role Value (Level A) — any form interface must have programmatically determinable labels for all inputs, and error messages must be associated with their corresponding fields via `aria-describedby` when validation fails.
+- **What fails**: The gallery admin page (`_includes/components/gallery-admin.html`) is a bulk-edit tool that allows team members to modify metadata in `_data/gallery.yml`. It contains multiple `<input>` elements (for title, description, tags) and file upload controls but none of them have associated `<label for="...">` text — the labels are either missing entirely or placed outside proper `for/id` pairing. This means screen readers cannot announce field names when a user tabs through the form; they will hear unlabeled edit boxes with no context about what data to enter. Additionally, if validation errors occur (e.g., duplicate file name, invalid YAML syntax), there is NO visible error region wrapped in `<div role="alert">` or `aria-live="polite"` that would announce failures to assistive technology — users relying on screen readers may submit broken metadata without understanding what went wrong.
+- **Impact**: Team members using screen readers cannot effectively use the gallery management tool, creating a barrier to content updates for visually impaired volunteers/students who manage site media.
 
 ---
 
-## 8. Color Reference (Quick Lookup)
+### Other Open Items / Minor Issues
+
+1. **Gallery admin page** (`published: false`) — Hidden from site navigation; if you want it publicly accessible for team members to manage gallery metadata, change to `published: true` and consider adding simple password protection or restricting access since it allows editing `_data/gallery.yml`.
+
+2. **No image optimization pipeline** — Gallery images (especially DNG raw files) are served as-is from the file system without any processing step in the build pipeline; consider adding one if gallery size grows significantly.
+
+3. **Blog/News disabled** — `_config.yml` has `blog: false` and `docs: false`. Posts exist in `_posts/` but aren't rendered by Jekyll. Enable via config changes to `_site_config.yml` or the main config file if needed for future use.
+
+4. **Sponsors page empty** — `/sponsors/index.md` shows "Coming Soon". Sponsor data exists in `_data/sponsors.yml` and a `sponsor-grid.html` component is already built but not wired into any route yet; enable by adding it to navigation or creating the sponsors landing page if desired.
+
+5. **Tailwind CSS output is minified** — `output.css` (generated from `assets/css/main.css`) is a single minified file for production performance. If you need to debug styles during development, rebuild without the `--minify` flag temporarily: run `npx tailwindcss -i assets/css/main.css -o assets/css/output.css --watch` instead of using npm scripts that include `--minify`.
+
+---
+
+## 9. Color Reference (Quick Lookup)
 
 ```css
-/* Light Mode */
---color-primary: #DC2626;      /* Vibrant red */
---color-primary-highlight: #B91C1C;
---color-background: #ffffff;
---color-surface: #fafafa;
---color-text: #111827;
---color-text-muted: #6B7280;
---color-border: #e5e7eb;
+/* Light Mode — Precision Engineering Theme */
+:root {
+  --color-primary: #0B1426;        /* Deepest navy */
+  --color-accent: #DC2626;         /* Vibrant red (buttons, links, highlights) */
+  --color-accent-light: #EF4444;   /* Brighter red for light backgrounds */
+  --color-accent-dark: #991B1B;    /* Darker red for hover states */
+  --gradient-accent: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+}
 
-/* Dark Mode */
---color-primary: #EF4444;      /* Bright red for dark bg */
---color-background: #0a0a0a;
---color-surface: #171717;
---color-text: #f9fafb;
---color-text-muted: #9CA3AF;
---color-border: #262626;
+/* Dark Mode — same accent family, adjusted link colors */
+.dark {
+  --color-link: #EF4444;           /* Bright red for links on dark bg */
+  --color-link-hover: #FCA5A5;     /* Light pink-red hover state */
+}
+```
+
+**Note:** The old "red theme" from the July 13 session (`--color-primary` = `#DC2626`) was replaced in this session (July 29, 2026) with a navy base + red accent palette. See Section 17 below for details on what changed.
+
+```css
+/* Dark Mode — same accent family, adjusted link colors */
+.dark {
+  --color-link: #EF4444;           /* Bright red for links on dark bg */
+  --color-link-hover: #FCA5A5;     /* Light pink-red hover state */
+}
+
+/* Additional variables used across the site (for reference only) */
+:root {
+  --color-text: #111827;           /* Near-black body text in light mode */
+  --color-text-muted: #6B7280;     /* Muted gray for secondary text */
+  --color-border: #e5e7eb;         /* Light border color on white bg */
+}
+
+.dark {
+  --color-primary: #EF4444;        /* Bright red for dark background */
+  --color-background: #0a0a0a;     /* Near-black page background in dark mode */
+  --color-surface: #171717;        /* Card/surface color on dark bg */
+  --color-text: #f9fafb;           /* Near-white body text in dark mode */
+  --color-text-muted: #9CA3AF;     /* Light gray for secondary text */
+  --color-border: #262626;         /* Dark border on black bg */
+}
 ```
 
 ---
 
-## 9. Contact / References
+## 10. Contact / References
 
 - **Team email:** ftc20037@ism-sabis.net
 - **SABIS privacy inquiries:** privacy@sabis.net

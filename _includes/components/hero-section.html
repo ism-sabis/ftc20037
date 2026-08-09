@@ -1,20 +1,20 @@
 <section class="relative overflow-hidden" style="background: var(--gradient-hero);">
-  <!-- Circuit-board pattern overlay -->
-  <svg class="absolute inset-0 w-full h-full opacity-[0.03] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Circuit-board pattern overlay (red traces on navy background, visible but subtle) -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.12] pointer-events-none" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <pattern id="circuit-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M0 20h15M25 20h15M20 0v15M20 25v15" stroke="#06D6A0" stroke-width="0.5" fill="none"/>
-        <circle cx="20" cy="20" r="2" fill="#06D6A0" opacity="0.5"/>
-        <circle cx="0" cy="20" r="1.5" fill="#06D6A0" opacity="0.3"/>
-        <circle cx="40" cy="20" r="1.5" fill="#06D6A0" opacity="0.3"/>
-        <circle cx="20" cy="0" r="1.5" fill="#06D6A0" opacity="0.3"/>
-        <circle cx="20" cy="40" r="1.5" fill="#06D6A0" opacity="0.3"/>
+        <path d="M0 20h15M25 20h15M20 0v15M20 25v15" stroke="#DC2626" stroke-width="0.8" fill="none"/>
+        <circle cx="20" cy="20" r="2.5" fill="#EF4444" opacity="0.7"/>
+        <circle cx="0" cy="20" r="1.5" fill="#DC2626" opacity="0.5"/>
+        <circle cx="40" cy="20" r="1.5" fill="#DC2626" opacity="0.5"/>
+        <circle cx="20" cy="0" r="1.5" fill="#DC2626" opacity="0.5"/>
+        <circle cx="20" cy="40" r="1.5" fill="#DC2626" opacity="0.5"/>
       </pattern>
     </defs>
     <rect width="100%" height="100%" fill="url(#circuit-pattern)"/>
   </svg>
 
-  <!-- Cyan accent line at bottom -->
+  <!-- Red accent line at bottom -->
   <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-[var(--color-accent)]"></div>
 
   <div class="relative container py-20 md:py-32">
@@ -28,7 +28,7 @@
         {{ site.site.team_name }}
       </h1>
 
-      <!-- Cyan accent bar under heading -->
+      <!-- Red accent bar under heading -->
       <div class="w-12 h-0.5 bg-[var(--color-accent)] mb-4"></div>
 
       <p class="text-xl md:text-2xl mb-8 text-white/90 leading-relaxed">

@@ -15,7 +15,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Precision Engineering — Deep Navy + Electric Cyan
+        // Precision Engineering — Deep Navy + Red Accent
         primary: {
           DEFAULT: '#0B1426', // Deep navy (team jersey)
           light: '#1a2744',
@@ -23,9 +23,9 @@ module.exports = {
           highlight: '#030710',
         },
         accent: {
-          DEFAULT: '#06D6A0', // Electric cyan (energy)
-          light: '#5eead4',
-          dark: '#05b385',
+          DEFAULT: '#DC2626', // Vibrant red (energy, from team jerseys)
+          light: '#EF4444',   // Brighter red for highlights
+          dark: '#991B1B',    // Dark red for hover states on dark bg
         },
         secondary: {
           DEFAULT: '#F57E25', // FIRST Orange
