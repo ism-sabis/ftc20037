@@ -24,8 +24,8 @@
   --color-secondary-dark: #D96A1F;
 
   /* Semantic colors */
-  --color-success: #10B981;       /* Emerald green (updated from teal)
-  --color-info: #3B82F6;
+  --color-success: #10B981;       /* Emerald green */
+  --color-info: #DC2626;          /* Vibrant red */
   --color-warning: #F59E0B;
   --color-danger: #EF4444;
 

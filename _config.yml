@@ -18,7 +18,7 @@ palette:
     primary: "#003974"    # Deep Blue
     secondary: "#F57E25"  # FIRST Orange (brand color)
     success: "#28a745"    # Success green
-    info: "#3B82F6"       # Info blue
+    info: "#DC2626"       # Info red
     warning: "#f0b37e"    # Warning orange
     danger: "#dc3545"     # Danger red
   dark_mode: true
