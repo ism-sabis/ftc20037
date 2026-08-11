@@ -97,7 +97,7 @@ This limitation applies regardless of the nature of the damages (direct, indirec
 Team Standard Deviation is committed to protecting the privacy of our student members. Personal information about team members (names, photos, grades) is published with appropriate parental/guardian consent in accordance with:
 - The Family Educational Rights and Privacy Act (FERPA)
 - The Children's Online Privacy Protection Act (COPPA)
-- ISM/SABIS privacy policies
+- ISM privacy policies
 
 If you believe a student's information has been posted without proper consent, please contact us immediately at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net).
 

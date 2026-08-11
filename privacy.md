@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Privacy Policy
-description: How Team Standard Deviation (FTC 20037) collects, uses, and protects your information. Aligned with SABIS network privacy policy.
+description: How Team Standard Deviation (FTC 20037) collects, uses, and protects your information.
 permalink: /privacy/
 published: true
 ---
@@ -70,7 +70,7 @@ For more information about Google's data practices, see [Google's Privacy Policy
 
 - **Email inquiries**: We do not store email inquiries on our website servers. Any emails sent to us are retained according to ISM/SABIS email retention policies.
 - **Local storage data**: Stored only in your browser until you clear your browser data or manually change preferences.
-- **Log files**: Our hosting provider (GitHub Pages) may generate temporary server logs that are automatically deleted within 7 calendar days, consistent with SABIS network policy.
+- **Log files**: Our hosting provider (GitHub Pages) may generate temporary server logs that are automatically deleted within 7 calendar days.
 
 ---
 
@@ -78,9 +78,8 @@ For more information about Google's data practices, see [Google's Privacy Policy
 
 This website is designed for a general audience including students, parents, sponsors, and community members. We recognize that some visitors may be minors.
 
-- Our team members' personal information (names, photos, grades) is published with appropriate parental/guardian consent per ISM/SABIS policies.
+- Our team members' personal information (names, photos, grades) is published with appropriate parental/guardian consent per ISM policies.
 - If you are a parent or guardian who believes your child has provided personal data to us without your consent, please contact us at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net).
-- For questions about how ISM/SABIS protects children's privacy more broadly, see the [SABIS Global Privacy Policy](https://www.sabis.net/privacy-policy/) or contact [privacy@sabis.net](mailto:privacy@sabis.net).
 
 ---
 
@@ -94,7 +93,7 @@ Depending on your jurisdiction, you may have certain rights regarding your perso
 - **Right to object**: Object to certain types of processing
 - **Right to data portability**: Receive your data in a structured, machine-readable format
 
-To exercise any of these rights, contact us at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net) or the SABIS privacy team at [privacy@sabis.net](mailto:privacy@sabis.net).
+To exercise any of these rights, contact us at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net).
 
 ---
 
@@ -125,9 +124,8 @@ We may update this Privacy Policy from time to time. Any changes will be posted 
 For questions, concerns, or requests regarding this Privacy Policy or our data practices:
 
 - **Team email**: [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net)
-- **SABIS privacy inquiries**: [privacy@sabis.net](mailto:privacy@sabis.net)
 - **School**: International School of Minnesota, Eden Prairie, Minnesota
 
 ---
 
-*This Privacy Policy is aligned with the SABIS Global Network Privacy Policy and complies with applicable data protection laws including FERPA (Family Educational Rights and Privacy Act) for educational institutions in the United States.*
+*This Privacy Policy complies with applicable data protection laws including FERPA (Family Educational Rights and Privacy Act) for educational institutions in the United States.*

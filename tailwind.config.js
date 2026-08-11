@@ -38,9 +38,9 @@ module.exports = {
           dark: '#228e3b',
         },
         info: {
-          DEFAULT: '#17a2b8',
-          light: '#3dbfd3',
-          dark: '#148a9c',
+          DEFAULT: '#3B82F6',
+          light: '#60A5FA',
+          dark: '#2563EB',
         },
         warning: {
           DEFAULT: '#f0b37e',

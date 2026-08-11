@@ -80,7 +80,7 @@
     <div class="absolute inset-0 bg-black/50" id="mobile-menu-backdrop"></div>
 
     <!-- Drawer -->
-    <div class="absolute right-0 top-0 h-full w-72 bg-[var(--color-surface)] dark:bg-[var(--color-background)] shadow-xl">
+    <div class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-[var(--color-background)] shadow-xl">
       <div class="p-4 border-b border-[var(--color-border)] flex justify-between items-center">
         <span class="font-semibold text-[var(--color-text)]">Menu</span>
         <button
@@ -105,9 +105,9 @@
         {% endfor %}
 
         <div class="pt-4 mt-4 border-t border-[var(--color-border)]">
-          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors">Privacy</a>
+          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">Privacy</a>
           <span aria-hidden="true" class="block py-1">·</span>
-          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-faint)] hover:text-[var(--color-accent)] transition-colors">Terms</a>
+          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">Terms</a>
         </div>
       </nav>
     </div>
