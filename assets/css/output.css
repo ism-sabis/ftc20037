@@ -2067,6 +2067,11 @@ em, i {
   border-color: rgb(255 255 255 / 0.3);
 }
 
+.border-\[\#CBD5E1\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
+}
+
 .border-t-transparent {
   border-top-color: transparent;
 }
@@ -2736,14 +2741,14 @@ em, i {
   background-color: var(--color-primary);
 }
 
-/* Accessibility Mode - High contrast (cyan/navy palette) */
+/* Accessibility Mode - High contrast (red/navy palette) */
 
 .accessibility-mode {
-  --color-accent: #05b385;
-  /* Darker cyan for light bg contrast */
+  --color-accent: #B91C1C;
+  /* Darker red for light bg contrast */
   --color-secondary: #d96a1f;
-  --color-link: #05b385;
-  --color-link-hover: #04926e;
+  --color-link: #B91C1C;
+  --color-link-hover: #991B1B;
   --color-text: #000000;
   --color-background: #ffffff;
 }
@@ -2751,9 +2756,9 @@ em, i {
 .accessibility-mode.dark {
   --color-text: #ffffff;
   --color-background: #000000;
-  --color-link: #5eead4;
-  /* Bright cyan for dark bg */
-  --color-accent: #6ee7b7;
+  --color-link: #FCA5A5;
+  /* Bright red for dark bg */
+  --color-accent: #F87171;
 }
 
 .accessibility-mode body {
@@ -3000,6 +3005,11 @@ em, i {
   background-color: rgb(255 255 255 / 0.1);
 }
 
+.hover\:bg-\[\#E2E8F0\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(226 232 240 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:text-\[\#DC2626\]:hover {
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity, 1));
@@ -3165,6 +3175,11 @@ em, i {
   border-color: var(--color-border-strong);
 }
 
+.dark\:border-\[\#2A3F5F\]:is(.dark *) {
+  --tw-border-opacity: 1;
+  border-color: rgb(42 63 95 / var(--tw-border-opacity, 1));
+}
+
 .dark\:bg-\[\#0B1426\]:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(11 20 38 / var(--tw-bg-opacity, 1));
@@ -3235,6 +3250,11 @@ em, i {
 }
 
 .dark\:text-white:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+.dark\:text-\[\#FFFFFF\]:is(.dark *) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }

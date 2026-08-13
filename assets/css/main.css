@@ -788,12 +788,12 @@
     background-color: var(--color-primary);
   }
 
-  /* Accessibility Mode - High contrast (cyan/navy palette) */
+  /* Accessibility Mode - High contrast (red/navy palette) */
   .accessibility-mode {
-    --color-accent: #05b385; /* Darker cyan for light bg contrast */
+    --color-accent: #B91C1C; /* Darker red for light bg contrast */
     --color-secondary: #d96a1f;
-    --color-link: #05b385;
-    --color-link-hover: #04926e;
+    --color-link: #B91C1C;
+    --color-link-hover: #991B1B;
     --color-text: #000000;
     --color-background: #ffffff;
   }
@@ -801,8 +801,8 @@
   .accessibility-mode.dark {
     --color-text: #ffffff;
     --color-background: #000000;
-    --color-link: #5eead4; /* Bright cyan for dark bg */
-    --color-accent: #6ee7b7;
+    --color-link: #FCA5A5; /* Bright red for dark bg */
+    --color-accent: #F87171;
   }
 
   .accessibility-mode body {
