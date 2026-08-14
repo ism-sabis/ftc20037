@@ -81,11 +81,11 @@
 
     <!-- Drawer -->
     <div class="absolute right-0 top-0 h-full w-72 bg-white dark:bg-[#0B1426] shadow-xl z-50">
-      <div class="p-4 border-b border-[#CBD5E1] dark:border-[#2A3F5F] flex justify-between items-center">
+      <div class="p-4 border-b border-[#CBD5E1] dark:border-[#2A3F5F] flex justify-between items-center bg-[#F1F5F9] dark:bg-[#1C2D4A]">
         <span class="font-bold text-lg text-[#0B1426] dark:text-[#FFFFFF]">Menu</span>
         <button
           id="mobile-menu-close"
-          class="p-2 rounded-sm hover:bg-[#E2E8F0] dark:hover:bg-[#1C2D4A] focus-visible:ring-2 focus-visible:ring-[#DC2626]"
+          class="p-2 rounded-sm hover:bg-[#E2E8F0] dark:hover:bg-[#2A3F5F] focus-visible:ring-2 focus-visible:ring-[#DC2626]"
           aria-label="Close menu"
         >
           <svg class="h-5 w-5 text-[#0B1426] dark:text-[#E8EDF4]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -98,16 +98,16 @@
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
-           class="block py-3 px-3 rounded-sm text-base font-semibold text-[#0B1426] dark:text-[#E8EDF4] hover:bg-[#F1F5F9] dark:hover:bg-[#1C2D4A] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors"
+           class="block py-3 px-3 rounded-sm text-base font-semibold text-[#0B1426] dark:text-[#E8EDF4] bg-[#F1F5F9] dark:bg-[#1C2D4A] hover:bg-[#E2E8F0] dark:hover:bg-[#2A3F5F] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
           {{ item.title }}
         </a>
         {% endfor %}
 
         <div class="pt-4 mt-4 border-t border-[#CBD5E1] dark:border-[#2A3F5F]">
-          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm font-semibold text-[#0B1426] dark:text-[#E8EDF4] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors">Privacy</a>
+          <a href="{{ '/privacy/' | relative_url }}" class="block py-2 px-3 text-sm font-semibold text-[#0B1426] dark:text-[#E8EDF4] bg-[#F1F5F9] dark:bg-[#1C2D4A] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors">Privacy</a>
           <span aria-hidden="true" class="block py-1">·</span>
-          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm font-semibold text-[#0B1426] dark:text-[#E8EDF4] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors">Terms</a>
+          <a href="{{ '/terms-of-use/' | relative_url }}" class="block py-2 px-3 text-sm font-semibold text-[#0B1426] dark:text-[#E8EDF4] bg-[#F1F5F9] dark:bg-[#1C2D4A] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors">Terms</a>
         </div>
       </nav>
     </div>

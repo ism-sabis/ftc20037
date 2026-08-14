@@ -798,11 +798,11 @@
     --color-background: #ffffff;
   }
 
+  /* Restore normal dark mode colors when accessibility + dark mode are both enabled */
   .accessibility-mode.dark {
-    --color-text: #ffffff;
-    --color-background: #000000;
-    --color-link: #FCA5A5; /* Bright red for dark bg */
-    --color-accent: #F87171;
+    --color-accent: #DC2626;
+    --color-link: #EF4444;
+    --color-link-hover: #FCA5A5;
   }
 
   .accessibility-mode body {
