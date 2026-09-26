@@ -108,9 +108,11 @@ collections:
     output: false
     permalink: /docs/:path/
 
-# 3D models are hosted in the public R2 bucket at models_url.
+# 3D models and source CAD exports are hosted outside Pages in the public R2
+# bucket at models_url. Exclude the whole directory to keep large source files
+# such as 3MF exports out of the Pages artifact too.
 exclude:
-  - assets/models/**/*.glb
+  - assets/models
 
 # Defaults
 defaults:
