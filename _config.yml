@@ -3,6 +3,7 @@ title: "Standard Deviation"
 description: "A FIRST robotics team dedicated to inspiring students in science, technology, engineering, and math." #https://github.com/braineatingmachines/pitcrew
 url: "https://www.ftc20037.com"
 baseurl: ""
+models_url: "https://assets.ftc20037.com"
 
 # Team configuration
 site:
@@ -106,6 +107,10 @@ collections:
   docs:
     output: false
     permalink: /docs/:path/
+
+# 3D models are hosted in the public R2 bucket at models_url.
+exclude:
+  - assets/models/**/*.glb
 
 # Defaults
 defaults:

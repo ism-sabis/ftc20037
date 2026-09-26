@@ -19,6 +19,5 @@ python3 scripts/sync_gallery_metadata.py
 
 bundle exec jekyll build --baseurl ""
 
-# Cloudflare Pages rejects individual assets larger than 25 MiB. The 3D
-# viewer uses the compact seasonal GLBs; omit unused source/export variants.
-find _site/assets/models -type f -size +24M -print -delete
+# GLB models are served from the public R2 custom domain configured in
+# _config.yml, so keep them out of the Pages artifact entirely.

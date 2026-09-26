@@ -83,9 +83,9 @@ Requires site.features.cad_viewer to be true
   const container = document.getElementById(containerId);
   if (!container) return;
 
-  const modelSrc = "{{ include.model_src | relative_url }}";
-  const explicitMediumSrc = "{% if include.model_src_medium %}{{ include.model_src_medium | relative_url }}{% endif %}";
-  const explicitLowSrc = "{% if include.model_src_low %}{{ include.model_src_low | relative_url }}{% endif %}";
+  const modelSrc = "{{ site.models_url }}{{ include.model_src | relative_url }}";
+  const explicitMediumSrc = "{% if include.model_src_medium %}{{ site.models_url }}{{ include.model_src_medium | relative_url }}{% endif %}";
+  const explicitLowSrc = "{% if include.model_src_low %}{{ site.models_url }}{{ include.model_src_low | relative_url }}{% endif %}";
   const defaultQuality = "{{ include.default_quality | default: 'high' }}";
   const storageKey = `model-viewer-quality-${modelSrc}-{{ page.url | slugify }}-{{ site.time | date: '%s' }}`;
   const autoRotateOffKey = `model-viewer-auto-rotate-off-${modelSrc}`;
