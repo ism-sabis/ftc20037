@@ -164,3 +164,5 @@ exclude:
   - assets/css/style.scss
   # 3D models and source CAD exports are hosted outside Pages in R2.
   - assets/models
+  # Gallery DNGs are converted to JPG during the build.
+  - "assets/images/gallery/uploads/*.dng"

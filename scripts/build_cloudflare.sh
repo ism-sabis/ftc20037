@@ -19,5 +19,6 @@ python3 scripts/sync_gallery_metadata.py
 
 bundle exec jekyll build --baseurl ""
 
-# GLB models are served from the public R2 custom domain configured in
-# _config.yml, so keep them out of the Pages artifact entirely.
+# Raw gallery files are build inputs. Keep them out of the Pages artifact even
+# if a Jekyll version does not apply the glob exclusion in _config.yml.
+find _site/assets/images/gallery/uploads -type f -iname '*.dng' -print -delete
