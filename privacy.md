@@ -1,131 +1,55 @@
 ---
 layout: page
 title: Privacy Policy
-description: How Team Standard Deviation (FTC 20037) collects, uses, and protects your information.
+description: How Team Standard Deviation (FTC 20037) handles information when you visit this website.
 permalink: /privacy/
 published: true
 ---
 
-## Overview
+**Updated: September 26, 2026**
 
-This Privacy Policy explains how **Team Standard Deviation** ("we," "our," or "us"), a FIRST Tech Challenge team at the International School of Minnesota (ISM), collects, uses, and protects information from visitors to our website.
+This notice describes the website maintained by **Team Standard Deviation (FTC 20037)**, a FIRST Tech Challenge team at the International School of Minnesota (ISM). It is adapted to this team website and should be read alongside the [International School of Minnesota's Privacy Policy](https://internationalschoolmn.com/privacy-policy), which was updated in March 2026.
 
-**Last updated:** July 12, 2026
+The school's policy describes the school's main website, admissions and inquiry forms, and services such as Blackbaud. Those services are not part of this team website. For personal information submitted directly to the school or through its services, refer to the school's policy and contact [privacy@sabis.net](mailto:privacy@sabis.net).
 
-This policy applies only to this website and does not cover third-party websites or services linked from our site.
+## Information handled by this website
 
----
+### Information you choose to send
 
-## Information We Collect
+This website does not provide a form for submitting personal information. If you email the team using a mail link, your email provider sends the information you choose to include, such as your name, email address, and message. The team uses it to respond and handles it through the school's email systems and applicable school retention practices.
 
-### Information You Provide Directly
-- **Email inquiries**: When you contact us via email (mailto: link), we receive the information you choose to include in your message, which may include your name, email address, and any content you write.
+### Information handled when you visit
 
-### Information Collected Automatically
-- **Browser information**: Browser type and version (transmitted automatically by all web browsers)
-- **IP address**: Your IP address is transmitted when loading website resources, including fonts served from Google's servers
-- **Usage data**: Pages viewed, time spent on pages, and navigation patterns are not actively tracked or stored
+Like other websites, our hosting and content delivery providers may receive technical information needed to deliver, protect, and troubleshoot the site. This can include your IP address, browser and device details, requested pages, and request time. We do not operate an analytics or advertising tracking service on this website.
 
-### Information Stored Locally in Your Browser
-We use localStorage to store your preferences for:
-- **Dark mode preference** — remembers whether you prefer light or dark theme (`darkMode`)
-- **Accessibility mode preference** — remembers whether you've enabled accessibility enhancements (`accessibilityMode`)
-- **High contrast preference** — stores whether high contrast is enabled (`highContrast`)
-- **Reduced motion preference** — stores whether animations should be disabled (`reducedMotion`)
-- **Large text preference** — stores font size scaling preference (`largeText`)
-- **3D viewer quality setting** — remembers your preferred model rendering quality (`modelQuality`: high/medium/low)
-- **3D viewer auto-rotate preference** — remembers whether 3D models should auto-rotate (`autoRotateOff`)
+### Preferences stored in your browser
 
-These local storage items are strictly necessary for website functionality and do not transmit data to any external server. You can clear these at any time by clearing your browser's site data.
+The site uses browser `localStorage` to remember interface preferences, including theme, accessibility options, text size, and 3D model viewer settings. These preferences stay in your browser and are not submitted to the team. You can remove them by clearing this site's data in your browser.
 
-### Information from Third Parties
-When you click on links to our social media accounts (Instagram, GitHub), those platforms may collect information according to their own privacy policies. We are not responsible for the data practices of these third-party sites.
+## Services and links from other organizations
 
----
+Some pages load the 3D model viewer code from Google's CDN. Loading that resource may send your IP address and ordinary request information to Google. The viewer can also open augmented reality features provided by your device platform. Review [Google's Privacy Policy](https://policies.google.com/privacy) and your device provider's privacy information for details.
 
-## How We Use Your Information
+Links to Instagram, GitHub, FIRST, sponsors, and other organizations take you to services governed by their own privacy notices. This team website does not control how those services handle information.
 
-We use collected information solely for:
-- Responding to email inquiries from visitors
-- Ensuring our website functions properly and provides a good user experience
-- Maintaining website security
+## Children and student information
 
-We do **not** sell, rent, or share your personal information with third parties for marketing purposes.
+This public website may be visited by students and other minors. Team members' names, photographs, and other identifying details are published only with the permissions required by applicable ISM policies. The site does not ask visitors to submit children's personal information through an online form.
+
+Parents or guardians who have a concern about information published on this site can contact the team at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net). For privacy requests about information held by the school, contact [privacy@sabis.net](mailto:privacy@sabis.net).
+
+## Retention and security
+
+Preferences remain in your browser until you clear them. Messages sent by email are handled through the school's email systems and retention practices. Hosting providers may keep technical logs as described in their own policies.
+
+We use reasonable measures to maintain this website, but internet transmissions and storage cannot be guaranteed to be completely secure.
+
+## Your choices and requests
+
+You can decline to load third-party resources through browser settings or privacy tools; some 3D viewer features may then be unavailable. You can clear locally stored preferences through your browser.
+
+For questions about this team website's privacy practices, email [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net). For requests involving information processed by ISM, contact [privacy@sabis.net](mailto:privacy@sabis.net) and see the [school's Privacy Policy](https://internationalschoolmn.com/privacy-policy).
 
 ---
 
-## 3D Model Viewer (Third-Party Service)
-
-Our website includes an interactive 3D model viewer that loads JavaScript from Google's CDN (`ajax.googleapis.com`). When you access a page containing the 3D viewer, your browser may transmit your IP address to Google servers.
-
-This service is used solely for displaying our robot models in 3D and does not collect personal data beyond what is transmitted during a standard web request. The 3D viewer also supports AR (Augmented Reality) features on compatible devices, which may transmit additional data to device manufacturers (e.g., Samsung Scene Viewer, Apple Quick Look) when activated.
-
-**To opt out**: You can disable JavaScript in your browser settings or use browser extensions that block third-party resources. The 3D viewer will not load without JavaScript enabled.
-
-For more information about Google's data practices, see [Google's Privacy Policy](https://policies.google.com/privacy).
-
----
-
-## Data Retention
-
-- **Email inquiries**: We do not store email inquiries on our website servers. Any emails sent to us are retained according to ISM/SABIS email retention policies.
-- **Local storage data**: Stored only in your browser until you clear your browser data or manually change preferences.
-- **Log files**: Our hosting provider (GitHub Pages) may generate temporary server logs that are automatically deleted within 7 calendar days.
-
----
-
-## Children's Privacy
-
-This website is designed for a general audience including students, parents, sponsors, and community members. We recognize that some visitors may be minors.
-
-- Our team members' personal information (names, photos, grades) is published with appropriate parental/guardian consent per ISM policies.
-- If you are a parent or guardian who believes your child has provided personal data to us without your consent, please contact us at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net).
-
----
-
-## Your Rights
-
-Depending on your jurisdiction, you may have certain rights regarding your personal data:
-
-- **Right of access**: Request a copy of any personal data we hold about you
-- **Right to rectification**: Correct inaccurate or incomplete data
-- **Right to deletion**: Request deletion of your personal data (where applicable)
-- **Right to object**: Object to certain types of processing
-- **Right to data portability**: Receive your data in a structured, machine-readable format
-
-To exercise any of these rights, contact us at [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net).
-
----
-
-## Data Security
-
-We implement reasonable technical and organizational measures to protect any personal data we handle. However, no data transmission over the Internet can be guaranteed as 100% secure, and we cannot guarantee or warrant the security of any information you transmit.
-
----
-
-## Links to External Websites
-
-Our website contains links to external websites, including:
-- Instagram: [@ismroboticsclub](https://www.instagram.com/ismroboticsclub)
-- GitHub: [ism-sabis](https://github.com/ism-sabis)
-
-We are not responsible for the content or data processing practices of these third-party websites. We encourage you to review their privacy policies before providing any personal information.
-
----
-
-## Changes to This Policy
-
-We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We encourage you to periodically review this page for the latest information.
-
----
-
-## Contact Us
-
-For questions, concerns, or requests regarding this Privacy Policy or our data practices:
-
-- **Team email**: [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net)
-- **School**: International School of Minnesota, Eden Prairie, Minnesota
-
----
-
-*This Privacy Policy complies with applicable data protection laws including FERPA (Family Educational Rights and Privacy Act) for educational institutions in the United States.*
+This page is an informational notice for the team website. The [International School of Minnesota Privacy Policy](https://internationalschoolmn.com/privacy-policy) is the official source for the school's website and services.
