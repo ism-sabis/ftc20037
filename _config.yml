@@ -1,7 +1,7 @@
 # Site settings
 title: "Standard Deviation"
 description: "A FIRST robotics team dedicated to inspiring students in science, technology, engineering, and math." #https://github.com/braineatingmachines/pitcrew
-url: ""
+url: "https://www.ftc20037.com"
 baseurl: ""
 
 # Team configuration
@@ -160,3 +160,5 @@ exclude:
   - scripts
   - "*.py"
   - requirements.txt
+  - requirements-cloudflare.txt
+  - assets/css/style.scss
