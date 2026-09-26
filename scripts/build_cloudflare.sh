@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Cloudflare's build image can default Ruby's external encoding to US-ASCII.
+# The GitHub Pages theme stylesheet contains UTF-8 characters, which makes
+# Jekyll's legacy Sass converter fail unless Ruby is told to read UTF-8.
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
+export RUBYOPT="${RUBYOPT:+$RUBYOPT }-EUTF-8:UTF-8"
+
 # Match the preprocessing used by the GitHub Pages workflow, then build for a
 # site served from the domain root.
 npm ci
