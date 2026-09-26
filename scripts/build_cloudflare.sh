@@ -22,3 +22,7 @@ bundle exec jekyll build --baseurl ""
 # Raw gallery files are build inputs. Keep them out of the Pages artifact even
 # if a Jekyll version does not apply the glob exclusion in _config.yml.
 find _site/assets/images/gallery/uploads -type f -iname '*.dng' -print -delete
+
+# Keep large source assets in Git and R2, but never include files over 20 MB
+# in the Cloudflare Pages output.
+find _site -type f -size +20000000c -print -delete
