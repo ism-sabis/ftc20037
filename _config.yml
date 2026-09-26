@@ -160,5 +160,4 @@ exclude:
   - scripts
   - "*.py"
   - requirements.txt
-  - requirements-cloudflare.txt
   - assets/css/style.scss

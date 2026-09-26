@@ -6,7 +6,7 @@ set -euo pipefail
 npm ci
 npm run build:css
 
-python3 -m pip install -r requirements-cloudflare.txt
+python3 -m pip install -r requirements.txt
 python3 scripts/convert_dng_gallery.py
 python3 scripts/sync_gallery_metadata.py
 
