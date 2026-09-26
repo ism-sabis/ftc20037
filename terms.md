@@ -1,14 +1,14 @@
 ---
 layout: page
-title: Terms of Use
+title: Terms of Service
 description: Terms and conditions for using the Team Standard Deviation (FTC 20037) website.
-permalink: /terms-of-use/
+permalink: /terms/
 published: true
 ---
 
 ## Acceptance of Terms
 
-By accessing and using this website, you accept and agree to be bound by these Terms of Use. If you do not agree with any part of these terms, please do not use this website.
+By accessing and using this website, you accept and agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please do not use this website.
 
 **Last updated:** July 12, 2026
 
@@ -118,22 +118,22 @@ We do not control these third-party sites and are not responsible for their cont
 
 ## Modifications to These Terms
 
-We reserve the right to modify these Terms of Use at any time. Changes will be effective immediately upon posting to this page. Your continued use of the website after changes are posted constitutes acceptance of the revised terms.
+We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting to this page. Your continued use of the website after changes are posted constitutes acceptance of the revised terms.
 
 ---
 
 ## Governing Law
 
-These Terms of Use shall be governed by and construed in accordance with the laws of the State of Minnesota, United States, without regard to conflict of law principles.
+These Terms of Service shall be governed by and construed in accordance with the laws of the State of Minnesota, United States, without regard to conflict of law principles.
 
 ---
 
 ## Contact Information
 
-For questions about these Terms of Use:
+For questions about these Terms of Service:
 - **Team email**: [ftc20037@ism-sabis.net](mailto:ftc20037@ism-sabis.net)
 - **School**: International School of Minnesota, Eden Prairie, Minnesota
 
 ---
 
-*These Terms of Use are provided for informational purposes and do not constitute legal advice. For questions requiring legal interpretation, please consult a qualified attorney.*
+*These Terms of Service are provided for informational purposes and do not constitute legal advice. For questions requiring legal interpretation, please consult a qualified attorney.*

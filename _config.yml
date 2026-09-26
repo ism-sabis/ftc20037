@@ -75,7 +75,7 @@ navigation:
     url: /privacy/
   - id: terms
     title: Terms
-    url: /terms-of-use/
+    url: /terms/
   # Removed — page deleted (see _includes/navigation.html, footer.html)
   # - id: accessibility
   #   title: Accessibility
