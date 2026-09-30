@@ -52,4 +52,12 @@
     - Mechanical Assembly
     - Team Collaboration
     - Problem Solving
-
+- name: Yevhen
+  role: Outreach
+  grade: 12
+  graduation_year: 2027
+  bio: A senior at the International School of Minnesota. He competes with the Standard Deviation FTC robotics team. Yevhen works across student council leadership and the school's morning broadcasts. He enjoys playing tennis, and his favorite subject is economics.
+  image: /assets/images/Yevhen.jpg
+  skills:
+    - Outreach
+    - Team Collaboration
