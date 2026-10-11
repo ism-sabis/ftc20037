@@ -30,9 +30,6 @@ permalink: /awards/
         <div class="flex-1">
           <h3 class="font-semibold text-lg text-[var(--color-text)]">{{ award.name }}</h3>
           <p class="text-sm font-medium text-[var(--color-accent)] mt-1">{{ award.event }}</p>
-          {% if award.url %}
-          <a href="{{ award.url }}" class="inline-flex items-center gap-1 text-sm text-[var(--color-accent)] mt-2 hover:underline" target="_blank" rel="noopener noreferrer">Official event results<span class="sr-only"> (opens in a new tab)</span></a>
-          {% endif %}
           {% if award.description %}
           <p class="text-sm text-[var(--color-text-muted)] mt-2">{{ award.description }}</p>
           {% endif %}
