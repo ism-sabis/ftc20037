@@ -10,7 +10,7 @@ site:
   team_name: "Standard Deviation"
   team_number: "20037"
   program: "FTC"  # FTC or FRC
-  current_season: "2025-2026"
+  current_season: "2026-2027"
   logo: "/assets/images/teamLogoCropped.jpg"
 
 # Theme palette - Official FTC Colors
@@ -28,7 +28,7 @@ palette:
 features:
   blog: false
   docs: false
-  cad_viewer: true
+  cad_viewer: false
   circuit_viewer: true
   code_links: false
   data_visualizations: true

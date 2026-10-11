@@ -1,0 +1,16 @@
+{% assign historical_roster = site.data.season_teams[page.season] %}
+
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 my-8">
+  {% if historical_roster %}
+    {% for member in historical_roster %}
+    {% include components/team-member-card.html member=member %}
+    {% endfor %}
+  {% else %}
+    {% for member in site.data.team %}
+    {% include components/team-member-card.html member=member %}
+    {% endfor %}
+    {% if page.season == site.site.current_season %}
+    {% include components/coming-soon-team-member.html %}
+    {% endif %}
+  {% endif %}
+</div>

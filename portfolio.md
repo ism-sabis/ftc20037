@@ -11,7 +11,7 @@ permalink: /portfolio/
     <p class="text-sm font-semibold text-[var(--color-accent)] dark:text-[var(--color-accent-light)] uppercase tracking-wider mb-2">Engineering</p>
     <h1 class="text-3xl md:text-4xl font-bold text-[var(--color-text)] mb-4">2025-2026 Portfolio</h1>
     <div class="w-12 h-0.5 bg-[var(--color-accent)] mb-6"></div>
-    <p class="text-[var(--color-text-muted)]">Our engineering portfolio documents the full journey of Team Standard Deviation (FTC 20037) through the FIRST Tech Challenge season, covering robot design, outreach efforts, and team development.</p>
+    <p class="text-[var(--color-text-muted)]">This portfolio documents Team Standard Deviation's 2025-2026 FIRST Tech Challenge season, covering robot design, outreach efforts, and team development.</p>
   </section>
 
   <!-- PDF Viewer -->

@@ -34,17 +34,14 @@ permalink: /judge/
 
 ---
 
-## Robot Overview
+## Current Season
 
-Our 2025-2026 robot uses a custom mecanum drivetrain and highly iterative subsystem design.
+The 2026-2027 FTC game is **BIOBUZZ presented by RTX**, part of FIRST CANOPY. Our robot does not have a name yet. The current season page lists our two announced Sunday qualifiers in New Brighton and Elk River, Minnesota.
 
-- **Drivetrain:** Mecanum with custom chassis, pocketed 5052 aluminum plates, drag-chain turret wiring protection
-- **Intake/Deposit:** Six major iterations, currently converging on adjustable-hood flywheel architecture
-- **Lift:** Scissor-lift-based architecture with custom coupler fix for torque transfer
-- **Indexer/Kicker:** Iterative servo-based carousel and strengthened kicker with metal gears
-- **Autonomous:** LEAVE plus artifact scoring from all start positions with path adaptation for alliance partners
+- **Team:** Six current students, with one additional member profile coming soon
+- **Events:** New Brighton Qualifier and Elk River Qualifier, both on Sundays
 
-[View detailed robot documentation →](/season/)
+[View current season details →](/season/)
 
 ---
 
@@ -98,8 +95,8 @@ Our outreach strategy has two themes: Motivate and Connect.
 
 ### Team and Mentor Snapshot
 
-- Team members: Jason, Ryan, Roshan, Ean, Asif, Alex
-- Composition: 1 senior, 1 junior, 1 fifth-year sophomore, 3 first-year sophomores
+- Team members: {% for member in site.data.team %}{{ member.name }}{% unless forloop.last %}, {% endunless %}{% endfor %}
+- Additional member profile: Coming soon
 - Mentor: Erik (Lead Mentor, engineer at Amazon)
 
 ---

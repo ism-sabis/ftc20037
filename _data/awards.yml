@@ -1,12 +1,14 @@
 - name: Control Award
   event: Maple Grove Saturday Qualifier
-  season: 2024-2025
+  season: 2025-2026
   description: Outstanding programming and autonomous performance on the field.
+  url: https://ftc-events.firstinspires.org/2025/USMNMGQ1
 
-- name: Think Award 2nd Place
+- name: Think Award (2nd Place)
   event: MN FTC Otsego Saturday
-  season: 2024-2025
+  season: 2025-2026
   description: Excellence in engineering documentation and evidence of using the engineering design process.
+  url: https://ftc-events.firstinspires.org/2025/USMNOTQ1
 
 - name: Design Award
   event: MN FTC Maple Grove Sat. Dec. 4

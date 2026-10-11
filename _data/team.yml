@@ -1,19 +1,21 @@
 - name: Roshan
-  role: CAD, Build
+  role: Team Captain · CAD, Building, Programming & Driving
   grade: 11
   graduation_year: 2028
-  bio: A junior at the International School of Minnesota. This is his fifth year in FTC, and he is a former Catlateral Damage member. Roshan works across CAD and building. He enjoys swimming, and his favorite subject is math.
+  bio: A junior at the International School of Minnesota. This is his sixth year in FTC. As team captain, Roshan works across CAD, building, programming, and driving. He is a former Catlateral Damage member, enjoys swimming, and his favorite subject is math.
   image: /assets/images/Roshan.png
   skills:
     - CAD (Onshape)
     - Building
+    - Programming
+    - Driving
     - Mechanical Design
 
 - name: Ryan
   role: Building & Driver
   grade: 12
   graduation_year: 2027
-  bio: A senior at the International School of Minnesota. This is his fourth year in FTC. Ryan works across building and driving. He enjoys music, and his favorite subject is biology.
+  bio: A senior at the International School of Minnesota. This is his fifth year in FTC. Ryan works across building and driving. He enjoys music, and his favorite subject is biology.
   image: /assets/images/Ryan.png
   skills:
     - Building
@@ -24,7 +26,7 @@
   role: Build
   grade: 11
   graduation_year: 2028
-  bio: A junior at the International School of Minnesota. This is his first year in FTC. Asif focuses on building, enjoys badminton, and his favorite subject is math.
+  bio: A junior at the International School of Minnesota. This is his second year in FTC. Asif focuses on building, enjoys badminton, and his favorite subject is math.
   image: /assets/images/Asif.png
   skills:
     - Mechanical Assembly
@@ -35,7 +37,7 @@
   role: Build
   grade: 11
   graduation_year: 2028
-  bio: A junior at the International School of Minnesota. Ean focuses on building, and he enjoys volleyball and tennis.
+  bio: A junior at the International School of Minnesota. This is his second year in FTC. Ean focuses on building, and he enjoys volleyball and tennis.
   image: /assets/images/Ean.png
   skills:
     - Mechanical Assembly
@@ -46,7 +48,7 @@
   role: Build
   grade: 11
   graduation_year: 2028
-  bio: A junior at the International School of Minnesota. Alex focuses on building and enjoys sports, physics, and math.
+  bio: A junior at the International School of Minnesota. This is his second year in FTC. Alex focuses on building and enjoys sports, physics, and math.
   image: /assets/images/Alex.png
   skills:
     - Mechanical Assembly
@@ -56,7 +58,7 @@
   role: Outreach
   grade: 12
   graduation_year: 2027
-  bio: A senior at the International School of Minnesota. He competes with the Standard Deviation FTC robotics team. Yevhen works across student council leadership and the school's morning broadcasts. He enjoys playing tennis, and his favorite subject is economics.
+  bio: A senior at the International School of Minnesota. This is his second year in FTC and his first season with Standard Deviation. Yevhen works across student council leadership and the school's morning broadcasts. He enjoys playing tennis, and his favorite subject is economics.
   image: /assets/images/Yevhen.jpg
   skills:
     - Outreach

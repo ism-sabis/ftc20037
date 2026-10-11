@@ -15,7 +15,7 @@ layout: default
 
     <!-- Season Archive -->
     <div class="space-y-8">
-      {% assign seasons = site.pages | where_exp: "item", "item.path contains 'seasons/'" | where_exp: "item", "item.name == 'index.md'" | sort: "season" | reverse %}
+      {% assign seasons = site.seasons | sort: "season" | reverse %}
 
       {% for season_page in seasons %}
       <a href="{{ season_page.url | relative_url }}" class="card block group hover:shadow-xl transition-shadow">
