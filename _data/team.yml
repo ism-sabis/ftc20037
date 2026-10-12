@@ -63,3 +63,13 @@
   skills:
     - Outreach
     - Team Collaboration
+
+- name: Lucas
+  role: Motivation
+  grade: 7
+  graduation_year: 2032
+  bio: A seventh grader at the International School of Minnesota. This is his first year in FTC. Lucas focuses on seeming as if he is working.
+  image: /assets/images/Lucas.jpg
+  skills:
+    - Taking Stuff Apart
+    - Motivation
