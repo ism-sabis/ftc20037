@@ -9,11 +9,6 @@ extra_js: /assets/js/scouting.js
 
 <div class="scouting-page">
   <div class="scouting-content">
-    <nav class="scouting-toc" aria-label="Scouting sections">
-      <a href="#team-profile">Scouting form</a>
-      <a href="#our-robot">Our robot</a>
-    </nav>
-
     <div class="scouting-preview" role="status">
       <span class="scouting-preview__tag">Preview only</span>
       <p><strong>Submissions are not open yet.</strong> You can explore the fields, but nothing you enter is sent or saved.</p>
