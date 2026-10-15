@@ -13,6 +13,12 @@ sections:
         required: true
         inputmode: numeric
         hint: Use your official FIRST team number.
+      - id: team_name
+        type: text
+        label: Team name
+        required: true
+        maxlength: 120
+        hint: Use your official FIRST team name.
       - id: robot_name
         type: text
         label: Robot name

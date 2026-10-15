@@ -8,28 +8,12 @@ extra_js: /assets/js/scouting.js
 ---
 
 <div class="scouting-page">
-  <section class="scouting-hero" aria-labelledby="scouting-title">
-    <div class="scouting-hero__inner">
-      <div class="scouting-hero__copy">
-        <p class="scouting-eyebrow">FTC {{ site.site.team_number }} <span aria-hidden="true">/</span> {{ site.site.current_season }} season</p>
-        <h1 id="scouting-title">Make your robot easy to scout.</h1>
-        <p class="scouting-hero__lead">Share what your robot can do and how it is performing at this tournament. Profiles are for alliance scouting.</p>
-        <a class="scouting-hero__link" href="#team-profile">Go to the team profile <span aria-hidden="true">↓</span></a>
-      </div>
-
-      <aside class="scouting-clock" aria-label="BIOBUZZ match timing">
-        <p class="scouting-clock__heading">Match clock</p>
-        <ol class="scouting-clock__list">
-          <li><span class="scouting-clock__time">0:30</span><span><strong>AUTO</strong><small>Robot runs on its own</small></span></li>
-          <li><span class="scouting-clock__time">0:08</span><span><strong>TRANSITION</strong><small>Between match periods</small></span></li>
-          <li><span class="scouting-clock__time">2:00</span><span><strong>TELEOP</strong><small>Drivers take control</small></span></li>
-          <li class="scouting-clock__unlock"><span class="scouting-clock__time">1:00</span><span><strong>FLOWERS OPEN</strong><small>At one minute remaining</small></span></li>
-        </ol>
-      </aside>
-    </div>
-  </section>
-
   <div class="scouting-content">
+    <nav class="scouting-toc" aria-label="Scouting sections">
+      <a href="#team-profile">Scouting form</a>
+      <a href="#our-robot">Our robot</a>
+    </nav>
+
     <div class="scouting-preview" role="status">
       <span class="scouting-preview__tag">Preview only</span>
       <p><strong>Submissions are not open yet.</strong> You can explore the fields, but nothing you enter is sent or saved.</p>
@@ -39,7 +23,7 @@ extra_js: /assets/js/scouting.js
       <header class="scouting-profile__header">
         <div>
           <p class="scouting-section-kicker">Tournament-day profile</p>
-          <h2 id="team-profile-title">Your BIOBUZZ robot</h2>
+          <h1 id="team-profile-title">Your BIOBUZZ robot</h1>
           <p>Report current capabilities and typical results for this tournament day. Use your robot’s contribution, not the alliance’s total score.</p>
         </div>
         <span class="scouting-profile__stamp" aria-hidden="true">FTC<br>{{ site.site.team_number }}</span>
@@ -74,7 +58,7 @@ extra_js: /assets/js/scouting.js
       </div>
     </section>
 
-    <section class="scouting-robot" aria-labelledby="our-robot-title">
+    <section id="our-robot" class="scouting-robot" aria-labelledby="our-robot-title">
       <div class="scouting-robot__header">
         <div>
           <p class="scouting-section-kicker">{{ site.site.team_name }} · FTC {{ site.site.team_number }}</p>
