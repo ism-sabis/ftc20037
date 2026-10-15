@@ -1,0 +1,131 @@
+schema_version: 1
+defaults:
+  tournament_id: ""
+  day: ""
+sections:
+  - id: team
+    title: Team and robot
+    description: Identify the team and give a quick picture of the robot.
+    fields:
+      - id: team_number
+        type: text
+        label: FTC team number
+        required: true
+        inputmode: numeric
+        hint: Use your official FIRST team number.
+      - id: robot_name
+        type: text
+        label: Robot name
+        hint: Optional.
+      - id: drivetrain
+        type: single_choice
+        label: Drivetrain
+        options:
+          - value: mecanum
+            label: Mecanum
+          - value: tank
+            label: Tank / traction
+          - value: x_drive
+            label: X-drive
+          - value: other
+            label: Other
+          - value: unsure
+            label: Not sure
+  - id: capabilities
+    title: Current capabilities
+    description: Select actions your robot has demonstrated this tournament day.
+    fields:
+      - id: current_capabilities
+        type: multi_choice
+        label: What can your robot do?
+        options:
+          - value: auto_leave
+            label: Leave the starting wall during AUTO
+          - value: auto_park
+            label: Park in the LOADING ZONE during AUTO
+          - value: auto_hive_tip
+            label: Tip a HIVE during AUTO
+          - value: collect_both_elements
+            label: Collect both POLLEN and NECTAR
+          - value: teleop_hive_tip
+            label: Tip a HIVE during TELEOP
+          - value: garden_scoring
+            label: Score POLLEN or NECTAR in a GARDEN
+          - value: flower_scoring
+            label: Score in a FLOWER and help claim ownership
+          - value: teleop_park
+            label: Park in the LOADING ZONE during TELEOP
+        hint: FLOWER scoring opens with 1:00 remaining. Ownership depends on the top-most NECTAR.
+  - id: typical_results
+    title: Typical results so far
+    description: Enter your robot’s typical contribution per match this tournament day. Leave a field blank if you do not know the result.
+    fields:
+      - id: auto_leave_park_points
+        type: number
+        label: AUTO LEAVE and PARK points
+        min: 0
+        max: 8
+        step: 0.1
+        unit: points / match
+        hint: Report this robot’s points, not the alliance total.
+      - id: auto_hive_tips
+        type: number
+        label: AUTO HIVE tips
+        min: 0
+        step: 0.1
+        unit: tips / match
+      - id: teleop_hive_tips
+        type: number
+        label: TELEOP HIVE tips
+        min: 0
+        step: 0.1
+        unit: tips / match
+      - id: garden_elements
+        type: number
+        label: POLLEN and NECTAR scored in GARDENS
+        min: 0
+        step: 0.1
+        unit: elements / match
+      - id: flower_elements
+        type: number
+        label: POLLEN and NECTAR scored in owned FLOWERS
+        min: 0
+        step: 0.1
+        unit: elements / match
+      - id: flowers_owned
+        type: number
+        label: FLOWERS claimed by your robot for the alliance
+        min: 0
+        max: 2
+        step: 0.1
+        unit: flowers / match
+      - id: teleop_park_rate
+        type: number
+        label: TELEOP PARK success rate
+        min: 0
+        max: 100
+        step: 1
+        unit: percent
+      - id: matches_played
+        type: number
+        label: Matches played today
+        min: 0
+        step: 1
+        unit: matches
+      - id: matches_completed
+        type: number
+        label: Matches your robot completed
+        min: 0
+        step: 1
+        unit: matches
+        hint: Use this with matches played to show reliability.
+  - id: alliance_fit
+    title: Alliance fit
+    description: Optional context for a potential partner.
+    fields:
+      - id: alliance_note
+        type: text
+        multiline: true
+        label: What should an alliance partner know?
+        maxlength: 400
+        hint: Keep this about your robot and how your team likes to contribute. Do not include personal contact details.

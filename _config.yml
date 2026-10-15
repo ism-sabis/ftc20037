@@ -47,6 +47,9 @@ navigation:
   - id: season
     title: Season
     url: /season/
+  - id: scouting
+    title: Scouting
+    url: /scouting/
   - id: awards
     title: Awards
     url: /awards/

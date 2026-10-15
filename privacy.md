@@ -18,6 +18,8 @@ The school's policy describes the school's main website, admissions and inquiry 
 
 This website does not provide a form for submitting personal information. If you email the team using a mail link, your email provider sends the information you choose to include, such as your name, email address, and message. The team uses it to respond and handles it through the school's email systems and applicable school retention practices.
 
+The BIOBUZZ scouting page currently shows a profile preview only. Its fields are not connected to a submission service; information entered there stays in the open page and is not sent to or saved by the team. The preview asks for team and robot details. Do not enter personal or contact information in the optional notes field.
+
 ### Information handled when you visit
 
 Like other websites, our hosting and content delivery providers may receive technical information needed to deliver, protect, and troubleshoot the site. This can include your IP address, browser and device details, requested pages, and request time. We do not operate an analytics or advertising tracking service on this website.
