@@ -7,17 +7,48 @@
   <style>
     html {
       background-color: #000;
+      width: 100%;
       height: 100%;
+      overflow: hidden;
     }
 
     body {
       margin: 0;
       text-align: center;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
     }
 
     #viewer-container {
-      display: inline-block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #viewer-reel {
+      width: min(100vw, 100vh) !important;
+      height: min(100vw, 100vh) !important;
+      cursor: grab;
+    }
+
+    #viewer-reel.reel-loading { cursor: wait; }
+    .reel-panning, .reel-panning * { cursor: grabbing; }
+
+    #viewer-reel .reel {
+      display: block;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain;
+    }
+
+    #viewer {
+      display: block;
+      object-fit: contain;
     }
 
     .reel-overlay {

@@ -4,3 +4,4 @@ navigation:
   show_sponsors: false
   show_docs: false
   show_news: false
+  show_gallery: false

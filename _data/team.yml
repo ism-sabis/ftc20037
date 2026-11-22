@@ -65,11 +65,12 @@
     - Team Collaboration
 
 - name: Lucas
-  role: Motivation
+  role: Motivation · Building & Disassembly
   grade: 7
   graduation_year: 2032
-  bio: A seventh grader at the International School of Minnesota and in his first year of FTC, Lucas enjoys taking things apart to see how they work and helps keep the team motivated.
+  bio: A seventh grader at the International School of Minnesota and in his first year of FTC, Lucas enjoys taking things apart to see how they work. He helps with building and disassembly and keeps the team motivated.
   image: /assets/images/Lucas.jpg
   skills:
-    - Taking Stuff Apart
+    - Building
+    - Disassembly
     - Motivation

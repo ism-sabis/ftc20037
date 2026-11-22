@@ -18,6 +18,7 @@
       <div class="hidden md:flex items-center gap-1">
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
+          {% if item.id == 'gallery' and site.data.site_visibility.navigation.show_gallery == false %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
            class="nav-link px-3 py-2 rounded-sm text-sm font-medium text-[var(--color-text-muted)] dark:text-[var(--color-text-muted)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-light)] transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>
@@ -97,6 +98,7 @@
       <nav class="p-4 space-y-1">
         {% for item in site.navigation %}
           {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
+          {% if item.id == 'gallery' and site.data.site_visibility.navigation.show_gallery == false %}{% continue %}{% endif %}
         <a href="{{ item.url | relative_url }}"
            class="block py-3 px-3 rounded-sm text-base font-semibold text-[#0B1426] dark:text-[#E8EDF4] bg-[#F1F5F9] dark:bg-[#1C2D4A] hover:bg-[#E2E8F0] dark:hover:bg-[#2A3F5F] hover:text-[#DC2626] dark:hover:text-[#EF4444] transition-colors"
            {% if page.url == item.url %}aria-current="page"{% endif %}>

@@ -22,15 +22,16 @@ This is the working context for the 2026-2027 robot, website, and game strategy.
 
 - Fusion's active design is **Master Assembly V3** in the **2026-2027 BIOBUZZ** project.
 - The user provided a color-annotated CAD view and explained the mechanisms. Treat this as team-provided design intent, not a validated physical mechanism sequence:
-  - Purple/front: a four-bar intake moves up and down with gravity assisting its movement. Three rows of surgical tubing guide game elements up through the robot.
-  - Brown: a pair of flywheels, one on each side. Added mass is intended to help them retain rotational speed. The team plans to keep them spinning between shots and use motor control to maintain a target RPM.
+  - Purple/front: a front intake pivots up and down with gravity assisting its movement. Three rows of surgical tubing guide game elements through the robot. The linkage has not been confirmed as a four-bar; keep public wording generic until the CAD is checked.
+  - Brown: a pair of spring-mounted flywheels, one on each side, can spread apart to passively accommodate both POLLEN and NECTAR. Added mass is intended to help them retain rotational speed. The team plans to keep them spinning between shots and use motor control to maintain a target RPM.
   - Rear flipper: acts as a retaining gate, holding an element until the team wants to release it for launch.
   - Green turret: normally aims the launcher at the HIVE CELL. A Limelight is mounted on the turret to help aim it; the exact vision mode or target detector is not specified.
   - Blue adjustable hood: part of the turret's launch-trajectory adjustment.
   - Yellow slide-out guide: extends on drawer slides to redirect a turret shot down through the top of a FLOWER. The user confirmed that the direct HIVE CELL shot and redirected FLOWER shot are the intended routing.
-  - Red hinged arm: servo-actuated mechanism intended to push POLLEN out through the bottom of a FLOWER.
+  - Red mechanism: servo-positioned ramp behind or inside the FLOWER lets POLLEN slide out through the bottom; it is not a pusher.
   - Drive: mecanum wheels. The chassis uses heavily pocketed 7075 aluminum panels to reduce weight.
-- “Passive” describes the intended carryover of flywheel momentum between shots. The motors still actively maintain RPM, and the flipper controls release. Public copy should describe that behavior instead of implying a fully passive launcher.
+- The user estimates the current robot at approximately **27 lb**.
+- “Passive” describes the spring-mounted flywheels moving apart to accommodate either game element. The motors still actively maintain RPM, and the flipper controls release. Added flywheel mass is intended to help preserve speed between shots; do not describe the entire launcher as passive.
 - The user confirmed **Pedro Pathing** as the planned motion/pathing software and identified **goBILDA odometry pods** plus an **IMU**. Public wording should stay general (“odometry pod and IMU”); the exact pod model and sensor arrangement are unspecified. “Aspen” remains unresolved.
 - These mechanism descriptions are visible or team-described design intent, not tested performance claims. Confirm the final CAD and test hardware before presenting them as completed capabilities.
 - The website asset is `assets/robot-viewers/2026-2027/turntable.html` in the website repository. It is a self-contained HTML turntable with embedded rendered frames, not a live 3D CAD model. The file is about 10 MB and is outside the repository's excluded `assets/models` folder.
@@ -46,18 +47,23 @@ Useful follow-up checks are to verify which axles should rotate, whether each ge
 - The current roster is Roshan, Ryan, Asif, Ean, Alex, Yevhen, and Lucas: two seniors, four juniors, and one seventh grader.
 - Roshan and Ryan appear in every season in the archive. Asif, Ean, and Alex have been with the team since at least 2025-2026. Yevhen is joining Standard Deviation this season.
 - Mentor support is one lead mentor with industry engineering experience.
-- Lucas's bio should be friendly and factual: he enjoys taking things apart to see how they work and helps keep the team motivated.
+- The public Team Overview should list the current seven members and team composition, without the archive-history and mentor-support bullets.
+- Lucas's bio should say he enjoys taking things apart to see how they work, helps with building and disassembly, and keeps the team motivated.
 - The “Additional Member — Coming Soon” card and matching Team Overview sentence have been removed.
-- The season page now includes the CAD turntable in a titled, lazy-loaded iframe. Explain that dragging rotates through 36 rendered views; do not describe it as a live 3D model.
-- Current robot copy is in `_seasons/2026-2027.md`; it describes the intake, flywheels, release gate, turret, FLOWER mechanisms, drive, panels, and planned autonomous stack as design goals still being refined.
+- The public game name on this season page should be **BIOBUZZ** without “presented by RTX.” The full official game name remains in internal research notes.
+- Current robot copy is in `_seasons/2026-2027.md`; use a first-person team voice, avoid an unverified four-bar claim, and describe the FLOWER POLLEN mechanism as a ramp that lets POLLEN slide out.
+- The CAD preview uses a titled, lazy-loaded iframe. Keep the robot-name and design-in-progress notes next to that preview, remove the visible drag/36-view caption, and avoid scrollbars inside the frame.
+- Team photos are shared across current and archived rosters. Use a centered, contain fit so portraits are not off-center or clipped.
+- The Gallery is temporarily disabled in navigation and shows a brief unavailable notice at its direct URL; keep its content and image data so it can be re-enabled.
+- Outreach this season includes a visit to Tolomatic's Hamel, Minnesota facility for a design review with an applications engineer, a controls engineer, and a mechanical engineer, followed by a facility tour. The team is also in communication with 99 Technologies for help improving robot-code efficiency. These details are team-reported.
 - The team is still deciding its primary match strategy, so the public overview gives the HIVE launcher and FLOWER mechanisms balanced coverage.
 
 ## Open design questions
 
 1. Confirm the exact odometry pod model, IMU arrangement, and vision method/target used by the turret-mounted Limelight.
 2. “Aspen” remains unresolved; likely recall prompts include Road Runner or Pedro Pathing. Do not list Road Runner as part of this team's stack unless confirmed.
-3. Test the intake, tubing feed, flywheel speed retention, and flipper release with both POLLEN and NECTAR.
-4. Test the turret/hood and slide guide against the HIVE CELL and FLOWER top; verify the servo arm can remove POLLEN through the bottom.
+3. Verify the front intake linkage in CAD before naming its geometry; test the intake, tubing feed, flywheel spring travel/speed retention, and flipper release with both POLLEN and NECTAR.
+4. Test the turret/hood and slide guide against the HIVE CELL and FLOWER top; verify the servo-positioned ramp lets POLLEN slide out through the FLOWER bottom.
 5. The primary match strategy is still undecided. Later choose whether to prioritize HIVE tipping, FLOWER scoring, GARDEN scoring, or a combination.
 6. Choose a robot name if the team wants one.
 
@@ -65,3 +71,5 @@ Useful follow-up checks are to verify which axles should rotate, whether each ge
 
 - [FIRST Tech Challenge Game & Season Materials](https://ftc-resources.firstinspires.org/ftc/game) — current manual, Team Updates, Q&A, and game resources.
 - [BIOBUZZ Competition Manual, TU10](https://ftc-resources.firstinspires.org/ftc/game/cm-html/BIOBUZZ%20Competition%20Manual%20-%20TU10.htm) — rules and definitions. Check for updates before relying on specific thresholds or constraints.
+- [Tolomatic contact page](https://www.tolomatic.com/contact-us/) — company-published Hamel, Minnesota headquarters address. The design review and tour are team-reported.
+- [99 Technologies](https://www.99technologies.com/life-at-99/) — company-published overview and Eagan, Minnesota address. Code-efficiency support is team-reported.

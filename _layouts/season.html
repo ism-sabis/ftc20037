@@ -26,7 +26,7 @@ layout: default
   <nav class="sticky top-16 z-40 bg-[var(--color-surface)]/80 dark:bg-[var(--color-background)]/80 backdrop-blur-md border-b border-[var(--color-border)]" aria-label="Season sections">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex overflow-x-auto gap-2 py-3 no-scrollbar">
-        {% if site.features.cad_viewer %}
+        {% if site.features.cad_viewer or page.cad_preview %}
         <a href="#cad" class="nav-link whitespace-nowrap text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-accent)] px-3 py-1.5 rounded-sm transition-colors">CAD</a>
         {% endif %}
         <a href="#robot" class="nav-link whitespace-nowrap text-sm font-medium text-[var(--color-text-muted)] hover:text-[var(--color-accent)] px-3 py-1.5 rounded-sm transition-colors">Robot</a>

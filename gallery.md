@@ -4,6 +4,7 @@ title: Team Gallery
 permalink: /gallery/
 ---
 
+{% if site.data.site_visibility.navigation.show_gallery %}
 {% assign gallery_images = site.static_files | sort: "name" %}
 {% assign gallery_meta = site.data.gallery.items | default: empty %}
 {% assign gallery_filters = site.data.gallery_tags.filters | default: empty %}
@@ -145,3 +146,11 @@ permalink: /gallery/
     </div>
   </div>
 </div>
+{% else %}
+<div class="card">
+  <div class="card-body text-center py-12">
+    <h2 class="text-2xl font-bold mb-3">Gallery temporarily unavailable</h2>
+    <p class="text-[var(--color-text-muted)]">We're updating our gallery. Please check back later.</p>
+  </div>
+</div>
+{% endif %}

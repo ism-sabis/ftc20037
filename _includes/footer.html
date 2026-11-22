@@ -25,6 +25,7 @@
         <ul class="space-y-2">
           {% for item in site.navigation %}
             {% if item.id == 'privacy' or item.id == 'terms' or item.id == 'accessibility' %}{% continue %}{% endif %}
+            {% if item.id == 'gallery' and site.data.site_visibility.navigation.show_gallery == false %}{% continue %}{% endif %}
           <li><a href="{{ item.url | relative_url }}" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-accent)] transition-colors">{{ item.title }}</a></li>
           {% endfor %}
         </ul>
