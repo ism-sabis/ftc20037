@@ -20,7 +20,7 @@ This is the working context for the 2026-2027 robot, website, and game strategy.
 
 ## Current robot CAD snapshot
 
-- Fusion's active design is **Master Assembly V3** in the **2026-2027 BIOBUZZ** project.
+- The robot-wide Fusion assembly is **Master Assembly V3** in the **2026-2027 BIOBUZZ** project. After the intake-history review on 2026-11-21, **V4 V2 Assembly** was left active in Fusion.
 - The user provided a color-annotated CAD view and explained the mechanisms. Treat this as team-provided design intent, not a validated physical mechanism sequence:
   - Purple/front: a front intake pivots up and down with gravity assisting its movement. Three rows of surgical tubing guide game elements through the robot. The linkage has not been confirmed as a four-bar; keep public wording generic until the CAD is checked.
   - Brown: a pair of spring-mounted flywheels, one on each side, can spread apart to passively accommodate both POLLEN and NECTAR. Added mass is intended to help them retain rotational speed. The team plans to keep them spinning between shots and use motor control to maintain a target RPM.
@@ -29,12 +29,37 @@ This is the working context for the 2026-2027 robot, website, and game strategy.
   - Blue adjustable hood: part of the turret's launch-trajectory adjustment.
   - Yellow slide-out guide: extends on drawer slides to redirect a turret shot down through the top of a FLOWER. The user confirmed that the direct HIVE CELL shot and redirected FLOWER shot are the intended routing.
   - Red mechanism: servo-positioned ramp behind or inside the FLOWER lets POLLEN slide out through the bottom; it is not a pusher.
-  - Drive: mecanum wheels. The chassis uses heavily pocketed 7075 aluminum panels to reduce weight.
+  - Drive: mecanum wheels. The chassis panels are 7075 aluminum; the team chose that material to allow more aggressive weight-reducing pocketing while retaining strength.
 - The user estimates the current robot at approximately **27 lb**.
 - “Passive” describes the spring-mounted flywheels moving apart to accommodate either game element. The motors still actively maintain RPM, and the flipper controls release. Added flywheel mass is intended to help preserve speed between shots; do not describe the entire launcher as passive.
 - The user confirmed **Pedro Pathing** as the planned motion/pathing software and identified **goBILDA odometry pods** plus an **IMU**. Public wording should stay general (“odometry pod and IMU”); the exact pod model and sensor arrangement are unspecified. “Aspen” remains unresolved.
 - These mechanism descriptions are visible or team-described design intent, not tested performance claims. Confirm the final CAD and test hardware before presenting them as completed capabilities.
 - The website asset is `assets/robot-viewers/2026-2027/turntable.html` in the website repository. It is a self-contained HTML turntable with embedded rendered frames, not a live 3D CAD model. The file is about 10 MB and is outside the repository's excluded `assets/models` folder.
+
+### Intake design history (internal only; team-reported)
+
+- **V1:** Used surgical tubing, with balls sitting low at the intake mouth near the ground and only partly inside the intake. When ready, a flap at the bottom swung down to send the balls upward. The team found this version too wide; the flap could eject balls, and pressure from balls resting against it could make the flap difficult to lower.
+- **V2:** A two-wheel concept held pieces in the intake, then ran the wheels to move a piece toward the center when it was time to launch. The team set this approach aside because handling both POLLEN and NECTAR made it too complex. The inspected Fusion V2 document is a sketch-level concept rather than a finished solid assembly.
+- **V3:** Moved toward the current intake concept with different geometry. The team described it as smaller, but less complete and less fully assembled than the later version.
+- **V4 V2:** Refined V3's geometry to the team's preference and completed the assembly. In the read-only Fusion comparison, V4 V2 appeared more fully assembled than V3. This visual comparison does not establish mechanism performance.
+- The phrase "secondary vision" in the dictation is unclear; it is not treated as a separate design feature.
+- Read-only Fusion inspection found 123 root-level occurrences and 19 root sketches in V3 Assembly, and 333 root-level occurrences and 51 root sketches in V4 V2 Assembly. These are a snapshot of the documents, not measures of performance. All four intake documents remained unmodified, and V4 V2 Assembly was restored as the active design.
+
+### Shooter design history (internal only; team-reported)
+
+- Fusion has a separate Shooter folder with V1 Assembly, V2 Assembly, V3 Assembly, and V4 Assembly; these are distinct from the similarly named Intake assemblies.
+- **V1:** The hood slid vertically on a belt-driven adjustment, which the team described as non-backdrivable. A weighted flywheel moved in and out on a hinge through a gear train while remaining powered, to accommodate both POLLEN and NECTAR. Main drawbacks were its large size and mechanical complexity.
+- **V2:** Used a fixed hood and moved the rear surface in or out with a servo to set its spacing from the flywheel for either game element. The servo's 0- and 180-degree positions represented the two gap settings. The control arm was arranged so the load at either endpoint would pass through the arm rather than require the servo to hold the shooting force. This was intended to protect the servo and has not been performance-validated. A Limelight was mentioned during this revision discussion; its use across every shooter revision is unspecified.
+- **V3:** Was intended to lead to the final V4 layout. It used a worm gear to adjust the hood and prevent back-driving. The team dropped the worm gear because it added too much size and complexity.
+- **V4:** Replaced the V3 worm gear with a servo and control arm for hood adjustment. The spring-mounted flywheels spread apart passively to accommodate both POLLEN and NECTAR; the user confirmed this is V4's spacing method.
+- Read-only Fusion visual inspection covered Shooter V1 through V4; no Fusion edits were made. Intake V4 V2 Assembly was restored as the active document afterward.
+
+### Chassis design history (internal only; team-reported)
+
+- **V1:** The chassis uses mecanum wheels. The team values their side-to-side mobility but reports power loss and limited traction. The motors are mounted low to keep the center of mass low; the layout also provides quick battery access. Thumb screws let the team change the sign panels.
+- **Control-panel mounting:** Plastic spacers electrically isolate the control panels from the metal chassis. The team's intent is to reduce the risk that static discharge disrupts or disables the electronics; this protective effect has not been validated here.
+- **V2 (planned):** The team plans to move to swerve to retain the mobility it wants while improving traction and power delivery. This is a planned redesign, not a completed chassis.
+- Read-only inspection of Fusion's Chassis / V1 Assembly showed the mecanum-wheel chassis. The document remained unmodified; the V2 chassis was not inspected.
 
 ### Assembly review confidence
 
