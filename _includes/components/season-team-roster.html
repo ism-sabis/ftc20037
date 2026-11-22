@@ -9,8 +9,5 @@
     {% for member in site.data.team %}
     {% include components/team-member-card.html member=member %}
     {% endfor %}
-    {% if page.season == site.site.current_season %}
-    {% include components/coming-soon-team-member.html %}
-    {% endif %}
   {% endif %}
 </div>
