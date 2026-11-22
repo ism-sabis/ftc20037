@@ -46,7 +46,6 @@ permalink: /about/
       {% for member in site.data.team %}
       {% include components/team-member-card.html member=member %}
       {% endfor %}
-      {% include components/coming-soon-team-member.html %}
     </div>
 
     <h3 class="text-xl font-semibold text-[var(--color-text)] mt-12 mb-4">Mentors</h3>
